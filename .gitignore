@@ -1,0 +1,7 @@
+*.pyc
+*.db
+*.db.backup
+media/*
+.idea/*
+*.swp
+Guardfile
