@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<h1>{{ species }}</h1>
+
+
+<br>
+<b>Class name:</b>
+{{ species.class_name }}
+
+<br>
+<b>Family:</b>
+{{ species.family }}
+
+<br>
+<b>Subfamily:</b>
+{{ species.subfamily }}
+<br>
+<b>Genus:</b>
+{{ species.genus }}
+<br>
+<b>Species:</b>
+{{ species.species }}
+<br>
+<b>Definition:</b>
+{{ species.definition }}
+
+<br>
+<b>Author/Name/Year:</b>
+{{ species.author_name_year }}
+
+<br>
+<b>Synonyms:</b>
+{{ species.synonyms }}
+
+<br>
+<b>Common names:</b>
+{{ species.common_names }}
+
+<br>
+<b>Geographic range:</b>
+{{ species.geographic_range }}
+
+
+<br>
+<b>Habitat:</b>
+{{ species.habitat }}
+<br>
+<b>Shell size:</b>
+{{ species.shell_size }}
+<br>
+<b>Shell sculpture:</b>
+{{ species.shell_sculpture }}
+<br>
+<b>Shell colour:</b>
+{{ species.shell_colour }}
+
+<br>
+<b>References:</b>
+{{ species.references }}
+
+<br>
+<b>Notes:</b>
+{{ species.notes }}
+
+<br>
+<b>Additional information:</b>
+{{ species.addition_information }}
+
+
+<h3>Specimens</h3>
+{% for specimen in species.specimen_set.all %}
+
+<br>
+<b>Collection date:</b>
+{{ species.collection_date }}
+<br>
+<b>Collection location:</b>
+{{ species.collection_location }}
+<br>
+<b>Collection information:</b>
+{{ species.collection_information }}
+
+{% endfor %}
+
+
+{% endblock %}

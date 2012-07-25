@@ -1,0 +1,26 @@
+{% load static %}
+{% get_static_prefix as STATIC %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Shells Reference Collection{% endblock %}</title>
+
+    <link rel="shortcut icon" href="{{STATIC}}favicon.ico" />
+    {% block headextra %}
+    {% endblock headextra %}
+</head>
+<body>
+<div class="wrapper">
+  <!-- START: Content -->
+  <div id="content">
+    {% block body %}
+
+    {% endblock body %}
+  </div><!-- /content -->
+
+</div><!-- /wrapper -->
+
+    {% block javascript %}
+    {% endblock %}
+</body>
+</html>

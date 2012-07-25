@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+{% for species in species_list %}
+
+
+<a href="{{ species.get_absolute_url }}">{{ species }}</a><br>
+
+{% endfor %}
+
+
+{% endblock %}
