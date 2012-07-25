@@ -1,5 +1,27 @@
 # Django settings for refcollections project.
 
+import sys
+from os.path import abspath, basename, dirname, join, normpath
+
+from helpers import gen_secret_key
+
+########## PATH CONFIGURATION
+# Absolute filesystem path to this Django project directory
+DJANGO_ROOT = dirname(dirname(dirname(abspath(__file__))))
+
+# Template Directory
+TEMPLATE_DIRS = (
+    DJANGO_ROOT + '/templates',
+)
+
+# Absolute filesystem path to the secret file which holds this project's
+# SECRET_KEY. Will be auto-generated the first time this file is interpreted.
+SECRET_FILE = normpath(join(DJANGO_ROOT, 'deploy', 'SECRET'))
+
+
+########## END PATH CONFIGURATION
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -80,9 +102,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'z$0zu+hk$0tkkieiv2jd&amp;**s!bkv0q9d968w(1u4aw8syfuw5p'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -105,11 +124,6 @@ ROOT_URLCONF = 'refcollections.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'refcollections.wsgi.application'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 INSTALLED_APPS = (
 ### Django apps
@@ -160,23 +174,19 @@ LOGGING = {
     }
 }
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
-INSTALLED_APPS += ('debug_toolbar',)
 
-# Debug Toolbar configuration
-INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False
-}
+########## KEY CONFIGURATION
+# Try to load the SECRET_KEY from our SECRET_FILE. If that fails, then generate
+# a random SECRET_KEY and save it into our SECRET_FILE for future loading. If
+# everything fails, then just raise an exception.
+try:
+    SECRET_KEY = open(SECRET_FILE).read().strip()
+except IOError:
+    try:
+        SECRET_KEY = gen_secret_key(50)
+        with open(SECRET_FILE, 'w') as f:
+            f.write(SECRET_KEY)
+    except IOError:
+        raise Exception('Cannot open file `%s` for writing.' % SECRET_FILE)
+########## END KEY CONFIGURATION
