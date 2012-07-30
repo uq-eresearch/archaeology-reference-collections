@@ -1,0 +1,12 @@
+Django==1.4
+Fabric==1.4.3
+Whoosh==2.4.1
+django-haystack==1.2.7
+mock==1.0b1
+openpyxl==1.5.8
+psycopg2==2.4.5
+pycrypto==2.6
+python-dateutil==2.1
+six==1.1.0
+ssh==1.7.14
+wsgiref==0.1.2
