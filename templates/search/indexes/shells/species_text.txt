@@ -1,0 +1,22 @@
+{{ object.class_name }}
+{{ object.family }}
+{{ object.subfamily }}
+{{ object.genus }}
+{{ object.subgenus }}
+{{ object.species }}
+{{ object.definition }}
+{{ object.author_name_year }}
+{{ object.synonyms }}
+{{ object.common_names }}
+{{ object.geographic_range }}
+{{ object.habitat }}
+{{ object.shell_size }}
+{{ object.shell_sculpture }}
+{{ object.shell_colour }}
+{{ object.references }}
+{{ object.notes }}
+{{ object.additional_information }}
+{% for specimen in object.specimen_set.all %}
+    {{ specimen.collection_location }}
+    {{ specimen.collection_information }}
+{% endfor %}
