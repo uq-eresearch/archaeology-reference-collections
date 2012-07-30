@@ -5,3 +5,7 @@ media/*
 .idea/*
 *.swp
 Guardfile
+htmlcov/*
+deploy/search_index/*
+deploy/SECRET
+deployment.ini
