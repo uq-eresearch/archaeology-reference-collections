@@ -14,6 +14,24 @@ TEMPLATE_DIRS = (
     DJANGO_ROOT + '/templates',
 )
 
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = join(DJANGO_ROOT, 'media')
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT = join(DJANGO_ROOT, 'static')
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+
 # Absolute filesystem path to the secret file which holds this project's
 # SECRET_KEY. Will be auto-generated the first time this file is interpreted.
 SECRET_FILE = normpath(join(DJANGO_ROOT, 'deploy', 'SECRET'))
@@ -68,31 +86,14 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
-
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+MEDIA_URL = '/media/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -138,6 +139,7 @@ INSTALLED_APPS = (
 
 
 ### Third party apps
+    'haystack',
 
 
 ### Parts of this app
@@ -175,7 +177,6 @@ LOGGING = {
 }
 
 
-
 ########## KEY CONFIGURATION
 # Try to load the SECRET_KEY from our SECRET_FILE. If that fails, then generate
 # a random SECRET_KEY and save it into our SECRET_FILE for future loading. If
@@ -190,3 +191,9 @@ except IOError:
     except IOError:
         raise Exception('Cannot open file `%s` for writing.' % SECRET_FILE)
 ########## END KEY CONFIGURATION
+
+
+##### HAYSTACK CONFIGURATION
+HAYSTACK_SITECONF = 'refcollections.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = join(DJANGO_ROOT, 'deploy', 'search_index')
