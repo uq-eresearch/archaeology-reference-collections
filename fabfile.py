@@ -1,13 +1,10 @@
-from fabric.api import task, env, sudo, run
+from fabric.api import *
 from fabric.contrib.files import append
 from ConfigParser import SafeConfigParser
 from django.template import Template, Context
 import os.path
 
 env.hosts = ['molluscref-uat.qc.to']
-
-def ls():
-    run('ls /')
 
 
 def test():
@@ -113,3 +110,16 @@ def place_config_file(template, final_location):
     append(final_location, t.render(c), use_sudo=True)
 
 
+@task
+def update():
+    run('pwd')
+    run('id')
+    with cd(env.appdir):
+        run('git pull')
+        with prefix('source ' + env.envdir + '/bin/activate'):
+            run('./manage.py collectstatic')
+            run('./manage.py syncdb')
+    run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
+
+
+config()
