@@ -1,6 +1,17 @@
 
 from common import *
 
+
+######## DEBUG
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+
+############################
+
+
+
 #############################
 ### DJANGO DEBUG TOOLBAR
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)

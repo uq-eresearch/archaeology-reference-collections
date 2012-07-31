@@ -1,7 +1,7 @@
 from fabric.api import task, env, sudo, run
 from fabric.contrib.files import append
 from ConfigParser import SafeConfigParser
-from django.template import Template
+from django.template import Template, Context
 import os.path
 
 env.hosts = ['molluscref-uat.qc.to']
@@ -35,6 +35,7 @@ def bootstrap_ubuntu():
     """
     env.user = 'ubuntu'
     server = UbuntuServer()
+    server.install_requirements()
     server.install_webserver()
     server.install_database()
     server.create_appuser()
@@ -60,12 +61,14 @@ def psql(self, command):
 
 
 class UbuntuServer():
+    def install_requirements(self):
+        sudo('apt-get install git-core')
 
     def install_webserver(self):
         sudo('apt-get install nginx')
 
     def install_database(self):
-        sudo('apt-get install postgresql')
+        sudo('apt-get install postgresql libpq-dev python-dev')
 
     def create_appuser(self):
         sudo('adduser %s %s', self.appname)
@@ -96,3 +99,17 @@ def read_key_file(key_file):
 def push_key(key_file='~/.ssh/id_rsa.pub'):
     key_text = read_key_file(key_file)
     append('~/.ssh/authorized_keys', key_text)
+
+
+def place_config_file(template, final_location):
+    # Prepare context
+    c = Context()
+    for item, value in env.items():
+        c[item] = value
+
+    with open(template) as f:
+        t = Template(f.read())
+
+    append(final_location, t.render(c), use_sudo=True)
+
+

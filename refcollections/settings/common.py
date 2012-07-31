@@ -40,7 +40,7 @@ SECRET_FILE = normpath(join(DJANGO_ROOT, 'deploy', 'SECRET'))
 ########## END PATH CONFIGURATION
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
