@@ -119,6 +119,7 @@ def update():
         with prefix('source ' + env.envdir + '/bin/activate'):
             run('./manage.py collectstatic')
             run('./manage.py syncdb')
+            run('./manage.py rebuild_index')
     run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
 
 
