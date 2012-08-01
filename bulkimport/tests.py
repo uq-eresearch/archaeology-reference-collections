@@ -81,4 +81,31 @@ class SimpleTest(unittest.TestCase):
         self.assertTrue(linking_func.called)
         linking_func.assert_called_with(result_1, result_2)
 
+    def test_read_simple_spreadsheet(self):
+        """
+        Load in a simple spreadsheet
+        """
+        class Person(models.Model):
+            first_name = models.CharField(max_length=100, blank=True)
+            last_name = models.CharField(max_length=100, blank=True)
+            age = models.CharField(max_length=100, blank=True)
+
+            def save(*args, **kwargs):
+                pass
+        spreadsheet = 'bulkimport/testdata/names.xlsx'
+
+        bi = BulkDataImportHandler()
+        bi.add_mapping(Person, {
+            'First Name': 'first_name',
+            'Last Name': 'last_name',
+            'Age': 'age'
+            })
+
+        results = bi.process_spreadsheet(spreadsheet)
+
+        self.assertEqual(3, len(results))
+        self.assertEqual('Bob', results[0][0].first_name)
+        self.assertEqual(50, results[2][0].age)
+
+
 

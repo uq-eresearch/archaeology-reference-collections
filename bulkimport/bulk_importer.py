@@ -15,8 +15,9 @@ ModelMapping = namedtuple('ModelMapping', 'model mapping')
 
 
 class BulkDataImportHandler:
-    mappings = []
-    linking_func = None
+    def __init__(self):
+        self.mappings = []
+        self.linking_func = None
 
     def add_mapping(self, model, mapping):
         """
@@ -48,13 +49,18 @@ class BulkDataImportHandler:
 
         data = sheet.range(sheet.calculate_dimension())
         headers = [v.value for v in data[0]]
+        results = []
         for row in data[1:]:
             vals = [v.value for v in row]
-            self.process_row(headers, vals)
+            if vals[0] == headers[0]:
+                # repeated headers
+                continue
+            new = self.process_row(headers, vals)
+            results.append(new)
+        return results
 
     def process_row(self, headers, vals):
         results = []
-#        import ipdb; ipdb.set_trace()
         for model, mapping in self.mappings:
             instance = model()
             for col, field in mapping.items():
