@@ -52,3 +52,6 @@ class Specimen(models.Model):
     collection_date = models.DateField(null=True)
     collection_location = models.TextField(blank=True)
     collection_information = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return '%s %s' % (self.collection_date, self.collection_location)

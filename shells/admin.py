@@ -19,8 +19,6 @@ class SpeciesAdmin(admin.ModelAdmin):
     inlines = [SpecimenInline]
 
 
-
-
 admin.site.register(Species, SpeciesAdmin)
 
 
@@ -30,4 +28,4 @@ class SpecimenAdmin(admin.ModelAdmin):
         'collection_location',
         'collection_information')
 
-admin.site.register(Specimen)
+admin.site.register(Specimen, SpecimenAdmin)
