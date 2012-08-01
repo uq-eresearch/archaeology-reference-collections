@@ -5,8 +5,8 @@
 
 <h1>{{ species }}</h1>
 
-
-<br>
+<div class="row">
+  <div class="span8">
 <b>Class name:</b>
 {{ species.class_name }}
 
@@ -24,6 +24,8 @@
 <b>Species:</b>
 {{ species.species }}
 <br>
+
+<h2>General Information</h2>
 <b>Definition:</b>
 {{ species.definition }}
 
@@ -39,15 +41,17 @@
 <b>Common names:</b>
 {{ species.common_names }}
 
-<br>
+
+<h2>Location</h2>
 <b>Geographic range:</b>
 {{ species.geographic_range }}
-
 
 <br>
 <b>Habitat:</b>
 {{ species.habitat }}
 <br>
+
+<h2>Physical</h2>
 <b>Shell size:</b>
 {{ species.shell_size }}
 <br>
@@ -57,7 +61,7 @@
 <b>Shell colour:</b>
 {{ species.shell_colour }}
 
-<br>
+<h2>References</h2>
 <b>References:</b>
 {{ species.references }}
 
@@ -70,20 +74,29 @@
 {{ species.addition_information }}
 
 
-<h3>Specimens</h3>
+<h2>Specimens</h3>
 {% for specimen in species.specimen_set.all %}
 
-<br>
 <b>Collection date:</b>
-{{ species.collection_date }}
+{{ specimen.collection_date }}
 <br>
 <b>Collection location:</b>
-{{ species.collection_location }}
+{{ specimen.collection_location }}
 <br>
 <b>Collection information:</b>
-{{ species.collection_information }}
+{{ specimen.collection_information }}
 
 {% endfor %}
+
+  </div><!-- span9 -->
+
+  <div class="span4">
+    <div class="well">
+        <p>Images</p>
+    </div>
+  </div>
+
+</div><!-- row -->
 
 
 {% endblock %}
