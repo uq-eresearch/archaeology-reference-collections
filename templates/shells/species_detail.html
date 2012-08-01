@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% if user.is_staff %}
+<div style="float:right;font-size: 80%;">
+  <a href="{% url admin:shells_species_change species.id %}">Admin</a>
+</div>
+
+{% endif %}
 
 <h1>{{ species }}</h1>
 
