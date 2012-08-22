@@ -13,7 +13,9 @@
 
 <div class="row">
   <div class="span8">
-<b>Class name:</b>
+
+<h2>Classification</h2>
+<b>Class:</b>
 {{ species.class_name }}
 
 <br>
@@ -36,8 +38,8 @@
 {{ species.definition }}
 
 <br>
-<b>Author/Name/Year:</b>
-{{ species.author_name_year }}
+<b>Authority:</b>
+{{ species.authority }}
 
 <br>
 <b>Synonyms:</b>
@@ -94,11 +96,21 @@
 
 {% endfor %}
 
+{% load thumbnail %}
   </div><!-- span9 -->
 
   <div class="span4">
     <div class="well">
         <p>Images</p>
+        {% for specimen in species.specimen_set.all %}
+        {% for sr in specimen.speciesrepresentation_set.all %}
+
+    <a href="{{ sr.image.url }}">
+    <img src="{% thumbnail sr.image 384x256 crop=scale %}" width="384" height="256" alt=""></a>
+
+    {% endfor %}
+    {% endfor %}
+
     </div>
   </div>
 

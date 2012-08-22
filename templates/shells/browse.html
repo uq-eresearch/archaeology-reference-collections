@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Species</h1>
+
+<div class="row">
+  <div class="span8">
+
+    <form action="" method="get">
+        {{ filtertool.form.as_p }}
+        <input type="submit" />
+    </form>
+    <h2>Species</h2>
+    <ul>
+      {% for obj in filtertool %}
+          <li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></li>
+      {% endfor %}
+    </ul>
+
+  </div><!-- span8 -->
+
+  <div class="span4">
+
+
+  </div>
+
+</div><!-- row -->
+
+
+{% endblock %}

@@ -7,8 +7,9 @@ from common import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-
 ############################
+
+
 
 #############################
 ### DJANGO DEBUG TOOLBAR
@@ -44,3 +45,28 @@ if DEBUG_TOOLBAR:
 
 ### END DEBUG TOOLBAR
 #############################
+
+
+
+LOGGING = { 
+   'version': 1,
+   'disable_existing_loggers': True,
+   'formatters': {
+       'simple': {
+           'format': '%(levelname)s %(message)s',
+       },  
+   },  
+   'handlers': {
+       'console':{
+           'level':'DEBUG',
+           'class':'logging.StreamHandler',
+           'formatter': 'simple'
+       },  
+   },  
+   'loggers': {
+       'django': {
+           'handlers': ['console'],
+           'level': 'DEBUG',
+       },  
+   }   
+}

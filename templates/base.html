@@ -38,9 +38,10 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="/shells/upload/">Upload Data</a></li>
+            <li><a href="{% url upload_species_spreadsheet %}">Upload data</a></li>
+            <li><a href="{% url upload-images %}">Upload photos</a></li>
+            <li><a href="{% url advanced-search %}">Advanced search</a></li>
+            <li><a href="{% url browse-species %}">Browse</a></li>
           </ul>
           <form class="navbar-search pull-left" method="get" action="/search/">
             <input type="text" class="search-query span2" placeholder="Search" name="q">

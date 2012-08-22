@@ -5,7 +5,7 @@
 {{ object.subgenus }}
 {{ object.species }}
 {{ object.definition }}
-{{ object.author_name_year }}
+{{ object.authority }}
 {{ object.synonyms }}
 {{ object.common_names }}
 {{ object.geographic_range }}

@@ -140,11 +140,13 @@ INSTALLED_APPS = (
 
 ### Third party apps
     'haystack',
+    'easy_thumbnails',
 
 
 ### Parts of this app
     'shells',
     'bulkimport',
+    'mediaman',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -197,3 +199,8 @@ except IOError:
 HAYSTACK_SITECONF = 'refcollections.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = join(DJANGO_ROOT, 'deploy', 'search_index')
+
+
+# This normally protects against XSS attacks, which shouldn't be a problem here.
+# If enabled, it interrupts the bulk upload functionality.
+SESSION_COOKIE_HTTPONLY = False
