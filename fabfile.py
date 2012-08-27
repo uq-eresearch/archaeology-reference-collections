@@ -49,11 +49,11 @@ def deploy():
     install_requirements()
 
 
-def postgres(self, command):
+def postgres(command):
     sudo(command, user='postgres')
 
 
-def psql(self, command):
+def psql(command):
     sudo('echo "%s" | psql' % command, user='postgres')
 
 
@@ -117,10 +117,18 @@ def update():
     with cd(env.appdir):
         run('git pull')
         with prefix('source ' + env.envdir + '/bin/activate'):
+            run('pip install --requirement=%s' % 'requirements.txt')
             run('./manage.py collectstatic')
             run('./manage.py syncdb')
             run('./manage.py rebuild_index')
     run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
+
+
+@task
+def blast_database():
+    env.user = 'ubuntu'
+    postgres('dropdb %(dbname)s' % env)
+    postgres('createdb --owner %(dbuser)s %(dbname)s' % env)
 
 
 config()
