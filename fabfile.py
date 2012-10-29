@@ -61,6 +61,13 @@ class UbuntuServer():
     def install_requirements(self):
         sudo('apt-get install git-core')
 
+    def install_pil_reqs(self):
+        sudo('apt-get install libjpeg62-dev  zlib1g-dev')
+
+        # For 64bit ubuntu
+        sudo('ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/')
+        sudo('ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib')
+
     def install_webserver(self):
         sudo('apt-get install nginx')
 
@@ -118,9 +125,9 @@ def update():
         run('git pull')
         with prefix('source ' + env.envdir + '/bin/activate'):
             run('pip install --requirement=%s' % 'requirements.txt')
-            run('./manage.py collectstatic')
+            run('./manage.py collectstatic --noinput')
             run('./manage.py syncdb')
-            run('./manage.py rebuild_index')
+            run('./manage.py rebuild_index --noinput')
     run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
 
 
