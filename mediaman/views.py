@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.decorators import permission_required
 from django import forms
 from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
@@ -40,9 +39,9 @@ class Uploader(View):
 
             except ParseError:
                 logger.warning("Unable to parse id from filename.")
-                return HttpResponse('ERROR: Check file name/path. Unable to determine registration number or person.')
+                return HttpResponse('ERROR: Check file name/path. Unable to parse.')
             except ObjectDoesNotExist as inst:
-                logger.warning("Unable to find object matching id.")
+                logger.warning("Unable to find matching object for uploaded file.")
                 return HttpResponse('ERROR: %s' % inst)
         else:
             return HttpResponse('ERROR: %s' % form.errors)
