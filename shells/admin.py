@@ -1,4 +1,5 @@
 from django.contrib import admin
+from refcollections.admin_custom import shells_admin
 from models import Species, Specimen, SpeciesRepresentation
 
 
@@ -26,9 +27,6 @@ class SpeciesAdmin(admin.ModelAdmin):
     inlines = [SpecimenInline]
 
 
-admin.site.register(Species, SpeciesAdmin)
-
-
 class SpecimenAdmin(admin.ModelAdmin):
 
     list_display = ('collection_date',
@@ -38,8 +36,6 @@ class SpecimenAdmin(admin.ModelAdmin):
     inlines = [
             SpeciesRepresentationInline
     ]
-
-admin.site.register(Specimen, SpecimenAdmin)
 
 
 from django.contrib import admin
@@ -70,9 +66,6 @@ class AdminThumbnailMixin(object):
         return self._thumb(getattr(obj, self.thumbnail_image_field_name), **kwargs)
     thumbnail.allow_tags = True
     thumbnail.short_description = _('Thumbnail')
-
-
-
 
 
 class SpeciesRepresentationAdmin(admin.ModelAdmin, AdminThumbnailMixin):

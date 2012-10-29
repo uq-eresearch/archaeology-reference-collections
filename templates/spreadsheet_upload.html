@@ -1,4 +1,14 @@
-{% extends "base.html" %}
+{% extends "admin/base_site.html" %}
+
+<!-- BREADCRUMBS -- >
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url admin:index %}">Home</a>
+&rsaquo; Upload spreadsheet
+</div>
+{% endblock %}
+{% endif %}
 
 {% block content %}
 <form enctype="multipart/form-data" method="post">

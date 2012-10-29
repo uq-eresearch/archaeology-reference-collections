@@ -15,86 +15,91 @@
   <div class="span8">
 
 <h2>Classification</h2>
-<b>Class:</b>
-{{ species.class_name }}
+<dl>
+  <dt>Class:</dt>
+  <dd>{{ species.class_name }}</dd>
 
-<br>
-<b>Family:</b>
-{{ species.family }}
 
-<br>
-<b>Subfamily:</b>
-{{ species.subfamily }}
-<br>
-<b>Genus:</b>
-{{ species.genus }}
-<br>
-<b>Species:</b>
-{{ species.species }}
-<br>
+  <dt>Family:</dt>
+  <dd>{{ species.family }}</dd>
+
+
+  <dt>Subfamily:</dt>
+  <dd>{{ species.subfamily }}</dd>
+
+  <dt>Genus:</dt>
+  <dd>{{ species.genus }}</dd>
+
+  <dt>Species:</dt>
+  <dd>{{ species.species }}</dd>
+</dl>
 
 <h2>General Information</h2>
-<b>Definition:</b>
-{{ species.definition }}
-
-<br>
-<b>Authority:</b>
-{{ species.authority }}
-
-<br>
-<b>Synonyms:</b>
-{{ species.synonyms }}
-
-<br>
-<b>Common names:</b>
-{{ species.common_names }}
+<dl>
+  <dt>Definition:</dt>
+  <dd>{{ species.definition }}</dd>
 
 
-<h2>Location</h2>
-<b>Geographic range:</b>
-{{ species.geographic_range }}
+  <dt>Authority:</dt>
+  <dd>{{ species.authority }}</dd>
 
-<br>
-<b>Habitat:</b>
-{{ species.habitat }}
-<br>
+
+  <dt>Synonyms:</dt>
+  <dd>{{ species.synonyms }}</dd>
+
+
+  <dt>Common names:</dt>
+  <dd>{{ species.common_names }}</dd>
+
+
+  <h2>Location</h2>
+  <dt>Geographic range:</dt>
+  <dd>{{ species.geographic_range }}</dd>
+
+
+  <dt>Habitat:</dt>
+  <dd>{{ species.habitat }}</dd>
+</dl>
 
 <h2>Physical</h2>
-<b>Shell size:</b>
-{{ species.shell_size }}
-<br>
-<b>Shell sculpture:</b>
-{{ species.shell_sculpture }}
-<br>
-<b>Shell colour:</b>
-{{ species.shell_colour }}
+<dl>
+  <dt>Shell size:</dt>
+  <dd>{{ species.shell_size }}</dd>
+
+  <dt>Shell sculpture:</dt>
+  <dd>{{ species.shell_sculpture }}</dd>
+
+  <dt>Shell colour:</dt>
+  <dd>{{ species.shell_colour }}</dd>
+</dl>
 
 <h2>References</h2>
-<b>References:</b>
-{{ species.references }}
+<dl>
+  <dt>References:</dt>
+  <dd>{{ species.references }}</dd>
 
-<br>
-<b>Notes:</b>
-{{ species.notes }}
+  <dt>Notes:</dt>
+  <dd>{{ species.notes }}</dd>
 
-<br>
-<b>Additional information:</b>
-{{ species.addition_information }}
-
+  <dt>Additional information:</dt>
+  <dd>{{ species.addition_information }}</dd>
+</dl>
 
 <h2>Specimens</h3>
+<dl>
 {% for specimen in species.specimen_set.all %}
 
-<b>Collection date:</b>
-{{ specimen.collection_date }}
-<br>
-<b>Collection location:</b>
-{{ specimen.collection_location }}
-<br>
-<b>Collection information:</b>
-{{ specimen.collection_information }}
+  <dt>Collection date:</dt>
+  <dd>{{ specimen.collection_date }}</dd>
+
+  <dt>Collection location:</dt>
+  <dd>{{ specimen.collection_location }}</dd>
+
+  <dt>Collection information:</dt>
+  <dd>{{ specimen.collection_information }}</dd>
 
 {% endfor %}
+</dl>
 
 {% load thumbnail %}
   </div><!-- span9 -->
