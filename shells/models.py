@@ -38,13 +38,14 @@ class Species(models.Model):
     additional_information = models.TextField(blank=True)
 
     def __unicode__(self):
-        return ' - '.join((
+        components = (
             self.class_name,
             self.family,
             self.subfamily,
             self.genus,
             self.subgenus,
-            self.species))
+            self.species)
+        return ' - '.join([c for c in components if c])
 
     class Meta:
         verbose_name_plural = 'Species'
