@@ -12,10 +12,13 @@
 {% block content %}
 
 <div id="content-shortcuts">
-<ul>
-    <li><a href="{% url admin:upload_species_spreadsheet %}">Upload data</a></li>
-    <li><a href="{% url admin:upload-images %}">Upload photos</a></li>
-</ul>
+<table style="width:100%; margin-left:20px;">
+    <tr>
+        <td>
+    <a href="{% url admin:upload_species_spreadsheet %}"><img src="/static/icons/upload_data.png">Upload data</a></td>
+    <td><a href="{% url admin:upload-images %}"><img src="/static/icons/upload_images.png">Upload photos</a></td>
+</tr>
+</table>
 </div>
 
 <div id="content-main">
