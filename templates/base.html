@@ -21,6 +21,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link href="{{STATIC}}main.css" rel="stylesheet">
     {% block headextra %}
     {% endblock headextra %}
 </head>
@@ -37,7 +38,7 @@
         <a class="brand" href="/">UQ Molluscs</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="{% url advanced-search %}">Advanced search</a></li>
             <li><a href="{% url browse-species %}">Browse</a></li>
           </ul>
