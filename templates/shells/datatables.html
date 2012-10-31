@@ -74,7 +74,7 @@ table.dataTable th:active {
             <td>{{ species.family }}</td>
             <td>{{ species.genus }}</td>
             <td>{{ species.subgenus }}</td>
-            <td><a href="{{ species.get_absolute_url}}">{{ species.species }}</a></td>
+            <td style="font-size: 120%"><a href="{{ species.get_absolute_url}}">{{ species.species }}</a></td>
         </tr>
 {% endfor %}
     </tbody>
@@ -106,7 +106,7 @@ table.dataTable th:active {
             "sWrapper": "dataTables_wrapper form-inline"
         } );
 
-        var oTable = $('#species_table').dataTable( {
+        oTable = $('#species_table').dataTable( {
             "aaSorting": [ [0,'asc'], [1,'asc'], [2,'asc'], [3,'asc'] ],
             "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
             "bLengthChange": false,
@@ -117,7 +117,7 @@ table.dataTable th:active {
         "bScrollCollapse": true,
 //            "bStateSave": true,
             "oLanguage": {
-                "sSearch": "Search all columns:"
+                "sSearch": "Search:"
             }
 
         } );
@@ -150,6 +150,23 @@ table.dataTable th:active {
                 this.value = asInitVals[$("tfoot input").index(this)];
             }
         } );
+
+        // Enable searching by window hash value
+        var searchTerm = window.location.hash;
+        if (searchTerm) {
+            searchTerm = searchTerm.substring(1);
+            var query = searchTerm.split("=");
+
+            // Fill in search form
+            var field = $("tfoot input").filter("[name='search_" + query[0] + "']");
+            field.removeClass('search_init');
+            field.val(query[1]);
+
+            // Do query
+            oTable.fnFilter( query[1] , $("tfoot input").index(field) );
+
+        }
+
     } );
 </script>
 {% endblock endjavascript %}

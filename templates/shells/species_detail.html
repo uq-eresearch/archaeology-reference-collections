@@ -4,7 +4,7 @@
 
 {% if user.is_staff %}
 <div style="float:right;font-size: 80%;">
-  <a href="{% url admin:shells_species_change species.id %}">Admin</a>
+  <a href="{% url admin:shells_species_change species.id %}">Edit record</a>
 </div>
 
 {% endif %}
@@ -17,21 +17,21 @@
 <h2>Classification</h2>
 <dl>
   <dt>Class:</dt>
-  <dd>{{ species.class_name }}</dd>
+  <dd><a href="{% url browse-species %}#class={{species.class_name}}">{{ species.class_name }}</a></dd>
 
 
   <dt>Family:</dt>
-  <dd>{{ species.family }}</dd>
+  <dd><a href="{% url browse-species %}#family={{species.family}}">{{ species.family }}</a></dd>
 
 
   <dt>Subfamily:</dt>
   <dd>{{ species.subfamily }}</dd>
 
   <dt>Genus:</dt>
-  <dd>{{ species.genus }}</dd>
+  <dd><a href="{% url browse-species %}#genus={{species.genus}}">{{ species.genus }}</a></dd>
 
   <dt>Species:</dt>
-  <dd>{{ species.species }}</dd>
+  <dd><a href="{% url browse-species %}#species={{species.species}}">{{ species.species }}</a></dd>
 </dl>
 
 <h2>General Information</h2>
