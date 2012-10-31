@@ -204,3 +204,28 @@ HAYSTACK_WHOOSH_PATH = join(DJANGO_ROOT, 'deploy', 'search_index')
 # This normally protects against XSS attacks, which shouldn't be a problem here.
 # If enabled, it interrupts the bulk upload functionality.
 SESSION_COOKIE_HTTPONLY = False
+
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'large_display': {
+            'size': (1024, 768),
+            'watermark_image': 'watermark-large.png',
+            'wm_margin': 15,
+        },
+        'item_display': {
+            'size': (384, 256),
+            'watermark_image': 'watermark-small.png',
+            'wm_margin': 5,
+
+        },
+        'small_thumb': {
+            'size': (105, 70),
+            'expand': True,
+        },
+        'large_thumb': {
+            'size': (180, 120),
+            'expand': True,
+        }
+    }
+}

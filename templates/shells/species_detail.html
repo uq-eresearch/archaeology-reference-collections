@@ -107,13 +107,11 @@
   <div class="span4">
     <div class="well">
         <p>Images</p>
-        {% for specimen in species.specimen_set.all %}
-        {% for sr in specimen.speciesrepresentation_set.all %}
+        {% for sr in species.speciesrepresentation_set.all %}
 
     <a href="{{ sr.image.url }}">
-    <img src="{% thumbnail sr.image 384x256 crop=scale %}" width="384" height="256" alt=""></a>
+    <img src="{{ sr.image|thumbnail_url:'item_display'  }}" width="384" height="256" alt=""></a>
 
-    {% endfor %}
     {% endfor %}
 
     </div>

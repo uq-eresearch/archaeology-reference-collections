@@ -1,18 +1,28 @@
 from django.contrib import admin
 from refcollections.admin_custom import shells_admin
-from models import Species, Specimen, SpeciesRepresentation
+from models import Specimen, SpeciesRepresentation
 
 
 class SpeciesRepresentationInline(admin.TabularInline):
     model = SpeciesRepresentation
+    extra = 0
 
-#    def has_add_permission(self, request):
-#        return False
+    fields = ('thumbnail', 'image', 'height', 'width')
+    def thumbnail(self, obj):
+        try:
+            thumb = obj.image['small_thumb']
+            display = obj.image['large_display']
+            return '<a href="%s"><img src="%s"></a>' % (display.url, thumb.url)
+        except:
+            return 'Error generating thumbnail'
+    thumbnail.allow_tags = True
+    readonly_fields = ('thumbnail', 'height', 'width')
+
 
 
 class SpecimenInline(admin.TabularInline):
     model = Specimen
-    extra = 1
+    extra = 0
     fields = ('collection_date',
         'collection_location',
         'collection_information')
@@ -24,7 +34,7 @@ class SpeciesAdmin(admin.ModelAdmin):
         'subgenus', 'species', 'authority')
 #    search_fields = ['name', 'comments']
 #    fields = ('name', 'display_name', 'comments')
-    inlines = [SpecimenInline]
+    inlines = [SpecimenInline, SpeciesRepresentationInline]
 
 
 class SpecimenAdmin(admin.ModelAdmin):
@@ -33,9 +43,6 @@ class SpecimenAdmin(admin.ModelAdmin):
         'collection_location',
         'collection_information')
 
-    inlines = [
-            SpeciesRepresentationInline
-    ]
 
 
 from django.contrib import admin
@@ -73,6 +80,6 @@ class SpeciesRepresentationAdmin(admin.ModelAdmin, AdminThumbnailMixin):
     extra = 1
     thumbnail_image_field_name = 'photo'
     thumbnail_options = {'size': (192, 60)}
-    list_display = ('image', 'specimen')
+    list_display = ('image', 'species')
 
 admin.site.register(SpeciesRepresentation, SpeciesRepresentationAdmin)

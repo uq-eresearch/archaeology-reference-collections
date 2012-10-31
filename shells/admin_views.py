@@ -16,11 +16,11 @@ class ShellsImagesUploader(MediaFileUploader):
     def handle_specimen_image(self, formdata, uploaded_file, user):
         species = self.name_to_id(uploaded_file.name, formdata['pathinfo0'])
 
-        ar = self.set_mediafile_attrs(SpeciesRepresentation(),
+        sr = self.set_mediafile_attrs(SpeciesRepresentation(),
             uploaded_file, formdata, user)
-        ar.image = uploaded_file
-        ar.specimen = species.specimen_set.all()[0]
-        ar.save()
+        sr.image = uploaded_file
+        sr.species = species
+        sr.save()
 
     @staticmethod
     def name_to_id(filename, path=None):

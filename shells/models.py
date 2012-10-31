@@ -69,7 +69,7 @@ class SpeciesRepresentation(MediaFile):
     image = ThumbnailerImageField(max_length=255, upload_to='.',
         height_field='height', width_field='width')
 
-    specimen = models.ForeignKey(Specimen)
+    species = models.ForeignKey(Species)
 
     height = models.PositiveIntegerField(blank=True, null=True)
     width = models.PositiveIntegerField(blank=True, null=True)

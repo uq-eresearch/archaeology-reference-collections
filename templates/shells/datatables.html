@@ -52,7 +52,7 @@ table.dataTable th:active {
 }
 </style>
 {% endblock %}
-
+{% load thumbnail %}
 {% block content %}
     <h1>Mollusc Reference Collection</h1>
 
@@ -75,6 +75,7 @@ table.dataTable th:active {
             <td>{{ species.genus }}</td>
             <td>{{ species.subgenus }}</td>
             <td style="font-size: 120%"><a href="{{ species.get_absolute_url}}">{{ species.species }}</a></td>
+            <!--<td><img src="{{ species.speciesrepresentation_set.all.0.image|thumbnail_url:'small_thumb'}}"></td>-->
         </tr>
 {% endfor %}
     </tbody>
