@@ -9,7 +9,6 @@ import re
 class ShellsImagesUploader(MediaFileUploader):
 
     upload_types = (
-        ('NO', '', ''),
         ('SI', 'Specimen Images', 'handle_specimen_image'),
     )
 
@@ -24,10 +23,12 @@ class ShellsImagesUploader(MediaFileUploader):
 
     @staticmethod
     def name_to_id(filename, path=None):
-        name = re.sub('\d\..*$', '', filename)
+        name = re.sub('\d*\..*$', '', filename)
         results = SearchQuerySet().auto_query(name)
-        if len(results) != 1:
-            raise RecordError
+        if len(results) < 1:
+            raise RecordError('Cannot find record matching "%s"' % name)
+        elif len(results) > 1:
+            raise RecordError('%s records found matching: "%s"' % (len(results), name))
         else:
             return results[0].object
 
