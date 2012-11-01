@@ -3,6 +3,7 @@ from django import forms
 from django.db.models import DateField, CharField, TextField
 from dateutil.parser import parse
 from collections import namedtuple
+from django.core import management
 import logging
 
 logger = logging.getLogger(__name__)
@@ -44,6 +45,9 @@ class BulkDataImportHandler:
         self.linking_func = function
 
     def process_spreadsheet(self, spreadsheet):
+        """
+        Also flushes and rebuilds the search index
+        """
         wb = load_workbook(spreadsheet)
         sheet = wb.get_sheet_by_name(wb.get_sheet_names()[0])
 
@@ -57,6 +61,10 @@ class BulkDataImportHandler:
                 continue
             new = self.process_row(headers, vals)
             results.append(new)
+
+        # Update Search index
+        management.call_command('rebuild_index', interactive=False)
+
         return results
 
     def process_row(self, headers, vals):
@@ -64,9 +72,12 @@ class BulkDataImportHandler:
         for model, mapping in self.mappings:
             instance = model()
             for col, field in mapping.items():
-                value = vals[headers.index(col)]
-                value = self.process_value(instance, field, value)
-                setattr(instance, field, value)
+                try:
+                    value = vals[headers.index(col)]
+                    value = self.process_value(instance, field, value)
+                    setattr(instance, field, value)
+                except ValueError:
+                    pass
             results.append(instance)
             if self.linking_func and len(results) > 1:
                 self.linking_func(*results)
