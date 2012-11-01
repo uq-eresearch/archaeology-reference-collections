@@ -27,3 +27,7 @@ shells_admin.register(Species, SpeciesAdmin)
 shells_admin.register(Specimen, SpecimenAdmin)
 shells_admin.register(SpeciesRepresentation, SpeciesRepresentationAdmin)
 
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+shells_admin.register(User, UserAdmin)
