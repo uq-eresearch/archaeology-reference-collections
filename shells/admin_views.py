@@ -41,6 +41,9 @@ def setup_bulk_importer():
     bi = BulkDataImportHandler()
     bi.add_mapping(Species, {
         'Class': 'class_name',
+        'Subclass': 'subclass',
+        'Order': 'order',
+        'Superfamily': 'superfamily',
         'Family': 'family',
         'Subfamily': 'subfamily',
         'Genus': 'genus',
