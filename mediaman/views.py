@@ -40,6 +40,9 @@ class Uploader(View):
             except ParseError:
                 logger.warning("Unable to parse id from filename.")
                 return HttpResponse('ERROR: Check file name/path. Unable to parse.')
+            except RecordError:
+                logger.warning("Unable to match against a single database record")
+                return HttpResponse('ERROR: Unable to match against 1 database record')
             except ObjectDoesNotExist as inst:
                 logger.warning("Unable to find matching object for uploaded file.")
                 return HttpResponse('ERROR: %s' % inst)
@@ -139,3 +142,8 @@ class ParseError(Exception):
     pass
 
 
+class RecordError(Exception):
+    """
+    Unable to find suitable Record for attaching uploads to
+    """
+    pass

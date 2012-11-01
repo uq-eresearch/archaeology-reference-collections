@@ -1,5 +1,5 @@
 from models import SpeciesRepresentation, Specimen, Species
-from mediaman.views import MediaFileUploader, ParseError
+from mediaman.views import MediaFileUploader, ParseError, RecordError
 from haystack.query import SearchQuerySet
 from bulkimport import BulkDataImportHandler, BulkImportForm
 from django.shortcuts import render
@@ -27,7 +27,7 @@ class ShellsImagesUploader(MediaFileUploader):
         name = re.sub('\d\..*$', '', filename)
         results = SearchQuerySet().auto_query(name)
         if len(results) != 1:
-            raise ParseError
+            raise RecordError
         else:
             return results[0].object
 

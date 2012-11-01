@@ -1,5 +1,4 @@
 from django.contrib import admin
-from refcollections.admin_custom import shells_admin
 from models import Specimen, SpeciesRepresentation
 
 
@@ -8,6 +7,7 @@ class SpeciesRepresentationInline(admin.TabularInline):
     extra = 0
 
     fields = ('thumbnail', 'image', 'height', 'width')
+
     def thumbnail(self, obj):
         try:
             thumb = obj.image['small_thumb']
@@ -17,7 +17,6 @@ class SpeciesRepresentationInline(admin.TabularInline):
             return 'Error generating thumbnail'
     thumbnail.allow_tags = True
     readonly_fields = ('thumbnail', 'height', 'width')
-
 
 
 class SpecimenInline(admin.TabularInline):
@@ -44,7 +43,6 @@ class SpecimenAdmin(admin.ModelAdmin):
         'collection_information')
 
 
-
 from django.contrib import admin
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
@@ -62,7 +60,8 @@ class AdminThumbnailMixin(object):
         attrs = []
         src = "%s%s" % (media, get_thumbnailer(image).get_thumbnail(options))
 
-        if alt is not None: attrs.append('alt="%s"' % alt)
+        if alt is not None:
+            attrs.append('alt="%s"' % alt)
 
         return mark_safe('<img src="%s" />' % (src, " ".join(attrs)))
 
