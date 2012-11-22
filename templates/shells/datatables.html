@@ -65,17 +65,19 @@ table.dataTable th:active {
             <th>Genus</th>
             <th>Sub-genus</th>
             <th>Species</th>
+            <th>Common names</th>
         </tr>
     </thead>
     <tbody>
 {% for species in species_list %}
-        <tr>
+        <tr href="{{ species.get_absolute_url}}">
             <td>{{ species.class_name }}</td>
             <td>{{ species.family }}</td>
             <td>{{ species.genus }}</td>
             <td>{{ species.subgenus }}</td>
             <td style="font-size: 120%"><a href="{{ species.get_absolute_url}}">{{ species.species }}</a></td>
-            <!--<td><img src="{{ species.speciesrepresentation_set.all.0.image|thumbnail_url:'small_thumb'}}"></td>-->
+            <td>{{ species.common_names }}</td>
+{#            <td><img src="{{ species.speciesrepresentation_set.all.0.image|thumbnail_url:'small_thumb'}}"></td> #}
         </tr>
 {% endfor %}
     </tbody>
@@ -86,6 +88,7 @@ table.dataTable th:active {
             <th><input type="text" name="search_genus" value="Search genus" class="search_init" /></th>
             <th><input type="text" name="search_subgenus" value="Search subgenus" class="search_init" /></th>
             <th><input type="text" name="search_species" value="Search species" class="search_init" /></th>
+            <th><input type="text" name="search_common_names" value="Search common names" class="search_init" /></th>
         </tr>
     </tfoot>
 </table>
@@ -113,9 +116,11 @@ table.dataTable th:active {
             "bLengthChange": false,
             "iDisplayLength": 20,
 //            "sPaginationType": "bootstrap",
-        "sScrollY": "600px",
-        "bPaginate": false,
-        "bScrollCollapse": true,
+            "sScrollY": "600px",
+            "sScrollX": "60%",
+            "bPaginate": false,
+            "bScrollCollapse": true,
+            "bAutoWidth": false,
 //            "bStateSave": true,
             "oLanguage": {
                 "sSearch": "Search:"
@@ -167,6 +172,16 @@ table.dataTable th:active {
             oTable.fnFilter( query[1] , $("tfoot input").index(field) );
 
         }
+
+
+        $('#species_table tbody  tr').live('click', function() {
+            window.location = this.getAttribute('href');
+        });
+        $('#species_table tbody tr').hover(function() {
+            $(this).css('cursor', 'pointer');
+        }, function() {
+            $(this).css('cursor', 'auto');
+        });
 
     } );
 </script>
