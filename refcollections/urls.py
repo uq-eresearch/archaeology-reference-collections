@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^search/', include('haystack.urls')),
 
     url(r'^advanced/', 'shells.views.advanced_search', name='advanced-search'),
+
 )
 
 
