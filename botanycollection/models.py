@@ -5,7 +5,7 @@ from libs.mediaman.models import MediaFile
 
 
 class Accession(models.Model):
-    uq_accession = models.CharField(max_length=14, blank=True)
+    uq_accession = models.CharField(max_length=14, blank=True, unique=True)
     material = models.CharField(max_length=12, blank=True)
     source = models.CharField(max_length=11, blank=True)
     state = models.CharField(max_length=32, blank=True)
