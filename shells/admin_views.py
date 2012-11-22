@@ -34,9 +34,7 @@ class ShellsImagesUploader(MediaFileUploader):
 
 
 def setup_bulk_importer():
-    def link(first, specimen):
-        specimen.species = first
-        specimen.save()
+
 
     # setup mappings
     bi = BulkDataImportHandler()
@@ -67,6 +65,12 @@ def setup_bulk_importer():
         'Specimen Collection Location': 'collection_location',
         'Specimen Collection Information': 'collection_information',
         })
+
+
+    def link(first, specimen):
+        specimen.species = first
+        specimen.save()
+
     bi.add_linking_function(link)
 
     return bi
