@@ -1,1 +1,1 @@
-from bulkimport.bulk_importer import BulkDataImportHandler, BulkImportForm
+from bulk_importer import BulkDataImportHandler, BulkImportForm

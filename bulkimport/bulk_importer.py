@@ -19,6 +19,9 @@ class BulkDataImportHandler:
     def __init__(self):
         self.mappings = []
         self.linking_func = None
+        self.func_mappings = []
+        self.header_row = 0
+        self.first_data_row = 1
 
     def add_mapping(self, model, mapping):
         """
@@ -36,25 +39,40 @@ class BulkDataImportHandler:
         """
         self.mappings.append(ModelMapping(model, mapping))
 
+    def add_function_mapping(self, function):
+        """
+        Specify a function to run for each row in a spreadsheet
+
+        Can be used for updating existing records, or some other purpose.
+
+        Supplied function must take arguments:
+            headers = list of header strings from spreadsheet
+            values = list of values from a row of spreadsheet
+        """
+        self.func_mappings.append(function)
+
     def add_linking_function(self, function):
-        """Add function called after each row
+        """
+        Add function called after each row
 
         Typically used to link models together if there
         are multiple created for each row of data
         """
         self.linking_func = function
 
-    def process_spreadsheet(self, spreadsheet):
+    def process_spreadsheet(self, spreadsheet, rebuild_search_index=False):
         """
+        Open the spreadsheet file and process rows one at a time
+
         Also flushes and rebuilds the search index
         """
         wb = load_workbook(spreadsheet)
         sheet = wb.get_sheet_by_name(wb.get_sheet_names()[0])
 
         data = sheet.range(sheet.calculate_dimension())
-        headers = [v.value for v in data[0]]
+        headers = [v.value for v in data[self.header_row]]
         results = []
-        for row in data[1:]:
+        for row in data[self.first_data_row:]:
             vals = [v.value for v in row]
             if vals[0] == headers[0]:
                 # repeated headers
@@ -63,11 +81,17 @@ class BulkDataImportHandler:
             results.append(new)
 
         # Update Search index
-        management.call_command('rebuild_index', interactive=False)
+        if rebuild_search_index:
+            management.call_command('rebuild_index', interactive=False)
 
         return results
 
     def process_row(self, headers, vals):
+        """
+        Takes a list of headers and values, and turns them into a new model record.
+
+        Looks up mapping data that has been added with `add_mapping`
+        """
         results = []
         for model, mapping in self.mappings:
             instance = model()
@@ -82,6 +106,10 @@ class BulkDataImportHandler:
             if self.linking_func and len(results) > 1:
                 self.linking_func(*results)
             instance.save()
+
+        for func_mapping in self.func_mappings:
+            func_mapping(headers, vals)
+
         return results
 
     @staticmethod
