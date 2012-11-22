@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="span2">
+      <!--Sidebar content-->
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#wood" data-toggle="tab">Wood</a></li>
+            <li><a href="#seedfruit" data-toggle="tab">Seed/Fruit</a></li>
+            <li><a href="#largefruit" data-toggle="tab">Large fruit</a></li>
+            <li><a href="#chaff" data-toggle="tab">Chaff</a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="span10">
+        <h1>{{ accession.uq_accession }}</h1>
+
+
+        <h2>{{ accession.family }} > {{accession.genus}} > {{accession.species}}</h2>
+
+        <div class="row">
+            <div class="span3">
+                <dl class="dl-horizontal">
+                    <dt>Plant part</dt>
+                    <dd>{{accession.genus}}</dd>
+
+                    <dt>State</dt>
+                    <dd>{{accession.state}}</dd>
+
+                    <dt>Ethnographic use</dt>
+                    <dd>{{accession.state}}</dd>
+
+                    <dt>Common name</dt>
+                    <dd>{{accession.common_name}}</dd>
+
+                    <dt>Plant type</dt>
+                    <dd></dd>
+
+                    <dt>Country</dt>
+                    <dd>{{accession.country}}</dd>
+
+                    <dt>Related accession</dt>
+                    <dd>{{accession.related_accession}}</dd>
+
+                    <dt>Notes</dt>
+                    <dd>{{accession.notes}}</dd>
+
+
+                </dl>
+            </div>
+            <div class="span7" style="background-color: red">
+                <div id="photos" class="carousel slide">
+
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                    <div class="active item">…</div>
+                    <div class="item">Blag</div>
+                    <div class="item">Blergh</div>
+                  </div>
+                  <!-- Carousel nav -->
+                  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="span10">
+                <h3>Anatomical Description</h3>
+            </div>
+        </div>
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#wood" data-toggle="tab">Wood</a></li>
+            <li><a href="#seedfruit" data-toggle="tab">Seed/Fruit</a></li>
+            <li><a href="#largefruit" data-toggle="tab">Large fruit</a></li>
+            <li><a href="#chaff" data-toggle="tab">Chaff</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="wood">
+                <div class="row">
+                    <div class="span3">
+                        <h4>Transverse Plane</h4>
+                    </div>
+                    <div class="span3">
+                        <h4>Tangential Plane</h4>
+                    </div>
+                    <div class="span2">
+                        <h4>Radial Plane</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="seedfruit">
+              <p>Howdy, I'm in the Seed/fruit section.</p>
+            </div>
+            <div class="tab-pane" id="largefruit">
+              <p>Howdy, I'm in the Large Fruit section.</p>
+            </div>
+            <div class="tab-pane" id="chaff">
+              <p>Howdy, I'm Chaff.</p>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+{% endblock content %}
