@@ -59,6 +59,9 @@ class SeedFeatures(models.Model):
     size = models.TextField(blank=True)
     identification_references = models.TextField(blank=True)
 
+    class Meta:
+        verbose_name_plural = "seed features"
+
 
 class WoodFeatures(models.Model):
     accession = models.OneToOneField(Accession)
@@ -91,6 +94,9 @@ class WoodFeatures(models.Model):
     rays_cell_height = models.CharField(max_length=18, blank=True)
 
     special_features = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = "wood features"
 
 
 class AccessionPhoto(MediaFile):

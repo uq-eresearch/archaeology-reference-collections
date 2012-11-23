@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-
+{% load thumbnail %}
 {% block content %}
   <div class="row">
     <div class="span2">
@@ -16,7 +16,11 @@
     </div>
     <div class="span10">
         <h1>{{ accession.uq_accession }}</h1>
-
+{% if user.is_staff %}
+<div style="float:right;font-size: 80%;">
+  <a href="{% url admin:botanycollection_accession_change accession.id %}">Admin</a>
+</div>
+{% endif %}
 
         <h2>{{ accession.family }} > {{accession.genus}} > {{accession.species}}</h2>
 
@@ -50,18 +54,20 @@
 
                 </dl>
             </div>
-            <div class="span7" style="background-color: red">
+            <div class="span7">
                 <div id="photos" class="carousel slide">
 
                   <!-- Carousel items -->
                   <div class="carousel-inner">
-                    <div class="active item">…</div>
-                    <div class="item">Blag</div>
-                    <div class="item">Blergh</div>
+                    {% for photo in accession.accessionphoto_set.all %}
+                    <div class="item{% if forloop.first%} active{%endif%}">
+                      <img src="{{ photo.image|thumbnail_url:'display'}}">
+                    </div>
+                    {% endfor %}
                   </div>
                   <!-- Carousel nav -->
-                  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                  <a class="left carousel-control" href="#photos" data-slide="prev">&lsaquo;</a>
+                  <a class="right carousel-control" href="#photos" data-slide="next">&rsaquo;</a>
                 </div>
             </div>
 
@@ -112,3 +118,23 @@
 
 
 {% endblock content %}
+
+
+
+{% block endjavascript %}
+
+<script type="text/javascript" charset="utf-8">
+
+!function ($) {
+
+  $(function() {
+    $('#photos').carousel({
+      interval: false
+    });
+  });
+};
+
+</script>
+
+
+{% endblock endjavascript %}

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.conf import settings
 from apps.botanycollection.models import Accession, SeedFeatures, WoodFeatures
+from apps.botanycollection.models import AccessionPhoto
 
 
 class SeedFeaturesInline(admin.StackedInline):
@@ -11,14 +12,19 @@ class WoodFeaturesInline(admin.StackedInline):
     model = WoodFeatures
 
 
+class AccessionPhotoInline(admin.StackedInline):
+    model = AccessionPhoto
+
+
 class AccessionAdmin(admin.ModelAdmin):
     model = Accession
     inlines = [
-        SeedFeaturesInline, WoodFeaturesInline
+        SeedFeaturesInline, WoodFeaturesInline,
+        AccessionPhotoInline
     ]
 
     list_display = ('uq_accession', 'family', 'genus', 'species', 'common_name', 'material')
-    list_filter = ('family', 'genus')
+#    list_filter = ('family', 'genus')
 
     class Media:
         css = {
