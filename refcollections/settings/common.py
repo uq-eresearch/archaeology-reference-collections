@@ -1,7 +1,6 @@
 # Django settings for refcollections project.
 
-import sys
-from os.path import abspath, basename, dirname, join, normpath
+from os.path import abspath, dirname, join, normpath
 
 from helpers import gen_secret_key
 

@@ -1,4 +1,5 @@
 from fabric.api import *
+from fabric.utils import abort
 from fabric.contrib.files import append
 from ConfigParser import SafeConfigParser
 from django.template import Template, Context
@@ -23,7 +24,7 @@ def config(section='uat'):
     for option in options:
         env[option] = parser.get(section, option)
 
-
+@task
 def bootstrap_ubuntu():
     """
     Bootstrap Ubuntu
@@ -39,7 +40,6 @@ def bootstrap_ubuntu():
     server.create_database()
     server.create_deploydir()
     server.create_virtualenv()
-    server.install_appserver()
 
 'apt-get install supervisor'
 
@@ -50,11 +50,11 @@ def deploy():
 
 
 def postgres(command):
-    sudo(command, user='postgres')
+    return sudo(command, user='postgres')
 
 
 def psql(command):
-    sudo('echo "%s" | psql' % command, user='postgres')
+    return sudo('echo "%s" | psql' % command, user='postgres')
 
 
 class UbuntuServer():
@@ -75,16 +75,27 @@ class UbuntuServer():
         sudo('apt-get install postgresql libpq-dev python-dev')
 
     def create_appuser(self):
-        sudo('adduser %s %s', self.appname)
+        with settings(warn_only=True):
+            result = run('id -u %s' % env.appuser)
+        if result.failed:
+            sudo('useradd --create-home %s' % env.appuser)
 
     def create_database(self):
-        postgres('createuser %(dbuser)s' % env)
+        with settings(warn_only=True):
+            result = postgres('createuser --no-createdb --no-createrole --no-superuser %(dbuser)s' % env)
+        if result.failed and not "already exists" in result:
+            abort("Unable to create DB User")
+
         psql("alter user %(dbuser)s with password '%(dbpass)s;" % env)
-        postgres('createdb --owner %(dbuser)s %(dbname)s' % env)
+
+        with settings(warn_only=True):
+            result = postgres('createdb --owner %(dbuser)s %(dbname)s' % env)
+        if result.failed and not "already exists" in result:
+            abort("Unable to create DB")
 
     def create_deploydir(self):
-        sudo('')
-        pass
+        with cd(env.userhome):
+            sudo('git clone %s' % env.gitrepo)
 
     def create_virtualenv(self):
         sudo('apt-get install python-virtualenv')
