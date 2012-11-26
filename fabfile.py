@@ -1,13 +1,13 @@
 from fabric.api import *
 from fabric.utils import abort
-from fabric.contrib.files import append
+from fabric.contrib.files import append, upload_template
 from ConfigParser import SafeConfigParser
-from django.template import Template, Context
 import os.path
 
 env.hosts = ['molluscref-uat.qc.to']
 
 
+@task
 def test():
     print env.user + '@' + env.hostname
 
@@ -31,15 +31,18 @@ def bootstrap_ubuntu():
 
     Perform all the initial setup, only run once
     """
-    env.user = 'ubuntu'
     server = UbuntuServer()
-    server.install_requirements()
-    server.install_webserver()
-    server.install_database()
-    server.create_appuser()
-    server.create_database()
+    with settings(user='ubuntu'):
+        server.install_requirements()
+        server.install_webserver()
+        server.install_database()
+        server.create_appuser()
+        server.create_database()
+        server.setup_upstart()
+        push_key()
     server.create_deploydir()
     server.create_virtualenv()
+    
 
 'apt-get install supervisor'
 
@@ -59,7 +62,7 @@ def psql(command):
 
 class UbuntuServer():
     def install_requirements(self):
-        sudo('apt-get install git-core')
+        sudo('apt-get install git-core python-virtualenv')
 
     def install_pil_reqs(self):
         sudo('apt-get install libjpeg62-dev  zlib1g-dev')
@@ -86,7 +89,7 @@ class UbuntuServer():
         if result.failed and not "already exists" in result:
             abort("Unable to create DB User")
 
-        psql("alter user %(dbuser)s with password '%(dbpass)s;" % env)
+        psql("alter user %(dbuser)s with password '%(dbpass)s';" % env)
 
         with settings(warn_only=True):
             result = postgres('createdb --owner %(dbuser)s %(dbname)s' % env)
@@ -94,12 +97,26 @@ class UbuntuServer():
             abort("Unable to create DB")
 
     def create_deploydir(self):
-        with cd(env.userhome):
-            sudo('git clone %s' % env.gitrepo)
+        with settings(warn_only=True):
+#            with cd(env.userhome):
+            result = run('git clone %(gitrepo)s %(appname)s' % env)
+        if result.failed and not "already exists" in result:
+            abort("Unable to clone project code")
 
     def create_virtualenv(self):
-        sudo('apt-get install python-virtualenv')
         run('virtualenv environment')
+
+    def setup_cron_tasks(self):
+        run('crontab > /tmp/crondump')
+        append('/tmp/crondump', )
+
+    def setup_upstart(self):
+        context = {
+            "description": env.description,
+            "project_dir": env.appdir,
+            "exec_command": env.envdir + "/bin/gunicorn_django -user " + env.appuser
+        }
+        upload_template('deploy/upstart.template', '/etc/init/%s.conf' % env.appuser, context, use_sudo=True)
 
 
 def read_key_file(key_file):
@@ -113,19 +130,19 @@ def read_key_file(key_file):
 @task
 def push_key(key_file='~/.ssh/id_rsa.pub'):
     key_text = read_key_file(key_file)
-    append('~/.ssh/authorized_keys', key_text)
+
+    with settings(user=env.sudouser):
+        run('id')
+        sudo("mkdir -p %(userhome)s/.ssh" % env, user=env.appuser)
+        append('%(userhome)s/.ssh/authorized_keys' % env, key_text, use_sudo=True)
 
 
-def place_config_file(template, final_location):
-    # Prepare context
-    c = Context()
-    for item, value in env.items():
-        c[item] = value
-
-    with open(template) as f:
-        t = Template(f.read())
-
-    append(final_location, t.render(c), use_sudo=True)
+@task
+def start():
+    """
+    Start the application
+    """
+    sudo('initctl start %s' % env.appname)
 
 
 @task
@@ -139,6 +156,10 @@ def update():
             run('./manage.py collectstatic --noinput')
             run('./manage.py syncdb')
             run('./manage.py rebuild_index --noinput')
+
+
+@task
+def restart():
     run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
 
 
