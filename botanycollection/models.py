@@ -1,7 +1,7 @@
 from django.db import models
 from easy_thumbnails.fields import ThumbnailerImageField
 from django.db.models.signals import post_delete
-from libs.mediaman.models import MediaFile
+from mediaman.models import MediaFile
 
 
 class Accession(models.Model):

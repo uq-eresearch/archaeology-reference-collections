@@ -1,5 +1,5 @@
 from apps.botanycollection.models import Accession, WoodFeatures
-from libs.bulkimport import BulkDataImportHandler, BulkImportForm
+from bulkimport import BulkDataImportHandler, BulkImportForm
 from django.shortcuts import render
 from django import forms
 
