@@ -1,16 +1,16 @@
 from django.conf.urls import patterns, url
 
-from django.views.generic import DetailView, ListView
-from .models import Accession
+import views
 
 
 urlpatterns = patterns('apps.botanycollection.views',
 
+    url(r'^/$', views.HomepageView.as_view(), name="botany_home"),
 
-    url(r'^$',
-        ListView.as_view(
-            model=Accession, template_name='accession/browse.html'), name='browse-species'),
+    url(r'^/list$',
+        views.AccessionListView.as_view(), name='accession_list'),
 
-    url(r'^accession/(?P<num>.*)$', 'accession_detail', name='accession_detail'),
+    url(r'^/accession/(?P<slug>.*)$',
+        views.AccessionDetailView.as_view(), name='accession_detail'),
 
 )

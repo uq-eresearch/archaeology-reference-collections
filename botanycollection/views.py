@@ -1,13 +1,16 @@
-from django.shortcuts import render, get_object_or_404
-from apps.botanycollection.models import Accession
+from .models import Accession
+
+from django.views.generic import DetailView, ListView, TemplateView
 
 
-def accession_detail(request, num):
-    acc = get_object_or_404(Accession, uq_accession=num)
+class AccessionListView(ListView):
+    model = Accession
 
-    context = {
-        'accession': acc
-    }
 
-    return render(request, 'accession/detail.html', context)
+class AccessionDetailView(DetailView):
+    model = Accession
+    slug_field = 'uq_accession'
 
+
+class HomepageView(TemplateView):
+    template_name = "botanycollection/index.html"
