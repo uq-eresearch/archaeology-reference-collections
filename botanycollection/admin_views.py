@@ -2,6 +2,7 @@ from apps.botanycollection.models import Accession, WoodFeatures
 from bulkimport import BulkDataImportHandler, BulkImportForm
 from django.shortcuts import render
 from django import forms
+from django.contrib import messages
 
 
 def setup_accessions_importer():
@@ -60,7 +61,7 @@ def setup_wood_importer():
         'Species': 'species',
         'Common Names': 'common_name',
 #        'Indigenous Name': 'indigenous_name',
-        'Accession Number': 'uq_accession',
+        'Accession': 'uq_accession',
         'Specimen Collection Date': 'collection_date',
 #        'Specimen Collection Location': 'specimen_collection_location',
 #        'Specimen Collection Information': 'specimen_collection_information',
@@ -72,33 +73,59 @@ def setup_wood_importer():
 #        'Type of Plant': 'type_of_plant',
         })
     bi.add_mapping(WoodFeatures, {
-        'Vessels Present': 'vessels_present',
-        'Growth Rings': 'growth_rings',
-        'Vessel Porosity': 'vessel_porosity',
-        'Vessel Arrangement': 'vessel_arrangement',
-        'Vessel Groupings': 'vessel_groupings',
-        'Tyloses': 'tyloses',
-        'Axial Parenchyma Present': 'axial_parenchyma_present',
-        'Apotracheal Parenchyma': 'apotracheal_parenchyma',
-        'Paratracheal Parenchyma': 'paratracheal_parenchyma',
-        'Banded Axial Parenchyma': 'banded_axial_parenchyma',
-        'Ray Uniseriate': 'ray_uniseriate',
-        'Sheath Cells': 'sheath_cells',
-        'Storied Rays': 'storied_rays',
-        'Storied Vessels': 'storied_vessels',
-        'Storied Parenchyma': 'storied_parenchyma',
-        'Vessel Pitting': 'vessel_pitting',
-        'Rays Anatomy': 'rays_anatomy',
-        'Rays Heterogeneous Type ': 'rays_heterogeneous_type',
-        'Rays Mixed': 'rays_mixed',
-        'Perforation Plates': 'perforation_plates',
-        'TS Notes': 'ts_notes',
-        'TLS Notes': 'tls_notes',
-        'RLS Notes': 'rls_notes',
-        'Ray cell width': 'ray_cell_width',
-        'Rays two distinct sizes': 'rays_two_distinct_sizes',
-        'Rays M-S same width as U-S': 'rays_ms_same_width_as_us',
-        'Rays cell height': 'rays_cell_height',
+        'aggregate rays': 'aggregate_rays',
+        'Australia': 'australia',
+        'axial canals': 'axial_canals',
+        'axial parenchyma arrangment': 'axial_parenchyma_arrangment',
+        'axial parenchyma bands': 'axial_parenchyma_bands',
+        'axial parenchyma present': 'axial_parenchyma_present',
+        'cambial variants': 'cambial_variants',
+        'Common name': 'common_name',
+        'druses': 'druses',
+        'family': 'family',
+        'fibre helical thickenings': 'fibre_helical_thickenings',
+        'fibre pits': 'fibre_pits',
+        'fibres wall thickeness': 'fibres_wall_thickeness',
+        'fusiform parenchyma cells': 'fusiform_parenchyma_cells',
+        'helical thickenings': 'helical_thickenings',
+        'included phloem': 'included_phloem',
+        'Indigenous name': 'indigenous_name',
+        'intervessels pits arrangment': 'intervessels_pits_arrangment',
+        'intervessels pits size': 'intervessels_pits_size',
+        'intervessels pits specific shapes': 'intervessels_pits_specific_shapes',
+        'lactifers tanniferous tubes': 'lactifers_tanniferous_tubes',
+        'New Caledonia': 'new_caledonia',
+        'NOTES': 'notes',
+        'parenchyma like fibres present': 'parenchyma_like_fibres_present',
+        'perforation plates types': 'perforation_plates_types',
+        'prismatic crystal': 'prismatic_crystal',
+        'radial secretory canals': 'radial_secretory_canals',
+        'radial tracheids for gymnosperms': 'radial_tracheids_for_gymnosperms',
+        'rays': 'rays',
+        'rays cellular composition': 'rays_cellular_composition',
+        'rays height': 'rays_height',
+        'rays sheat cells': 'rays_sheat_cells',
+        'RAYS STRUCTURE': 'rays_structure',
+        'rays width': 'rays_width',
+        'Reference Specimens': 'reference_specimens',
+        'silica': 'silica',
+        'solitary vessels with angular outline': 'solitary_vessels_with_angular_outline',
+        'Species': 'species',
+        'spetate fibres present': 'spetate_fibres_present',
+        'storied structure': 'storied_structure',
+        'tile cells': 'tile_cells',
+        'Turkey': 'turkey',
+        'vascular-vasicentric tracheids present': 'vascularvasicentric_tracheids_present',
+        'vessels': 'vessels',
+        'vessels arrangment': 'vessels_arrangment',
+        'vessels deposits': 'vessels_deposits',
+        'vessels grouping': 'vessels_grouping',
+        'vessels porosity': 'vessels_porosity',
+        'vessels rays pitting': 'vessels_rays_pitting',
+        'vessels tyloses': 'vessels_tyloses',
+        'walls': 'walls',
+        'Contributor': 'contributor',
+        'DATE': 'date',
         })
 
     def link(accession, wood_details):
@@ -131,7 +158,10 @@ def upload_accessions_spreadsheet(request):
                 bi = setup_wood_importer()
             else:
                 raise Exception
-            bi.process_spreadsheet(spreadsheet)
+
+            imported_records = bi.process_spreadsheet(spreadsheet)
+
+            messages.add_message(request, messages.SUCCESS, "Imported %s records" % len(imported_records))
 
     else:
         form = ArcheobotanyImportForm()
