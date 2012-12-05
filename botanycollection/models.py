@@ -64,6 +64,8 @@ class SeedFeatures(models.Model):
 
 
 class WoodFeatures(models.Model):
+    accession = models.OneToOneField(Accession)
+
     aggregate_rays = models.CharField("aggregate rays", max_length=50, blank=True)
     australia = models.CharField("australia", max_length=50, blank=True)
     axial_canals = models.CharField("axial canals", max_length=50, blank=True)
