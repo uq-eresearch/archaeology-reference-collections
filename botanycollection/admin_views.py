@@ -56,10 +56,10 @@ def setup_accessions_importer():
 def setup_wood_importer():
     bi = BulkDataImportHandler()
     bi.add_mapping(Accession, {
-        'Family': 'family',
+        'family': 'family',
         'Genus': 'genus',
         'Species': 'species',
-        'Common Names': 'common_name',
+        'Common Name': 'common_name',
 #        'Indigenous Name': 'indigenous_name',
         'Accession': 'uq_accession',
         'Specimen Collection Date': 'collection_date',
@@ -80,7 +80,6 @@ def setup_wood_importer():
         'axial parenchyma bands': 'axial_parenchyma_bands',
         'axial parenchyma present': 'axial_parenchyma_present',
         'cambial variants': 'cambial_variants',
-        'Common name': 'common_name',
         'druses': 'druses',
         'family': 'family',
         'fibre helical thickenings': 'fibre_helical_thickenings',
