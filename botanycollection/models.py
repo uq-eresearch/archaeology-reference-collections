@@ -167,6 +167,8 @@ class AccessionPhoto(MediaFile):
     height = models.PositiveIntegerField(blank=True, null=True)
     width = models.PositiveIntegerField(blank=True, null=True)
 
+    description = models.TextField(max_length=100, blank=True, help_text="")
+
     class Meta(MediaFile.Meta):
 #        unique_together = ('specimen', 'md5sum')
         pass
