@@ -1,10 +1,19 @@
 {% extends "base.html" %}
 
+{% block headextra %}
+<link rel="stylesheet" type="text/css" href="/static/adgallery/lib/jquery.ad-gallery.css">
+<style>
+
+.ad-gallery .ad-image-wrapper .ad-image {overflow: visible;}
+.ad-gallery .ad-image-wrapper .ad-image .ad-image-description {position: static;}
+.ad-gallery { width: 484px; }
+.ad-gallery .ad-image-wrapper { height: 312px; }
+</style>
+{% endblock headextra %}
 {% load thumbnail %}
 {% block content %}
   <div class="row">
     <div class="span12">
-        <h1>{{ object.uq_accession }}</h1>
 {% if user.is_staff %}
 <div style="float:right;font-size: 80%;">
   <a href="{% url admin:botanycollection_accession_change object.id %}">Admin</a>
@@ -16,6 +25,9 @@
         <div class="row">
             <div class="span3">
                 <dl class="dl-horizontal">
+                    <dt>Accession No.</dt>
+                    <dd>{{object.uq_accession }}</dd>
+
                     <dt>Plant part</dt>
                     <dd>{{object.genus}}</dd>
 
@@ -44,7 +56,27 @@
                 </dl>
             </div>
             <div class="span7">
-                <div id="photos" class="carousel slide">
+<div class="ad-gallery">
+  <div class="ad-image-wrapper">
+  </div>
+  <div class="ad-controls">
+  </div>
+  <div class="ad-nav">
+    <div class="ad-thumbs">
+      <ul class="ad-thumb-list">
+
+        {% for photo in object.accessionphoto_set.all %}
+        <li>
+          <a href="{{ photo.image|thumbnail_url:'display'}}">
+            <img src="{{ photo.image|thumbnail_url:'small_thumb'}}" title="{{ photo.image.name }}" alt="{{ photo.description }}">
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% comment %}                <div id="photos" class="carousel slide">
 
                   <!-- Carousel items -->
                   <div class="carousel-inner">
@@ -59,6 +91,7 @@
                   <a class="left carousel-control" href="#photos" data-slide="prev">&lsaquo;</a>
                   <a class="right carousel-control" href="#photos" data-slide="next">&rsaquo;</a>
                 </div>
+{% endcomment %}
             </div>
 
         <div class="row">
@@ -459,7 +492,7 @@
 
 
 {% block endjavascript %}
-
+<script type="text/javascript" src="/static/adgallery/lib/jquery.ad-gallery.js"></script>
 <script type="text/javascript" charset="utf-8">
 
 $(document).ready(function () {
@@ -470,10 +503,15 @@ $(document).ready(function () {
   , pause: 'hover'
   }
 
-  $('#photos').carousel({
-    interval: false
+//  $('#photos').carousel({
+//    interval: false
+//  });
+  
+  var galleries = $('.ad-gallery').adGallery({
+    slideshow: {
+      enable: false
+    }
   });
-
 
 });
 
