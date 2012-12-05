@@ -52,12 +52,46 @@ class Accession(models.Model):
 
 
 class SeedFeatures(models.Model):
+    """
+    Seed/fruit type: e.g. [Caryopsis]
+    Shape 3D: [small field with up to 30 characters]
+    Shape 2D: [small field with up to 30 characters]
+    Shape detail:  [a large field with lots of latitude for descriptions in dorsal, ventral, lateral and cross-section view]
+    Size: [a range in mm typically expressed as L; B; T]
+    Testa/endocarp thickness: [mm, usually a range]
+    Surface outer texture/markings:
+    Surface inner texture/markings: 
+    Hilum details: [position, shape]
+    Special features (pappus, wings etc):
+    Anatomy Transverse Section: [again plenty of space required]
+    Anatomy Longitudinal Sections: [plenty of space required]
+    Embryo and endosperm details: [as per Martin]
+    Other identification information: [A large field]
+    References and links: 
+    Notes: [a large field]
+    Contributor: [Name of describer and date]
+    """
     accession = models.OneToOneField(Accession)
-    shape = models.TextField(blank=True)
-    surface_texture_sculpting = models.TextField(blank=True)
-    special_features = models.TextField(blank=True)
-    size = models.TextField(blank=True)
-    identification_references = models.TextField(blank=True)
+
+    seed_type = models.CharField("seed/fruit type", max_length=50, help_text="e.g. 'Caryopsis'")
+    shape_3d = models.CharField(max_length=30, blank=True)
+    shape_2d = models.CharField(max_length=30, blank=True)
+    shape_detail = models.TextField(blank=True, help_text="descriptions in dorsal, ventral, lateral and cross-section view")
+    size = models.CharField(max_length=30, blank=True, help_text="a range in mm, typically expressed as L; B; T")
+    testa_endocarp_thickness = models.CharField('testa/endocarp thickness', max_length=30, blank=True, help_text="mm, usually a range")
+    surface_outer_texture = models.CharField("surface outer texture/markings", max_length=30, blank=True)
+    surface_inner_texture = models.CharField("surface inner texture/markings", max_length=30, blank=True)
+    hilum_details = models.CharField(max_length=30, blank=True, help_text="position, shape")
+    special_features = models.CharField(max_length=30, blank=True, help_text="pappus, wings etc")
+    anatomy_transverse_section = models.TextField(blank=True)
+    anatomy_longitudinal_sections = models.TextField(blank=True)
+    embryo_endosperm = models.TextField("embryo and endosperm details", blank=True, help_text="as per Martin")
+    other_identification_information = models.TextField(blank=True)
+    references_and_links = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
+
+    contributor = models.CharField(max_length=50, blank=True)
+    date_contributed = models.CharField(max_length=10, blank=True)
 
     class Meta:
         verbose_name_plural = "seed features"
