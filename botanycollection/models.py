@@ -5,6 +5,10 @@ from mediaman.models import MediaFile
 
 
 class Accession(models.Model):
+    """
+    An accession, including source, taxonomic, and detailed
+    descriptive information.
+    """
     uq_accession = models.CharField(max_length=14, blank=True, unique=True)
     material = models.CharField(max_length=12, blank=True)
     source = models.CharField(max_length=11, blank=True)
@@ -53,6 +57,10 @@ class Accession(models.Model):
 
 class SeedFeatures(models.Model):
     """
+    Detailed description of seed features
+
+    Based on the following from Andrew Fairbairn:
+
     Seed/fruit type: e.g. [Caryopsis]
     Shape 3D: [small field with up to 30 characters]
     Shape 2D: [small field with up to 30 characters]
@@ -98,6 +106,10 @@ class SeedFeatures(models.Model):
 
 
 class WoodFeatures(models.Model):
+    """
+    Detailed description of the features of the wood portion of the accession
+    """
+
     accession = models.OneToOneField(Accession)
 
     aggregate_rays = models.CharField("aggregate rays", max_length=50, blank=True)
@@ -159,6 +171,11 @@ class WoodFeatures(models.Model):
 
 
 class AccessionPhoto(MediaFile):
+    """
+    A single photo of an accession
+
+    Should include a description
+    """
     image = ThumbnailerImageField(max_length=255, upload_to='.',
         height_field='height', width_field='width')
 
