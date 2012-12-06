@@ -184,6 +184,7 @@ class AccessionPhoto(MediaFile):
     height = models.PositiveIntegerField(blank=True, null=True)
     width = models.PositiveIntegerField(blank=True, null=True)
 
+    title = models.CharField(max_length=120, blank=True)
     description = models.TextField(max_length=100, blank=True, help_text="")
 
     class Meta(MediaFile.Meta):
