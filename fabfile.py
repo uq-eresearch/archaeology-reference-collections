@@ -39,6 +39,7 @@ def bootstrap_ubuntu():
         server.create_appuser()
         server.create_database()
         server.setup_upstart()
+        server.setup_nginx_site()
         push_key()
     server.create_deploydir()
     server.create_virtualenv()
@@ -84,6 +85,9 @@ class UbuntuServer():
             sudo('useradd --create-home %s' % env.appuser)
 
     def create_database(self):
+        """
+        Run as the app user
+        """
         with settings(warn_only=True):
             result = postgres('createuser --no-createdb --no-createrole --no-superuser %(dbuser)s' % env)
         if result.failed and not "already exists" in result:
@@ -114,9 +118,15 @@ class UbuntuServer():
         context = {
             "description": env.description,
             "project_dir": env.appdir,
-            "exec_command": env.envdir + "/bin/gunicorn_django -user " + env.appuser
+            "exec_command": "%(envdir)s/bin/python manage.py run_gunicorn --user=%(appuser)s --bind=%(appbind)s archaeobotany.wsgi:application" % env
         }
         upload_template('deploy/upstart.template', '/etc/init/%s.conf' % env.appuser, context, use_sudo=True)
+
+    def setup_nginx_site(self):
+        upload_template('deploy/nginx.template', '/etc/nginx/sites-available/%s' % env.appuser, env, use_sudo=True)
+        sudo('ln -sf /etc/nginx/sites-available/%(appuser)s /etc/nginx/sites-enabled/%(appuser)s' % env)
+        sudo('nginx -t')
+        sudo('nginx -s reload')
 
 
 def read_key_file(key_file):
@@ -142,7 +152,16 @@ def start():
     """
     Start the application
     """
-    sudo('initctl start %s' % env.appname)
+    with settings(user=env.sudouser):
+        sudo('initctl start %s' % env.appuser)
+
+@task
+def reload():
+    """
+    Reload the app
+    """
+    with settings(user=env.sudouser):
+        sudo('reload %s' % env.appuser)
 
 
 @task
@@ -155,7 +174,7 @@ def update():
             run('pip install --requirement=%s' % 'requirements.txt')
             run('./manage.py collectstatic --noinput')
             run('./manage.py syncdb')
-            run('./manage.py rebuild_index --noinput')
+#            run('./manage.py rebuild_index --noinput')
 
 
 @task
