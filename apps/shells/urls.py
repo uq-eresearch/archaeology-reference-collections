@@ -1,18 +1,14 @@
 from django.conf.urls import patterns, url
-from django.views.generic import DetailView, ListView
-from shells.models import Species
+import views
+
+urlpatterns = patterns('apps.shells.views',
+
+    url('/list',
+        views.ShellsListView.as_view(
+            template_name='shells/datatables.html'), name='browse-species'),
 
 
-urlpatterns = patterns('shells.views',
+    url(r'^/record/(?P<pk>\d+)$',
+        views.ShellsDetailView.as_view(), name='species_detail'),
 
-    url(r'^(?P<pk>\d+)$',
-        DetailView.as_view(model=Species), name='species_detail'),
-
-    url(r'^$',
-        ListView.as_view(
-            model=Species, paginate_by=20), name='species_list'),
-
-    url('browse/',
-        ListView.as_view(
-            model=Species, template_name='shells/datatables.html'), name='browse-species'),
 )

@@ -19,3 +19,7 @@ six==1.1.0
 ssh==1.7.14
 wsgiref==0.1.2
 django-refinery==0.1
+gunicorn==0.16.1
+-e git://github.com/omad/django-mediaman.git#egg=django-mediaman
+-e git://github.com/omad/django-bulkimport.git#egg=django-bulkimport
+docutils==0.9.1

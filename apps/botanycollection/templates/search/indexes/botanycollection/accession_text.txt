@@ -1,0 +1,4 @@
+{{ object.class_name }}
+{{ object.family }}
+{{ object.genus }}
+{{ object.species }}

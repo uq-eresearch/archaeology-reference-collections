@@ -28,6 +28,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    normpath(join(DJANGO_ROOT, 'static')),
 )
 
 
@@ -141,11 +142,14 @@ INSTALLED_APPS = (
     'haystack',
     'easy_thumbnails',
 
-
-### Parts of this app
-    'shells',
+### Local Libs
     'bulkimport',
     'mediaman',
+
+### Parts of this app
+    'apps.shells',
+    'apps.botanycollection',
+    'apps.home'
 )
 
 # A sample logging configuration. The only tangible logging

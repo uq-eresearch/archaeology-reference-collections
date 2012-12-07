@@ -1,26 +1,17 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView
-from django.views.generic import DetailView, ListView
 from refcollections.admin_custom import shells_admin
-from shells.models import Species
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'refcollections.views.home', name='home'),
+    url('', include('apps.home.urls')),
 
-    url(r'^$',
-        ListView.as_view(
-            model=Species, template_name='shells/datatables.html'), name='browse-species'),
-#    url(r'^$',
-#        TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^archaeobotany', include('apps.botanycollection.urls')),
+    url(r'^shells', include('apps.shells.urls')),
 
-    url(r'^shells/', include('shells.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(shells_admin.urls)),
@@ -28,7 +19,7 @@ urlpatterns = patterns('',
 
     url(r'^search/', include('haystack.urls')),
 
-    url(r'^advanced/', 'shells.views.advanced_search', name='advanced-search'),
+    url(r'^advanced/', 'apps.shells.views.advanced_search', name='advanced-search'),
 
 )
 

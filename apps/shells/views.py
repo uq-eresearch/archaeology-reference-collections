@@ -2,6 +2,7 @@
 from models import Species
 import refinery
 from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 
 
 class SpeciesFilterTool(refinery.FilterTool):
@@ -17,6 +18,9 @@ def advanced_search(request):
         {'filtertool': filtertool})
 
 
-def browse(request):
-    species = Species.objects.all()
-    return render(request, 'shells/browse.html')
+class ShellsListView(ListView):
+    model = Species
+
+
+class ShellsDetailView(DetailView):
+    model = Species
