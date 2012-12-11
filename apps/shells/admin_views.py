@@ -76,7 +76,7 @@ def setup_bulk_importer():
     return bi
 
 
-def upload_species_spreadsheet(request):
+def upload_shells_spreadsheet(request):
     if request.method == 'POST':
         form = BulkImportForm(request.POST, request.FILES)
         if form.is_valid():

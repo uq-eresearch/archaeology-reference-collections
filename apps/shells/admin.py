@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf.urls.defaults import patterns, url
 from models import Specimen, SpeciesRepresentation
-from apps.shells.admin_views import ShellsImagesUploader, upload_species_spreadsheet
+from apps.shells.admin_views import ShellsImagesUploader, upload_shells_spreadsheet
 
 
 class SpeciesRepresentationInline(admin.TabularInline):
@@ -36,7 +36,7 @@ class SpeciesAdmin(admin.ModelAdmin):
             url('upload_images/',
                 self.admin_site.admin_view(ShellsImagesUploader.as_view()),
                 name="upload_shells_images"),
-            url(r'^upload/', self.admin_site.admin_view(upload_species_spreadsheet),
+            url(r'^upload/', self.admin_site.admin_view(upload_shells_spreadsheet),
                 name='upload_shells_spreadsheet'),
 
         )

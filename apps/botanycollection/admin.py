@@ -1,7 +1,9 @@
 from django.contrib import admin
+from django.conf.urls.defaults import patterns, url
 from django.conf import settings
 from apps.botanycollection.models import Accession, SeedFeatures, WoodFeatures
 from apps.botanycollection.models import AccessionPhoto
+from admin_views import upload_accessions_spreadsheet
 
 
 class SeedFeaturesInline(admin.StackedInline):
@@ -17,6 +19,14 @@ class AccessionPhotoInline(admin.StackedInline):
 
 
 class AccessionAdmin(admin.ModelAdmin):
+    def get_urls(self):
+        urls = super(AccessionAdmin, self).get_urls()
+        my_urls = patterns('',
+            url(r'^upload/', self.admin_site.admin_view(upload_accessions_spreadsheet),
+                name='upload_accessions_spreadsheet'),
+
+        )
+        return my_urls + urls
     model = Accession
     inlines = [
         SeedFeaturesInline, WoodFeaturesInline,
