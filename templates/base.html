@@ -29,6 +29,8 @@
 
         <form class="navbar-search " method="get" action="/search/">
           <input type="text" class="search-query span2" placeholder="Search" name="q">
+          {% block search_extra %}
+          {% endblock %}
         </form>
 
         <ul class="nav pull-right">
@@ -45,7 +47,7 @@
   </div>
 
   <!-- START: Content -->
-  <div class="container-fluid">
+  <div class="container">
     {% block content %}
 
     {% endblock content %}
