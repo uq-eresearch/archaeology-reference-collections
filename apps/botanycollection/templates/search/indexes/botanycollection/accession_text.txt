@@ -1,4 +1,129 @@
-{{ object.class_name }}
+{{ object.uq_accession }}
+{{ object.material }}
+{{ object.state }}
 {{ object.family }}
+{{ object.subfam }}
+{{ object.tribe }}
 {{ object.genus }}
 {{ object.species }}
+{{ object.author }}
+{{ object.sspna }}
+{{ object.sspau }}
+{{ object.varna }}
+{{ object.varau }}
+{{ object.cultivar }}
+{{ object.common_name }}
+{{ object.biological_synonym }}
+{{ object.famno }}
+{{ object.genno }}
+{{ object.spno }}
+{{ object.sspno }}
+{{ object.varno }}
+{{ object.detna }}
+{{ object.detdate }}
+{{ object.collector }}
+{{ object.collector_serial_no }}
+{{ object.collection_date }}
+{{ object.source }}
+{{ object.source_number }}
+{{ object.id_level_flag }}
+{{ object.country }}
+{{ object.site_name }}
+{{ object.lat_long }}
+{{ object.altitude }}
+{{ object.notes }}
+{{ object.related_accession }}
+{{ object.grin__seed_atlas }}
+{{ object.seedfeatures.id }}
+{{ object.seedfeatures.accession }}
+{{ object.seedfeatures.seed_type }}
+{{ object.seedfeatures.shape_3d }}
+{{ object.seedfeatures.shape_2d }}
+{{ object.seedfeatures.shape_detail }}
+{{ object.seedfeatures.size }}
+{{ object.seedfeatures.testa_endocarp_thickness }}
+{{ object.seedfeatures.surface_outer_texture }}
+{{ object.seedfeatures.surface_inner_texture }}
+{{ object.seedfeatures.hilum_details }}
+{{ object.seedfeatures.special_features }}
+{{ object.seedfeatures.anatomy_transverse_section }}
+{{ object.seedfeatures.anatomy_longitudinal_sections }}
+{{ object.seedfeatures.embryo_endosperm }}
+{{ object.seedfeatures.other_identification_information }}
+{{ object.seedfeatures.references_and_links }}
+{{ object.seedfeatures.notes }}
+{{ object.seedfeatures.contributor }}
+{{ object.seedfeatures.date_contributed }}
+{{ object.woodfeatures.id }}
+{{ object.woodfeatures.accession }}
+{{ object.woodfeatures.aggregate_rays }}
+{{ object.woodfeatures.australia }}
+{{ object.woodfeatures.axial_canals }}
+{{ object.woodfeatures.axial_parenchyma_arrangment }}
+{{ object.woodfeatures.axial_parenchyma_bands }}
+{{ object.woodfeatures.axial_parenchyma_present }}
+{{ object.woodfeatures.cambial_variants }}
+{{ object.woodfeatures.common_name }}
+{{ object.woodfeatures.druses }}
+{{ object.woodfeatures.family }}
+{{ object.woodfeatures.fibre_helical_thickenings }}
+{{ object.woodfeatures.fibre_pits }}
+{{ object.woodfeatures.fibres_wall_thickeness }}
+{{ object.woodfeatures.fusiform_parenchyma_cells }}
+{{ object.woodfeatures.helical_thickenings }}
+{{ object.woodfeatures.included_phloem }}
+{{ object.woodfeatures.indigenous_name }}
+{{ object.woodfeatures.intervessels_pits_arrangment }}
+{{ object.woodfeatures.intervessels_pits_size }}
+{{ object.woodfeatures.intervessels_pits_specific_shapes }}
+{{ object.woodfeatures.lactifers_tanniferous_tubes }}
+{{ object.woodfeatures.new_caledonia }}
+{{ object.woodfeatures.notes }}
+{{ object.woodfeatures.parenchyma_like_fibres_present }}
+{{ object.woodfeatures.perforation_plates_types }}
+{{ object.woodfeatures.prismatic_crystal }}
+{{ object.woodfeatures.radial_secretory_canals }}
+{{ object.woodfeatures.radial_tracheids_for_gymnosperms }}
+{{ object.woodfeatures.rays }}
+{{ object.woodfeatures.rays_cellular_composition }}
+{{ object.woodfeatures.rays_height }}
+{{ object.woodfeatures.rays_sheat_cells }}
+{{ object.woodfeatures.rays_structure }}
+{{ object.woodfeatures.rays_width }}
+{{ object.woodfeatures.reference_specimens }}
+{{ object.woodfeatures.silica }}
+{{ object.woodfeatures.solitary_vessels_with_angular_outline }}
+{{ object.woodfeatures.species }}
+{{ object.woodfeatures.spetate_fibres_present }}
+{{ object.woodfeatures.storied_structure }}
+{{ object.woodfeatures.tile_cells }}
+{{ object.woodfeatures.turkey }}
+{{ object.woodfeatures.vascularvasicentric_tracheids_present }}
+{{ object.woodfeatures.vessels }}
+{{ object.woodfeatures.vessels_arrangment }}
+{{ object.woodfeatures.vessels_deposits }}
+{{ object.woodfeatures.vessels_grouping }}
+{{ object.woodfeatures.vessels_porosity }}
+{{ object.woodfeatures.vessels_rays_pitting }}
+{{ object.woodfeatures.vessels_tyloses }}
+{{ object.woodfeatures.walls }}
+{{ object.woodfeatures.contributor }}
+{{ object.woodfeatures.date }}
+{% for related in objects.accessionphoto_set %}
+    {{ related.id }}
+    {{ related.filesize }}
+    {{ related.upload_date }}
+    {{ related.uploaded_by }}
+    {{ related.mime_type }}
+    {{ related.original_filename }}
+    {{ related.original_path }}
+    {{ related.original_filedate }}
+    {{ related.name }}
+    {{ related.md5sum }}
+    {{ related.image }}
+    {{ related.accession }}
+    {{ related.height }}
+    {{ related.width }}
+    {{ related.title }}
+    {{ related.description }}
+{% endfor %}
