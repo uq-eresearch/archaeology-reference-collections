@@ -44,19 +44,19 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Damien Ayers', 'd.ayers@uq.edu.au'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'shells',                      # Or path to database file if using sqlite3.
-        'USER': 'shells',                      # Not used with sqlite3.
-        'PASSWORD': 'shells',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shells',
+        'USER': 'shells',
+        'PASSWORD': 'shells',
+        'HOST': 'localhost',
+        'PORT': '',    # Set to empty string for default.
     }
 }
 
@@ -149,7 +149,8 @@ INSTALLED_APPS = (
 ### Parts of this app
     'apps.shells',
     'apps.botanycollection',
-    'apps.home'
+    'apps.home',
+    'apps.utils'
 )
 
 # A sample logging configuration. The only tangible logging
