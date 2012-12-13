@@ -34,7 +34,7 @@ class AccessionAdmin(admin.ModelAdmin):
     ]
 
     list_display = ('uq_accession', 'family', 'genus', 'species', 'common_name', 'material')
-#    list_filter = ('family', 'genus')
+    list_filter = ('family', 'genus')
 
     fieldsets = (
         (None, {
