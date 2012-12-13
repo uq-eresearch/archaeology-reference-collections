@@ -52,7 +52,11 @@ class Accession(models.Model):
         return ('accession_detail', [str(self.uq_accession)])
 
     def __unicode__(self):
-        return self.uq_accession
+        components = (
+            self.family,
+            self.genus,
+            self.species)
+        return ' - '.join([c for c in components if c])
 
 
 class SeedFeatures(models.Model):
