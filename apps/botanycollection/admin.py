@@ -36,21 +36,30 @@ class AccessionAdmin(admin.ModelAdmin):
     list_display = ('uq_accession', 'family', 'genus', 'species', 'common_name', 'material')
     list_filter = ('family', 'genus')
 
+    search_fields = ['family', 'genus', 'species', 'uq_accession'
+                     'country', 'state']
+
     fieldsets = (
-        (None, {
-            'fields': ('uq_accession',
-                        'material',
-                        'source',
-                        'state',
-                        'family',
-                        'subfam',
-                        'tribe',
-                        'genus',
-                        'species',
-                        'author',
-        )}),
-        ('Other', {
+        ('Specimen details', {
             'fields': (
+                'uq_accession',
+                'material',
+                'source',
+                'state',
+                'related_accession',
+                'accession_notes',
+                'grin__seed_atlas',
+
+
+
+        )}),
+        ('Classification information', {
+            'fields': (
+                'family',
+                'subfam',
+                'tribe',
+                'species',
+                'author',
                 'sspna',
                 'sspau',
                 'varna',
@@ -58,11 +67,6 @@ class AccessionAdmin(admin.ModelAdmin):
                 'cultivar',
                 'common_name',
                 'biological_synonym',
-                'famno',
-                'genno',
-                'spno',
-                'sspno',
-                'varno',
                 'detna',
                 'detdate',
                 'collector',
@@ -78,8 +82,6 @@ class AccessionAdmin(admin.ModelAdmin):
                 'lat_long',
                 'altitude',
                 'notes',
-                'related_accession',
-                'grin__seed_atlas',
                 )
         }),
     )
