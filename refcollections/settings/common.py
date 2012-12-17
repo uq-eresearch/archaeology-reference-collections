@@ -141,6 +141,7 @@ INSTALLED_APPS = (
 ### Third party apps
     'haystack',
     'easy_thumbnails',
+    'gunicorn',
 
 ### Local Libs
     'bulkimport',
