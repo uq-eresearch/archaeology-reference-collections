@@ -1,0 +1,36 @@
+upstream %(appuser)s {
+        # server unix:/tmp/gunicorn.sock fail_timeout=0;
+        server %(appbind)s fail_timeout=0;
+}
+
+server {
+        listen 80 default;
+        listen 443;
+        client_max_body_size 4G;
+        server_name %(hostname)s;
+        access_log  /var/log/nginx/%(appname)s.log;
+        keepalive_timeout 5;
+
+        # path for static files
+        # /path/to/app/current/public;
+        root /home/%(appuser)s/public;
+        
+#       location /media/ {
+#               alias /home/%(appuser)s/media;
+#       }
+
+        location = /favicon.ico {
+                rewrite (.*) /static/favicon.ico;
+        }
+
+        location / {
+                # checks for static file, if not found proxy to app
+                try_files $uri @proxy_to_app;
+        }
+
+        location @proxy_to_app {
+                proxy_set_header "X-Forwarded-For" $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_pass   http://%(appuser)s;
+        }
+}

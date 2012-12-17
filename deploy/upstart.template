@@ -1,0 +1,17 @@
+description "%(description)s"
+author "Damien Ayers <d.ayers@uq.edu.au>"
+
+start on runlevel 2
+start on runlevel 3
+
+stop on runlevel 0
+stop on runlevel 1
+stop on runlevel 4
+stop on runlevel 5
+stop on runlevel 6
+
+chdir %(project_dir)s
+#exec /usr/bin/twistd --uid=daemonuser --syslog -ny project.tac
+exec %(exec_command)s
+respawn
+
