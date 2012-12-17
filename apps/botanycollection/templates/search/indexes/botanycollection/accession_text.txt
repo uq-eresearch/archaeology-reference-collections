@@ -4,7 +4,6 @@
 {{ object.family }}
 {{ object.subfam }}
 {{ object.tribe }}
-{{ object.genus }}
 {{ object.species }}
 {{ object.author }}
 {{ object.sspna }}
@@ -14,11 +13,6 @@
 {{ object.cultivar }}
 {{ object.common_name }}
 {{ object.biological_synonym }}
-{{ object.famno }}
-{{ object.genno }}
-{{ object.spno }}
-{{ object.sspno }}
-{{ object.varno }}
 {{ object.detna }}
 {{ object.detdate }}
 {{ object.collector }}
