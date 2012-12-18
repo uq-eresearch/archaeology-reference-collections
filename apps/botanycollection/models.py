@@ -41,6 +41,9 @@ class Accession(models.Model):
     accession_notes = models.TextField(blank=True)
     related_accession = models.CharField(max_length=19, blank=True)
     weblinks = models.CharField('weblinks', max_length=20, blank=True)
+    
+    contributor = models.CharField(max_length=50, blank=True)
+    date_contributed = models.CharField(max_length=10, blank=True)
 
     @models.permalink
     def get_absolute_url(self):
@@ -49,7 +52,6 @@ class Accession(models.Model):
     def __unicode__(self):
         components = (
             self.family,
-            self.genus,
             self.species)
         return ' - '.join([c for c in components if c])
 
@@ -97,8 +99,6 @@ class SeedFeatures(models.Model):
     references_and_links = models.TextField(blank=True)
     notes = models.TextField(blank=True)
 
-    contributor = models.CharField(max_length=50, blank=True)
-    date_contributed = models.CharField(max_length=10, blank=True)
 
     class Meta:
         verbose_name_plural = "seed features"
@@ -162,8 +162,6 @@ class WoodFeatures(models.Model):
     vessels_rays_pitting = models.CharField("vessels rays pitting", max_length=50, blank=True)
     vessels_tyloses = models.CharField("vessels tyloses", max_length=50, blank=True)
     walls = models.CharField("walls", max_length=50, blank=True)
-    contributor = models.CharField("contributor", max_length=50, blank=True)
-    date = models.CharField("date", max_length=10, blank=True)
 
     class Meta:
         verbose_name_plural = "wood features"
