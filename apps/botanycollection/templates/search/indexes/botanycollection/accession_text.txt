@@ -1,6 +1,6 @@
 {{ object.uq_accession }}
 {{ object.material }}
-{{ object.state }}
+{{ object.preservation_state }}
 {{ object.family }}
 {{ object.subfam }}
 {{ object.tribe }}
@@ -25,9 +25,9 @@
 {{ object.site_name }}
 {{ object.lat_long }}
 {{ object.altitude }}
-{{ object.notes }}
+{{ object.location_notes }}
 {{ object.related_accession }}
-{{ object.grin__seed_atlas }}
+{{ object.weblinks }}
 {{ object.seedfeatures.id }}
 {{ object.seedfeatures.accession }}
 {{ object.seedfeatures.seed_type }}

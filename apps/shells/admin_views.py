@@ -57,7 +57,7 @@ def setup_bulk_importer():
         'Shell Sculpture': 'shell_sculpture',
         'Shell Colour': 'shell_colour',
         'References': 'references',
-        'NOTES': 'notes',
+        'NOTES': 'location_notes',
         'Additional Information': 'additional_information',
          })
     bi.add_mapping(Specimen, {

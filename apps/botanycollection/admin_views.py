@@ -11,7 +11,7 @@ def setup_accessions_importer():
         'UQ Accession': 'uq_accession',
         'Material': 'material',
         'Source': 'source',
-        'State': 'state',
+        'State': 'preservation_state',
         'Family': 'family',
         'SUBFAM': 'subfam',
         'TRIBE': 'tribe',
@@ -36,7 +36,7 @@ def setup_accessions_importer():
         'Site Name': 'site_name',
         'Lat/Long.': 'lat_long',
         'Altitude': 'altitude',
-        'Notes': 'notes',
+        'Notes': 'location_notes',
         'Related Accession': 'related_accession',
         'GRIN & Seed Atlas?': 'grin__seed_atlas',
         })
@@ -51,7 +51,6 @@ def setup_wood_importer():
     bi = BulkDataImportHandler()
     bi.add_mapping(Accession, {
         'family': 'family',
-        'Genus': 'genus',
         'Species': 'species',
         'Common Name': 'common_name',
 #        'Indigenous Name': 'indigenous_name',
@@ -63,7 +62,7 @@ def setup_wood_importer():
 #        'Geographic Range': 'geographic_range',
 #        'Habitat': 'habitat',
 #        'Plant part': 'plant_part',
-        'State': 'state',
+        'State': 'preservation_state',
 #        'Type of Plant': 'type_of_plant',
         })
     bi.add_mapping(WoodFeatures, {

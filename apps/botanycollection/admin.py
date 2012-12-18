@@ -33,11 +33,11 @@ class AccessionAdmin(admin.ModelAdmin):
         AccessionPhotoInline
     ]
 
-    list_display = ('uq_accession', 'family', 'genus', 'species', 'common_name', 'material')
-    list_filter = ('family', 'genus')
+    list_display = ('uq_accession', 'family', 'species', 'common_name', 'material')
+    list_filter = ('family', )
 
-    search_fields = ['family', 'genus', 'species', 'uq_accession'
-                     'country', 'state']
+    search_fields = ['family', 'species', 'uq_accession'
+                     'country', 'preservation_state']
 
     fieldsets = (
         ('Specimen details', {
@@ -45,10 +45,10 @@ class AccessionAdmin(admin.ModelAdmin):
                 'uq_accession',
                 'material',
                 'source',
-                'state',
+                'preservation_state',
                 'related_accession',
                 'accession_notes',
-                'grin__seed_atlas',
+                'weblinks',
 
 
 
@@ -81,7 +81,7 @@ class AccessionAdmin(admin.ModelAdmin):
                 'site_name',
                 'lat_long',
                 'altitude',
-                'notes',
+                'location_notes',
                 )
         }),
     )

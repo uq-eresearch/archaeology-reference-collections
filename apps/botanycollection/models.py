@@ -12,7 +12,7 @@ class Accession(models.Model):
     uq_accession = models.CharField(max_length=14, blank=True, unique=True)
     material = models.CharField(max_length=50, blank=True)
     source = models.CharField(max_length=11, blank=True)
-    state = models.CharField('preservation state', max_length=32, blank=True)
+    preservation_state = models.CharField('preservation state', max_length=32, blank=True)
     family = models.CharField(max_length=50, blank=True)
     subfam = models.CharField('sub-family', max_length=50, blank=True)
     tribe = models.CharField(max_length=50, blank=True)
@@ -37,10 +37,10 @@ class Accession(models.Model):
     site_name = models.CharField(max_length=214, blank=True)
     lat_long = models.CharField('geographical coordinates', max_length=15, blank=True)
     altitude = models.CharField(max_length=14, blank=True)
-    notes = models.CharField('location notes', max_length=162, blank=True)
+    location_notes = models.CharField('location notes', max_length=162, blank=True)
     accession_notes = models.TextField(blank=True)
     related_accession = models.CharField(max_length=19, blank=True)
-    grin__seed_atlas = models.CharField('weblinks', max_length=20, blank=True)
+    weblinks = models.CharField('weblinks', max_length=20, blank=True)
 
     @models.permalink
     def get_absolute_url(self):
