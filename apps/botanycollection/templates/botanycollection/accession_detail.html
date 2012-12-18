@@ -20,37 +20,89 @@
 </div>
 {% endif %}
 
-        <h2>{{ object.family }} > {{object.genus}} > {{object.species}}</h2>
+        <h2>{{ object.family }} > {{object.species}}</h2>
 
         <div class="row">
             <div class="span3">
+                <h3>Accession details</h3>
                 <dl class="dl-horizontal">
-                    <dt>Accession No.</dt>
+                    <dt>UQ Accession No.</dt>
                     <dd>{{object.uq_accession }}</dd>
 
-                    <dt>Plant part</dt>
-                    <dd>{{object.genus}}</dd>
+{% if object.material %}
+                    <dt>Material</dt>
+                    <dd>{{ object.material }}</dd>
+{% endif %}
 
+{% if object.source %}
+                    <dt>Source</dt>
+                    <dd>{{ object.source }}</dd>
+{% endif %}
+
+{% if object.preservation_state %}
                     <dt>State</dt>
                     <dd>{{object.preservation_state}}</dd>
+{% endif %}
 
+{% if object.family %}
+                    <dt>Family</dt>
+                    <dd>{{ object.family }}</dd>
+{% endif %}
+
+{% if object.species %}
+                    <dt>Species</dt>
+                    <dd>{{ object.species }}</dd>
+{% endif %}
+
+{% if object.contributor %}
+                    <dt>Contributor</dt>
+                    <dd>{{object.contributor}}</dd>
+{% endif %}
+
+{% if object.common_name %}
                     <dt>Common name</dt>
                     <dd>{{object.common_name}}</dd>
+{% endif %}
 
-                    <dt>Plant type</dt>
-                    <dd></dd>
+{% if object.id_level_flag %}
+                    <dt>ID level flag</dt>
+                    <dd>{{ object.id_level_flag }}</dd>
+{% endif %}
 
-                    <dt>Country</dt>
-                    <dd>{{object.country}}</dd>
-
+{% if object.related_accession %}
                     <dt>Related accession</dt>
                     <dd>{{object.related_accession}}</dd>
-
-                    <dt>Notes</dt>
-                    <dd>{{object.location_notes}}</dd>
-
-
+{% endif %}
                 </dl>
+
+                <h3>Location details</h3>
+                <dl>
+{% if object.country %}
+                    <dt>Country</dt>
+                    <dd>{{ object.country }}</dd>
+{% endif %}
+
+{% if object.site_name %}
+                    <dt>Site name</dt>
+                    <dd>{{object.site_name}}</dd>
+{% endif %}
+
+{% if object.lat_long %}
+                    <dt>Geographical coordinates</dt>
+                    <dd>{{object.lat_long}}</dd>
+{% endif %}
+
+{% if object.altitude %}
+                    <dt>Altitude</dt>
+                    <dd>{{ object.altitude }}</dd>
+{% endif %}
+
+{% if object.location_notes %}
+                    <dt>Location notes</dt>
+                    <dd>{{object.location_notes}}</dd>
+{% endif %}
+                </dl>
+
             </div>
             <div class="span7">
 <div class="ad-gallery">
