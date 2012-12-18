@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 class BulkImportForm(forms.Form):
     spreadsheet = forms.FileField()
 
-ModelMapping = namedtuple('ModelMapping', 'model mapping')
+ModelMapping = namedtuple('ModelMapping', ['model', 'mapping',
+    'unique_column', 'unique_field'])
 
 
 class BulkDataImportHandler:
@@ -23,7 +24,7 @@ class BulkDataImportHandler:
         self.header_row = 0
         self.first_data_row = 1
 
-    def add_mapping(self, model, mapping):
+    def add_mapping(self, model, mapping, unique_column=None, unique_field=None):
         """
         Specify a row <-> model mapping
 
@@ -31,13 +32,16 @@ class BulkDataImportHandler:
         in the spreadsheet to be processed, and values as the names of
         matching fields on the supplied `model`.
 
-        When processing rows of data, a new model of the supplied type
+        Processing rows of data can take two forms, if `unique_column` and
+        `unique_field` are supplied, a lookup is performed which can update
+        existing records.
+        Otherwise, or if no record is found a new model of the supplied type
         is created, and appropriate data fields from the spreadsheet
         are set onto the model.
 
-        The model is then saved into the database
+        The model is then saved into the database.
         """
-        self.mappings.append(ModelMapping(model, mapping))
+        self.mappings.append(ModelMapping(model, mapping, unique_column, unique_field))
 
     def add_function_mapping(self, function):
         """
@@ -57,6 +61,8 @@ class BulkDataImportHandler:
 
         Typically used to link models together if there
         are multiple created for each row of data
+
+        Called with the created objects, in order based on added mappings.
         """
         self.linking_func = function
 
@@ -93,8 +99,19 @@ class BulkDataImportHandler:
         Looks up mapping data that has been added with `add_mapping`
         """
         results = []
-        for model, mapping in self.mappings:
-            instance = model()
+        for model, mapping, unique_column, unique_field in self.mappings:
+
+# Try finding an existing record to update
+            if unique_column:
+                try:
+                    field = unique_field
+                    value = vals[headers.index(unique_column)]
+                    instance = model.objects.get(**{field: value})
+                except model.DoesNotExist:
+                    instance = model()
+            else:
+                instance = model()
+
             for col, field in mapping.items():
                 try:
                     value = vals[headers.index(col)]

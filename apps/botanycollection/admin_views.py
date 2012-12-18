@@ -64,7 +64,9 @@ def setup_wood_importer():
 #        'Plant part': 'plant_part',
         'State': 'preservation_state',
 #        'Type of Plant': 'type_of_plant',
-        })
+        'Contributor': 'contributor',
+        'DATE': 'date_contributed',
+        }, 'Accession', 'uq_accession')
     bi.add_mapping(WoodFeatures, {
         'aggregate rays': 'aggregate_rays',
         'Australia': 'australia',
@@ -116,11 +118,11 @@ def setup_wood_importer():
         'vessels rays pitting': 'vessels_rays_pitting',
         'vessels tyloses': 'vessels_tyloses',
         'walls': 'walls',
-        'Contributor': 'contributor',
-        'DATE': 'date',
         })
 
     def link(accession, wood_details):
+        if hasattr(accession, 'woodfeatures'):
+            accession.woodfeatures.delete()
         wood_details.accession = accession
         wood_details.save()
 
