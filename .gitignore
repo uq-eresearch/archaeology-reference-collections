@@ -10,3 +10,5 @@ deploy/search_index/*
 deploy/SECRET
 deployment.ini
 .coverage
+mediaman
+bulkimport
