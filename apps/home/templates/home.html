@@ -1,16 +1,25 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
         <h1>UQ Archaeological Reference Collections</h1>
+    </div>
 
+</div>
 
-        <a href="{% url botany_home %}">Archeobotany Reference</a>
+<div class="row-fluid">
+    <div class="span6">
+        <a href="{% url botany_home %}">
+        <img class="img-polaroid" src="{% static 'images/botany_title.jpg' %}">
+        <h3>Archeobotany Reference</h3></a>
+    </div>
 
-
-        <a href="{% url browse-species %}">Shells References</a>
+    <div class="span6">
+        <a href="{% url browse-species %}">
+        <img class="img-polaroid" src="{% static 'images/shells_title.jpg' %}">
+        <h3>Shells References</h3></a>
     </div>
 
 </div>
