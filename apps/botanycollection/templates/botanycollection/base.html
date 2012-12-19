@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
+
+{% block navbar_search %}
+{% endblock %}
 {% block search_extra %}
 <input type="hidden" name="models" value="botanycollection.accession">
 {% endblock %}
 
 
+{% block navbar_extra %}
+<ul class="nav">
+<li><a href="{% url accession_list %}">Search Collection</a></li>
+<li><a href="browse">Instructions</a></li>
+<li><a href="browse">About</a></li>
+<li><a href="browse">Contacts</a></li>
+<li><a href="browse">Terms</a></li>
+</ul>
+{% endblock %}
