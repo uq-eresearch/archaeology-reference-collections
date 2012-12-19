@@ -1,5 +1,5 @@
 {% extends "shells/base.html" %}
-
+{% load static %}
 
 {% block headextra %}
 <style>
@@ -100,8 +100,8 @@ table.dataTable th:active {
 {% block endjavascript %}
 {{block.super}}
 
-<script type="text/javascript" language="javascript" src="{{STATIC}}/datatables/js/jquery.dataTables.js"></script>
-<script type="text/javascript" language="javascript" src="{{STATIC}}/DT_bootstrap.js"></script>
+<script type="text/javascript" language="javascript" src="{% static 'datatables/js/jquery.dataTables.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'DT_bootstrap.js' %}"></script>
 <script type="text/javascript" charset="utf-8">
     var asInitVals = new Array();
 
