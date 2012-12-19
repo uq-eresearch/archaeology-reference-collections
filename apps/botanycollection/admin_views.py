@@ -16,7 +16,7 @@ def setup_accessions_importer():
         'SUBFAM': 'subfam',
         'TRIBE': 'tribe',
         'Species': 'species',
-        'AUTHOR': 'author',
+        'AUTHOR': 'species_author',
         'SSPNA': 'sspna',
         'SSPAU': 'sspau',
         'VARNA': 'varna',

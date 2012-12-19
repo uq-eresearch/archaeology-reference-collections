@@ -17,7 +17,7 @@ class Accession(models.Model):
     subfam = models.CharField('sub-family', max_length=50, blank=True)
     tribe = models.CharField(max_length=50, blank=True)
     species = models.CharField(max_length=50, blank=True)
-    author = models.CharField('species author', max_length=50, blank=True)
+    species_author = models.CharField('species author', max_length=50, blank=True)
     sspna = models.CharField('sub-species name', max_length=50, blank=True)
     sspau = models.CharField('sub-species author', max_length=50, blank=True)
     varna = models.CharField('variety name', max_length=50, blank=True)

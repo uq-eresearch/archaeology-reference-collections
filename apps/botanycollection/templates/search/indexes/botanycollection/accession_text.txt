@@ -5,7 +5,7 @@
 {{ object.subfam }}
 {{ object.tribe }}
 {{ object.species }}
-{{ object.author }}
+{{ object.species_author }}
 {{ object.sspna }}
 {{ object.sspau }}
 {{ object.varna }}

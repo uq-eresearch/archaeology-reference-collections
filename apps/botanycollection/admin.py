@@ -59,7 +59,7 @@ class AccessionAdmin(admin.ModelAdmin):
                 'subfam',
                 'tribe',
                 'species',
-                'author',
+                'species_author',
                 'sspna',
                 'sspau',
                 'varna',
