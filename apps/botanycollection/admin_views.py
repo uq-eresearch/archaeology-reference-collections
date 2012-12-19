@@ -38,7 +38,7 @@ def setup_accessions_importer():
         'Altitude': 'altitude',
         'Notes': 'location_notes',
         'Related Accession': 'related_accession',
-        'GRIN & Seed Atlas?': 'grin__seed_atlas',
+        'GRIN & Seed Atlas?': 'weblinks',
         })
 
     bi.header_row = 1
