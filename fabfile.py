@@ -173,8 +173,24 @@ def update():
         with prefix('source ' + env.envdir + '/bin/activate'):
             run('pip install --requirement=%s' % 'requirements.txt')
             run('./manage.py collectstatic --noinput')
+            run('./manage.py reset --noinput botanycollection')
             run('./manage.py syncdb')
 #            run('./manage.py rebuild_index --noinput')
+
+@task
+def update_local_libs():
+    with cd(env.appdir):
+        with prefix('source ' + env.envdir + '/bin/activate'):
+            run('pip install --upgrade git+git://github.com/omad/django-bulkimport.git#egg=django-bulkimport')
+
+
+@task
+def destroy_changes():
+    """
+    Delete an destroy any remote code changes
+    """
+    with cd(env.appdir):
+        run('git checkout .')
 
 
 @task
