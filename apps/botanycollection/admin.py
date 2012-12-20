@@ -12,6 +12,68 @@ class SeedFeaturesInline(admin.StackedInline):
 
 class WoodFeaturesInline(admin.StackedInline):
     model = WoodFeatures
+    fieldsets = (
+        ('Transverse', {
+            'fields': (
+                'vessels',
+                'vessels_porosity',
+                'vessels_grouping',
+                'vessels_arrangment',
+                'solitary_vessels_with_angular_outline',
+                'vessels_tyloses',
+                'vessels_deposits',
+                'fibres_wall_thickeness',
+                'axial_parenchyma_present',
+                'axial_parenchyma_arrangment',
+                'rays',
+                'aggregate_rays',
+        )}),
+        ('Longitudinal', {
+            'fields': (
+                'intervessels_pits_arrangment',
+                'intervessels_pits_specific_shapes',
+                'intervessels_pits_size',
+                'perforation_plates_types',
+                'helical_thickenings',
+                'fibre_helical_thickenings',
+                'fibre_pits',
+                'spetate_fibres_present',
+                'vascularvasicentric_tracheids_present',
+                'parenchyma_like_fibres_present',
+                'fusiform_parenchyma_cells',
+                'axial_parenchyma_bands',
+                'rays_height',
+                'rays_width',
+                'rays_structure',
+                'rays_cellular_composition',
+                'rays_sheat_cells',
+                'tile_cells',
+                'storied_structure',
+                'vessels_rays_pitting',
+                'walls',
+        )}),
+        ('Secretory elements and cambial variants', {
+            'fields': (
+                'radial_tracheids_for_gymnosperms',
+                'axial_canals',
+                'lactifers_tanniferous_tubes',
+                'radial_secretory_canals',
+                'cambial_variants',
+                'included_phloem',
+                'druses',
+                'silica',
+                'prismatic_crystal',
+        )}),
+        ('Extra fields', {
+            'fields': (
+                'australia',
+                'common_name',
+                'indigenous_name',
+                'new_caledonia',
+                'reference_specimens',
+                'turkey',
+        )})
+    )
 
 
 class AccessionPhotoInline(admin.StackedInline):
