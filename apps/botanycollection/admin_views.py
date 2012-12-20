@@ -66,6 +66,7 @@ def setup_wood_importer():
 #        'Type of Plant': 'type_of_plant',
         'Contributor': 'contributor',
         'DATE': 'date_contributed',
+        'NOTES': 'accession_notes'
         }, 'Accession', 'uq_accession')
     bi.add_mapping(WoodFeatures, {
         'aggregate rays': 'aggregate_rays',
@@ -89,7 +90,6 @@ def setup_wood_importer():
         'intervessels pits specific shapes': 'intervessels_pits_specific_shapes',
         'lactifers tanniferous tubes': 'lactifers_tanniferous_tubes',
         'New Caledonia': 'new_caledonia',
-        'NOTES': 'notes',
         'parenchyma like fibres present': 'parenchyma_like_fibres_present',
         'perforation plates types': 'perforation_plates_types',
         'prismatic crystal': 'prismatic_crystal',
@@ -124,7 +124,18 @@ def setup_wood_importer():
         if hasattr(accession, 'woodfeatures'):
             accession.woodfeatures.delete()
         wood_details.accession = accession
+
+        if wood_details.new_caledonia:
+            accession.country = u"New Caledonia"
+        elif wood_details.australia:
+            accession.country = u"Australia"
+        elif wood_details.turkey:
+            accession.country = u"Turkey"
         wood_details.save()
+
+
+        accession.material = u"Wood"
+        accession.save()
 
     bi.add_linking_function(link)
 

@@ -40,7 +40,7 @@ class Accession(models.Model):
     location_notes = models.CharField('location notes', max_length=162, blank=True)
     accession_notes = models.TextField(blank=True)
     related_accession = models.CharField(max_length=19, blank=True)
-    weblinks = models.CharField('weblinks', max_length=20, blank=True)
+    weblinks = models.TextField(blank=True)
     
     contributor = models.CharField(max_length=50, blank=True)
     date_contributed = models.CharField(max_length=10, blank=True)
@@ -133,7 +133,6 @@ class WoodFeatures(models.Model):
     intervessels_pits_specific_shapes = models.CharField("intervessels pits specific shapes", max_length=100, blank=True)
     lactifers_tanniferous_tubes = models.CharField("lactifers tanniferous tubes", max_length=100, blank=True)
     new_caledonia = models.CharField("new caledonia", max_length=50, blank=True)
-    notes = models.TextField("notes", blank=True)
     parenchyma_like_fibres_present = models.CharField("parenchyma like fibres present", max_length=100, blank=True)
     perforation_plates_types = models.CharField("perforation plates types", max_length=100, blank=True)
     prismatic_crystal = models.CharField("prismatic crystal", max_length=100, blank=True)
