@@ -155,13 +155,15 @@ def start():
     with settings(user=env.sudouser):
         sudo('initctl start %s' % env.appuser)
 
+
 @task
-def reload():
+def restart():
     """
     Reload the app
     """
     with settings(user=env.sudouser):
-        sudo('reload %s' % env.appuser)
+        sudo('stop %s' % env.appuser)
+        sudo('start %s' % env.appuser)
 
 
 @task
@@ -175,7 +177,14 @@ def update():
             run('./manage.py collectstatic --noinput')
             run('./manage.py reset --noinput botanycollection')
             run('./manage.py syncdb')
-#            run('./manage.py rebuild_index --noinput')
+
+
+@task
+def rebuild_index():
+    with cd(env.appdir):
+        with prefix('source ' + env.envdir + '/bin/activate'):
+            run('./manage.py rebuild_index --noinput')
+
 
 @task
 def update_local_libs():
@@ -191,11 +200,6 @@ def destroy_changes():
     """
     with cd(env.appdir):
         run('git checkout .')
-
-
-@task
-def restart():
-    run('supervisorctl -c %(supervisord_cfg)s restart django' % env)
 
 
 @task
