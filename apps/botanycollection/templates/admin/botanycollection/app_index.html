@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static %}
+{% load i18n admin_static static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
 
@@ -15,7 +15,7 @@
 <table style="width:100%; margin-left:20px;">
     <tr>
         <td>
-    <a href="{% url admin:upload_accessions_spreadsheet %}"><img src="/static/icons/upload_data.png">Upload botany data</a></td>
+    <a href="{% url admin:upload_accessions_spreadsheet %}"><img src="{% static 'icons/upload_data.png' %}">Upload botany data</a></td>
 </tr>
 </table>
 </div>

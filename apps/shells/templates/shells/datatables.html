@@ -40,12 +40,12 @@ table.table thead .sorting_desc_disabled {
     *cursor: hand;
 }
 
-table.table thead .sorting { background: url('/static/datatables/images/sort_both.png') no-repeat center right; }
-table.table thead .sorting_asc { background: url('/static/datatables/images/sort_asc.png') no-repeat center right; }
-table.table thead .sorting_desc { background: url('/static/datatables/images/sort_desc.png') no-repeat center right; }
+table.table thead .sorting { background: url('{% static 'datatables/images/sort_both.png' %}') no-repeat center right; }
+table.table thead .sorting_asc { background: url('{% static 'datatables/images/sort_asc.png' %}') no-repeat center right; }
+table.table thead .sorting_desc { background: url('{% static 'datatables/images/sort_desc.png' %}') no-repeat center right; }
 
-table.table thead .sorting_asc_disabled { background: url('/static/datatables/images/sort_asc_disabled.png') no-repeat center right; }
-table.table thead .sorting_desc_disabled { background: url('/static/datatables/images/sort_desc_disabled.png') no-repeat center right; }
+table.table thead .sorting_asc_disabled { background: url('{% static 'datatables/images/sort_asc_disabled.png' %}') no-repeat center right; }
+table.table thead .sorting_desc_disabled { background: url('{% static 'datatables/images/sort_desc_disabled.png' %}') no-repeat center right; }
 
 table.dataTable th:active {
     outline: none;
@@ -112,7 +112,7 @@ table.dataTable th:active {
 
         oTable = $('#species_table').dataTable( {
             "aaSorting": [ [0,'asc'], [1,'asc'], [2,'asc'], [3,'asc'] ],
-            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
             "bLengthChange": false,
             "iDisplayLength": 20,
 //            "sPaginationType": "bootstrap",

@@ -65,3 +65,12 @@ table.dataTable th:active { outline: none; }
 .ad-image .ad-image-description {position: static;}
 .ad-gallery { width: 384px; }
 .ad-gallery .ad-image-wrapper { height: 256px; }
+
+
+
+/************************
+ Detail pages
+ ************************/
+dl > dd {
+    color: #555;
+}
