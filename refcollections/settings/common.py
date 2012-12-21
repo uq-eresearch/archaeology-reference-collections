@@ -142,6 +142,8 @@ INSTALLED_APPS = (
     'haystack',
     'easy_thumbnails',
     'gunicorn',
+    'django_extensions',
+
 
 ### Local Libs
     'bulkimport',
