@@ -1,19 +1,85 @@
-              <div>
-                <dl>
-                  <dt>Shape</dt>
-                  <dd>{{object.seedfeatures.shape}}</dd>
+   <div class="row-fluid">
+      <div class="span12">
+        <dl>
+{% if object.seedfeatures.seed_type %}
+    <dt>seed/fruit type</dt>
+    <dd>{{ object.seedfeatures.seed_type }}</dd>
+{% endif %}
 
-                  <dt>Surface texture sculpting</dt>
-                  <dd>{{object.seedfeatures.surface_texture_sculpting}}</dd>
+{% if object.seedfeatures.shape_3d %}
+    <dt>shape 3d</dt>
+    <dd>{{ object.seedfeatures.shape_3d }}</dd>
+{% endif %}
 
-                  <dt>Special features</dt>
-                  <dd>{{object.seedfeatures.special_features}}</dd>
+{% if object.seedfeatures.shape_2d %}
+    <dt>shape 2d</dt>
+    <dd>{{ object.seedfeatures.shape_2d }}</dd>
+{% endif %}
 
-                  <dt>Size</dt>
-                  <dd>{{object.seedfeatures.size}}</dd>
+{% if object.seedfeatures.shape_detail %}
+    <dt>shape detail</dt>
+    <dd>{{ object.seedfeatures.shape_detail }}</dd>
+{% endif %}
 
-                  <dt>Identification references</dt>
-                  <dd>{{object.seedfeatures.identification_references}}</dd>
+{% if object.seedfeatures.size %}
+    <dt>size</dt>
+    <dd>{{ object.seedfeatures.size }}</dd>
+{% endif %}
 
-                </dl>
-              </div>
+{% if object.seedfeatures.testa_endocarp_thickness %}
+    <dt>testa/endocarp thickness</dt>
+    <dd>{{ object.seedfeatures.testa_endocarp_thickness }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.surface_outer_texture %}
+    <dt>surface outer texture/markings</dt>
+    <dd>{{ object.seedfeatures.surface_outer_texture }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.surface_inner_texture %}
+    <dt>surface inner texture/markings</dt>
+    <dd>{{ object.seedfeatures.surface_inner_texture }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.hilum_details %}
+    <dt>hilum details</dt>
+    <dd>{{ object.seedfeatures.hilum_details }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.special_features %}
+    <dt>special features</dt>
+    <dd>{{ object.seedfeatures.special_features }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.anatomy_transverse_section %}
+    <dt>anatomy transverse section</dt>
+    <dd>{{ object.seedfeatures.anatomy_transverse_section }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.anatomy_longitudinal_sections %}
+    <dt>anatomy longitudinal sections</dt>
+    <dd>{{ object.seedfeatures.anatomy_longitudinal_sections }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.embryo_endosperm %}
+    <dt>embryo and endosperm details</dt>
+    <dd>{{ object.seedfeatures.embryo_endosperm }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.other_identification_information %}
+    <dt>other identification information</dt>
+    <dd>{{ object.seedfeatures.other_identification_information }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.references_and_links %}
+    <dt>references and links</dt>
+    <dd>{{ object.seedfeatures.references_and_links }}</dd>
+{% endif %}
+
+{% if object.seedfeatures.notes %}
+    <dt>notes</dt>
+    <dd>{{ object.seedfeatures.notes }}</dd>
+{% endif %}
+        </dl>
+      </div>
+    </div>
