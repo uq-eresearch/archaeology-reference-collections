@@ -175,7 +175,6 @@ def update():
         with prefix('source ' + env.envdir + '/bin/activate'):
             run('pip install --requirement=%s' % 'requirements.txt')
             run('./manage.py collectstatic --noinput')
-            run('./manage.py reset --noinput botanycollection')
             run('./manage.py syncdb')
 
 
