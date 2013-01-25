@@ -30,15 +30,7 @@
         </tr>
     </thead>
     <tbody>
-{% for accession in accession_list %}
-        <tr href="{{ accession.get_absolute_url}}">
-            <td>{{ accession.uq_accession }}</td>
-            <td>{{ accession.family }}</td>
-            <td style="font-size: 120%"><a href="{{ accession.get_absolute_url}}">{{ accession.species }}</a></td>
-            <td>{{ accession.material }}</td>
-            <td>{{ accession.country }}</td>
-        </tr>
-{% endfor %}
+
     </tbody>
     <tfoot>
         <tr>
@@ -71,14 +63,27 @@
         oTable = $('#species_table').dataTable( {
             "aaSorting": [ [0,'asc'], [1,'asc'], [2,'asc'], [3,'asc'] ],
             "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+// Use Server Side Pagination and Filtering
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "{% url accession_list_json %}",
+// Number of items on paging
             "bLengthChange": false,
-            "iDisplayLength": 20,
-//            "sPaginationType": "bootstrap",
-            "sScrollY": "600px",
-            "sScrollX": "60%",
-            "bPaginate": false,
-            "bScrollCollapse": true,
-            "bAutoWidth": false,
+            "iDisplayLength": 15,
+// Display style for paging
+            "sPaginationType": "bootstrap",
+
+// Links for each row
+            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).attr('href', '/archaeobotany/accession/' + aData[0]);
+                $(nRow).children().wrapInner("<a href='/archaeobotany/accession/" + aData[0] + "'/>")
+            },
+
+            // "sScrollY": "600px",
+            // "sScrollX": "60%",
+           // "bPaginate": false,
+//            "bScrollCollapse": true,
+//            "bAutoWidth": false,
 //            "bStateSave": true,
             "oLanguage": {
                 "sSearch": "Quick Search:"
@@ -131,13 +136,14 @@
 
         }
 
-
-        $('#species_table tbody  tr').live('click', function() {
+// Make the entire row clickable, and indicate by changing the pointer
+        $(document).on("click", '#species_table tbody tr', function(event) {
             window.location = this.getAttribute('href');
         });
-        $('#species_table tbody tr').hover(function() {
+        $(document).on("mouseenter", '#species_table tbody tr',function() {
             $(this).css('cursor', 'pointer');
-        }, function() {
+        });
+        $(document).on("mouseleave", '#species_table tbody tr',function() {
             $(this).css('cursor', 'auto');
         });
 

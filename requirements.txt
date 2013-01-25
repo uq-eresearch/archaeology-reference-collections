@@ -24,3 +24,4 @@ gunicorn==0.16.1
 -e git://github.com/omad/django-bulkimport.git#egg=django-bulkimport
 docutils==0.9.1
 django-extensions==1.0.2
+django-datatables-view==1.2
