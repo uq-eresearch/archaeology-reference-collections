@@ -56,6 +56,17 @@
     var asInitVals = new Array();
 
     $(document).ready(function() {
+
+        /*
+         * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
+         * the footer
+         */
+        $("tfoot input").each( function (i) {
+            asInitVals[i] = $(this).attr('value');
+        } );
+
+
+
         $.extend( $.fn.dataTableExt.oStdClasses, {
             "sWrapper": "dataTables_wrapper form-inline"
         } );
@@ -84,25 +95,21 @@
            // "bPaginate": false,
 //            "bScrollCollapse": true,
 //            "bAutoWidth": false,
-//            "bStateSave": true,
+           // "bStateSave": true,
             "oLanguage": {
                 "sSearch": "Quick Search:"
             }
 
         } );
 
-        $("tfoot input").keyup( function () {
-            /* Filter on the column (the index) of this element */
-            oTable.fnFilter( this.value, $("tfoot input").index(this) );
-        });
-
         /*
          * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
          * the footer
          */
-        $("tfoot input").each( function (i) {
-            asInitVals[i] = this.value;
-        } );
+        $("tfoot input").keyup( function () {
+            /* Filter on the column (the index) of this element */
+            oTable.fnFilter( this.value, $("tfoot input").index(this) );
+        });
          
         $("tfoot input").focus( function () {
             if ( this.className == "search_init" )
