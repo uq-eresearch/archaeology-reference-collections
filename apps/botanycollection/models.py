@@ -69,14 +69,14 @@ class SeedFeatures(models.Model):
     Size: [a range in mm typically expressed as L; B; T]
     Testa/endocarp thickness: [mm, usually a range]
     Surface outer texture/markings:
-    Surface inner texture/markings: 
+    Surface inner texture/markings:
     Hilum details: [position, shape]
     Special features (pappus, wings etc):
     Anatomy Transverse Section: [again plenty of space required]
     Anatomy Longitudinal Sections: [plenty of space required]
     Embryo and endosperm details: [as per Martin]
     Other identification information: [A large field]
-    References and links: 
+    References and links:
     Notes: [a large field]
     Contributor: [Name of describer and date]
     """
