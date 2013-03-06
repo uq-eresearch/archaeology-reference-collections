@@ -6,6 +6,9 @@
     <h1>Mollusc Reference Collection</h1>
 
 
+<div class="row-fluid">
+    <div class="span12">
+
 <table id="species_table" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -18,17 +21,7 @@
         </tr>
     </thead>
     <tbody>
-{% for species in species_list %}
-        <tr href="{{ species.get_absolute_url}}">
-            <td>{{ species.class_name }}</td>
-            <td>{{ species.family }}</td>
-            <td>{{ species.genus }}</td>
-            <td>{{ species.subgenus }}</td>
-            <td style="font-size: 120%"><a href="{{ species.get_absolute_url}}">{{ species.species }}</a></td>
-            <td>{{ species.common_names }}</td>
-{#            <td><img src="{{ species.speciesrepresentation_set.all.0.image|thumbnail_url:'small_thumb'}}"></td> #}
-        </tr>
-{% endfor %}
+
     </tbody>
     <tfoot>
         <tr>
@@ -42,6 +35,8 @@
     </tfoot>
 </table>
 
+</div>
+</div>
 
 {% endblock %}
 
@@ -62,14 +57,16 @@
         oTable = $('#species_table').dataTable( {
             "aaSorting": [ [0,'asc'], [1,'asc'], [2,'asc'], [3,'asc'] ],
             "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+// Use Server Side Pagination and Filtering
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "{% url shells_list_json %}",
+// Number of items for paging
             "bLengthChange": false,
-            "iDisplayLength": 20,
-//            "sPaginationType": "bootstrap",
-            "sScrollY": "600px",
-            "sScrollX": "60%",
-            "bPaginate": false,
-            "bScrollCollapse": true,
-            "bAutoWidth": false,
+            "iDisplayLength": 15,
+// Display style for paging
+            "sPaginationType": "bootstrap",
+
 //            "bStateSave": true,
             "oLanguage": {
                 "sSearch": "Search:"
