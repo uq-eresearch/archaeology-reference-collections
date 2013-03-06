@@ -75,3 +75,9 @@ table.dataTable th:active { outline: none; }
 dl > dd {
     color: #555;
 }
+
+
+.text-center {
+    text-align: center;
+}
+
