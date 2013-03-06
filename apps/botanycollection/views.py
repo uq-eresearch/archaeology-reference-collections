@@ -19,10 +19,10 @@ class AccessionListJson(BaseDatatableView):
         sSearch = self.request.GET.get('sSearch', None)
         if sSearch:
             qs = qs.filter(Q(uq_accession__icontains=sSearch) |
-                Q(family__icontains=sSearch) |
-                Q(species__icontains=sSearch) |
-                Q(material__icontains=sSearch) |
-                Q(country__icontains=sSearch))
+                           Q(family__icontains=sSearch) |
+                           Q(species__icontains=sSearch) |
+                           Q(material__icontains=sSearch) |
+                           Q(country__icontains=sSearch))
 
         # enable searching by individual fields
         accession = self.request.GET.get('sSearch_0', None)
