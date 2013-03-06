@@ -81,3 +81,9 @@ dl > dd {
     text-align: center;
 }
 
+
+#species_table input {
+    width: auto;
+}
+
+
