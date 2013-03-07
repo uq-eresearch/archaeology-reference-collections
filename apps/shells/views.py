@@ -81,6 +81,7 @@ class ShellsListJson(BaseDatatableView):
         json_data = []
         for accession in qs:
             json_data.append([
+                accession.id,
                 accession.class_name,
                 accession.family,
                 accession.genus,
