@@ -63,6 +63,10 @@
                   <dt>Common name</dt>
                   <dd>{{object.common_name}}</dd>
 {% endif %}
+{% if object.woodfeatures.common_name %}
+            <dt>Common name</dt>
+            <dd>{{ object.woodfeatures.common_name }}</dd>
+{% endif %}
 
 {% if object.id_level_flag %}
                   <dt>ID level flag</dt>
@@ -80,6 +84,10 @@
 {% if object.country %}
                   <dt>Country</dt>
                   <dd>{{ object.country }}</dd>
+{% endif %}
+{% if object.woodfeatures.australia %}
+            <dt>Australia</dt>
+            <dd>{{ object.woodfeatures.australia }}</dd>
 {% endif %}
 
 {% if object.site_name %}
