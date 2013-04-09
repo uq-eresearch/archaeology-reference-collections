@@ -86,4 +86,6 @@ dl > dd {
     width: auto;
 }
 
-
+.species_name {
+    font-style: italic;
+}

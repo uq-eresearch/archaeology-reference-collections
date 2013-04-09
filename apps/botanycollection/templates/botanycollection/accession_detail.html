@@ -19,7 +19,7 @@
           <a href="{% url admin:botanycollection_accession_change object.id %}">Admin</a>
         </div>
 {% endif %}
-        <h2>{{ object.family }} {{object.species}}</h2>
+        <h2>{{ object.family }} <span class="species_name">{{object.species}}</span></h2>
     </div><!-- /span12 -->
 
       <div class="row-fluid">
@@ -51,7 +51,7 @@
 
 {% if object.species %}
                   <dt>Species</dt>
-                  <dd>{{ object.species }}</dd>
+                  <dd class="species_name">{{ object.species }}</dd>
 {% endif %}
 
 {% if object.contributor %}
