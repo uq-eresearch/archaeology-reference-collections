@@ -127,7 +127,7 @@
                       {% for photo in object.accessionphoto_set.all %}
                       <li>
                         <a href="{{ photo.image|thumbnail_url:'item_display'}}">
-                          <img src="{{ photo.image|thumbnail_url:'small_thumb'}}" title="{{ photo.image.name }}" alt="{{ photo.description }}">
+                          <img src="{{ photo.image|thumbnail_url:'small_thumb'}}" title="{{ photo.title }}" alt="{{ photo.description }}">
                         </a>
                       </li>
                       {% endfor %}
