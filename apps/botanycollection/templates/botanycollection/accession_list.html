@@ -36,7 +36,7 @@
         <tr>
             <th><input type="text" name="search_accession" value="Search accession" class="search_init" /></th>
             <th><input type="text" name="search_family" value="Search family" class="search_init" /></th>
-            <th><input type="text" name="search_species" value="Search species" class="search_init" /></th>
+            <th class="species_header"><input type="text" name="search_species" value="Search species" class="search_init" /></th>
             <th><input type="text" name="search_material" value="Search material" class="search_init" /></th>
             <th><input type="text" name="search_country" value="Search country" class="search_init" /></th>
         </tr>
@@ -83,6 +83,10 @@
             "iDisplayLength": 15,
 // Display style for paging
             "sPaginationType": "bootstrap",
+// Italicise Species Name Column
+            "aoColumnDefs": [
+              { "sClass": "species_name", "aTargets": [2]}
+            ],
 
 // Links for each row
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
