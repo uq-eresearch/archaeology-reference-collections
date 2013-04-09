@@ -159,7 +159,7 @@ def start():
 @task
 def restart():
     """
-    Reload the app
+    Reload the app on remote server
     """
     with settings(user=env.sudouser):
         sudo('stop %s' % env.appuser)
@@ -168,6 +168,9 @@ def restart():
 
 @task
 def update():
+    """
+    Update code and DB on remote server
+    """
     run('pwd')
     run('id')
     with cd(env.appdir):
@@ -180,6 +183,9 @@ def update():
 
 @task
 def rebuild_index():
+    """
+    Rebuild search index on remote server (may be slow)
+    """
     with cd(env.appdir):
         with prefix('source ' + env.envdir + '/bin/activate'):
             run('./manage.py rebuild_index --noinput')
