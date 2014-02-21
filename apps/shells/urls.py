@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, url
 import views
 
-urlpatterns = patterns('apps.shells.views',
+urlpatterns = patterns(
+    'apps.shells.views',
 
     url(r'^/list$',
         views.ShellsListView.as_view(

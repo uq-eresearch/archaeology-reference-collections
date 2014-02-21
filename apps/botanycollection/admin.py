@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 from django.conf import settings
 from apps.botanycollection.models import Accession, SeedFeatures, WoodFeatures
 from apps.botanycollection.models import AccessionPhoto

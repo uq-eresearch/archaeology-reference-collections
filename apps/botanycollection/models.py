@@ -12,12 +12,14 @@ class Accession(models.Model):
     uq_accession = models.CharField(max_length=14, blank=True, unique=True)
     material = models.CharField(max_length=50, blank=True)
     source = models.CharField(max_length=11, blank=True)
-    preservation_state = models.CharField('preservation state', max_length=32, blank=True)
+    preservation_state = models.CharField('preservation state',
+                                          max_length=32, blank=True)
     family = models.CharField(max_length=50, blank=True)
     subfam = models.CharField('sub-family', max_length=50, blank=True)
     tribe = models.CharField(max_length=50, blank=True)
     species = models.CharField(max_length=50, blank=True)
-    species_author = models.CharField('species author', max_length=50, blank=True)
+    species_author = models.CharField('species author',
+                                      max_length=50, blank=True)
     sspna = models.CharField('sub-species name', max_length=50, blank=True)
     sspau = models.CharField('sub-species author', max_length=50, blank=True)
     varna = models.CharField('variety name', max_length=50, blank=True)
@@ -35,13 +37,15 @@ class Accession(models.Model):
     id_level_flag = models.CharField(max_length=15, blank=True)
     country = models.CharField(max_length=27, blank=True)
     site_name = models.CharField(max_length=214, blank=True)
-    lat_long = models.CharField('geographical coordinates', max_length=15, blank=True)
+    lat_long = models.CharField('geographical coordinates',
+                                max_length=15, blank=True)
     altitude = models.CharField(max_length=14, blank=True)
-    location_notes = models.CharField('location notes', max_length=162, blank=True)
+    location_notes = models.CharField('location notes',
+                                      max_length=162, blank=True)
     accession_notes = models.TextField(blank=True)
     related_accession = models.CharField(max_length=19, blank=True)
     weblinks = models.TextField(blank=True)
-    
+
     contributor = models.CharField(max_length=50, blank=True)
     date_contributed = models.CharField(max_length=10, blank=True)
 
@@ -65,7 +69,8 @@ class SeedFeatures(models.Model):
     Seed/fruit type: e.g. [Caryopsis]
     Shape 3D: [small field with up to 30 characters]
     Shape 2D: [small field with up to 30 characters]
-    Shape detail:  [a large field with lots of latitude for descriptions in dorsal, ventral, lateral and cross-section view]
+    Shape detail:  [a large field with lots of latitude
+          for descriptions in dorsal, ventral, lateral and cross-section view]
     Size: [a range in mm typically expressed as L; B; T]
     Testa/endocarp thickness: [mm, usually a range]
     Surface outer texture/markings:
@@ -82,23 +87,32 @@ class SeedFeatures(models.Model):
     """
     accession = models.OneToOneField(Accession)
 
-    seed_type = models.CharField("seed/fruit type", max_length=50, help_text="e.g. 'Caryopsis'")
+    seed_type = models.CharField("seed/fruit type", max_length=50,
+                                 help_text="e.g. 'Caryopsis'")
     shape_3d = models.CharField(max_length=30, blank=True)
     shape_2d = models.CharField(max_length=30, blank=True)
     shape_detail = models.TextField(blank=True, help_text="descriptions in dorsal, ventral, lateral and cross-section view")
-    size = models.CharField(max_length=30, blank=True, help_text="a range in mm, typically expressed as L; B; T")
-    testa_endocarp_thickness = models.CharField('testa/endocarp thickness', max_length=30, blank=True, help_text="mm, usually a range")
-    surface_outer_texture = models.TextField("surface outer texture/markings", blank=True)
-    surface_inner_texture = models.TextField("surface inner texture/markings", blank=True)
-    hilum_details = models.CharField(max_length=30, blank=True, help_text="position, shape")
-    special_features = models.TextField(blank=True, help_text="pappus, wings etc")
+    size = models.CharField(max_length=30, blank=True,
+                            help_text="a range in mm, typically expressed as L; B; T")
+    testa_endocarp_thickness = models.CharField('testa/endocarp thickness',
+                                                max_length=30,
+                                                blank=True,
+                                                help_text="mm, usually a range")
+    surface_outer_texture = models.TextField("surface outer texture/markings",
+                                             blank=True)
+    surface_inner_texture = models.TextField("surface inner texture/markings",
+                                             blank=True)
+    hilum_details = models.CharField(max_length=30, blank=True,
+                                     help_text="position, shape")
+    special_features = models.TextField(blank=True,
+                                        help_text="pappus, wings etc")
     anatomy_transverse_section = models.TextField(blank=True)
     anatomy_longitudinal_sections = models.TextField(blank=True)
-    embryo_endosperm = models.TextField("embryo and endosperm details", blank=True, help_text="as per Martin")
+    embryo_endosperm = models.TextField("embryo and endosperm details",
+                                        blank=True, help_text="as per Martin")
     other_identification_information = models.TextField(blank=True)
     references_and_links = models.TextField(blank=True)
     notes = models.TextField(blank=True)
-
 
     class Meta:
         verbose_name_plural = "seed features"

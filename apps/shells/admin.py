@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 from models import Specimen, SpeciesRepresentation
 from apps.shells.admin_views import ShellsImagesUploader, upload_shells_spreadsheet
 

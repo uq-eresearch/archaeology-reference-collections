@@ -16,7 +16,7 @@
     <div class="span12">
 {% if user.is_staff %}
         <div style="float:right;font-size: 80%;">
-          <a href="{% url admin:botanycollection_accession_change object.id %}">Admin</a>
+          <a href="{% url "admin:botanycollection_accession_change" object.id %}">Admin</a>
         </div>
 {% endif %}
         <h2>{{ object.family }} <span class="species_name">{{object.species}}</span></h2>

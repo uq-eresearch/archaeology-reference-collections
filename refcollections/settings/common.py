@@ -203,12 +203,15 @@ except IOError:
 
 
 ##### HAYSTACK CONFIGURATION
-HAYSTACK_SITECONF = 'refcollections.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = join(DJANGO_ROOT, 'deploy', 'search_index')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': join(DJANGO_ROOT, 'deploy', 'search_index'),
+    },
+}
 
-
-# This normally protects against XSS attacks, which shouldn't be a problem here.
+# This normally protects against XSS attacks, which
+# shouldn't be a problem here.
 # If enabled, it interrupts the bulk upload functionality.
 SESSION_COOKIE_HTTPONLY = False
 

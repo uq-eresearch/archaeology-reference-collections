@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url('', include('apps.home.urls')),
 
     url(r'^archaeobotany', include('apps.botanycollection.urls')),
@@ -19,10 +20,12 @@ urlpatterns = patterns('',
 
     url(r'^search/', include('haystack.urls')),
 
-    url(r'^advanced/', 'apps.shells.views.advanced_search', name='advanced-search'),
+#    url(r'^advanced/',
+#        'apps.shells.views.advanced_search', name='advanced-search'),
 
 )
 
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
