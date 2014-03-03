@@ -75,9 +75,10 @@
     <dd>{{ object.seedfeatures.other_identification_information }}</dd>
 {% endif %}
 
-{% if object.seedfeatures.references_and_links %}
-    <dt>References and links</dt>
-    <dd>{{ object.seedfeatures.references_and_links }}</dd>
+
+{% if object.seedfeatures.references_and_links %} 
+   <dt>References and links</dt>
+    <dd>{{ object.seedfeatures.references_and_links|urlize }}</dd>
 {% endif %}
 
 {% if object.seedfeatures.notes %}
