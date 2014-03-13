@@ -83,6 +83,7 @@
 {{ object.woodfeatures.rays_height }}
 {{ object.woodfeatures.rays_sheat_cells }}
 {{ object.woodfeatures.rays_structure }}
+{{ object.woodfeatures.rays_type }}
 {{ object.woodfeatures.rays_width }}
 {{ object.woodfeatures.reference_specimens }}
 {{ object.woodfeatures.silica }}

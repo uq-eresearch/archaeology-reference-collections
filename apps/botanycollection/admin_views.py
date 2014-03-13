@@ -101,6 +101,7 @@ def setup_wood_importer():
         'rays sheat cells': 'rays_sheat_cells',
         'RAYS STRUCTURE': 'rays_structure',
         'rays width': 'rays_width',
+        'rays type': 'rays_type',
         'Reference Specimens': 'reference_specimens',
         'silica': 'silica',
         'solitary vessels with angular outline': 'solitary_vessels_with_angular_outline',

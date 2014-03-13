@@ -157,6 +157,7 @@ class WoodFeatures(models.Model):
     rays_height = models.CharField("rays height", max_length=50, blank=True)
     rays_sheat_cells = models.CharField("rays sheat cells", max_length=50, blank=True)
     rays_structure = models.CharField("rays structure", max_length=50, blank=True)
+    rays_type = models.CharField("rays type", max_length=50, blank=True)
     rays_width = models.CharField("rays width", max_length=50, blank=True)
     reference_specimens = models.CharField("reference specimens", max_length=50, blank=True)
     silica = models.CharField("silica", max_length=50, blank=True)

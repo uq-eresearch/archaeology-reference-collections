@@ -45,6 +45,7 @@ class WoodFeaturesInline(admin.StackedInline):
                 'axial_parenchyma_bands',
                 'rays_height',
                 'rays_width',
+                'rays_type',
                 'rays_structure',
                 'rays_cellular_composition',
                 'rays_sheat_cells',
