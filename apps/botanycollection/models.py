@@ -165,6 +165,7 @@ class WoodFeatures(models.Model):
     spetate_fibres_present = models.CharField("spetate fibres present", max_length=50, blank=True)
     storied_structure = models.CharField("storied structure", max_length=50, blank=True)
     tile_cells = models.CharField("tile cells", max_length=50, blank=True)
+    tracheid_diameter = models.CharField("tracheid diameter", max_length=50, blank=True)
     turkey = models.CharField("turkey", max_length=50, blank=True)
     vascularvasicentric_tracheids_present = models.CharField("vascular-vasicentric tracheids present", max_length=100, blank=True)
     vessels = models.CharField("vessels", max_length=50, blank=True)

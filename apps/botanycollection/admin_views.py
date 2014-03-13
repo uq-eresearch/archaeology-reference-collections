@@ -108,6 +108,7 @@ def setup_wood_importer():
         'spetate fibres present': 'spetate_fibres_present',
         'storied structure': 'storied_structure',
         'tile cells': 'tile_cells',
+        'tracheid diameter': 'tracheid_diameter',
         'Turkey': 'turkey',
         'vascular-vasicentric tracheids present': 'vascularvasicentric_tracheids_present',
         'vessels': 'vessels',

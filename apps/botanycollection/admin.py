@@ -17,6 +17,7 @@ class WoodFeaturesInline(admin.StackedInline):
             'fields': (
                 'vessels',
                 'vessels_porosity',
+                'tracheid_diameter',
                 'vessels_grouping',
                 'vessels_arrangment',
                 'solitary_vessels_with_angular_outline',

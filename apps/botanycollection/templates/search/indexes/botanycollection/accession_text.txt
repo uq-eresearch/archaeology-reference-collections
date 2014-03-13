@@ -91,6 +91,7 @@
 {{ object.woodfeatures.spetate_fibres_present }}
 {{ object.woodfeatures.storied_structure }}
 {{ object.woodfeatures.tile_cells }}
+{{ object.woodfeatures.tracheid_diameter }}
 {{ object.woodfeatures.turkey }}
 {{ object.woodfeatures.vascularvasicentric_tracheids_present }}
 {{ object.woodfeatures.vessels }}
