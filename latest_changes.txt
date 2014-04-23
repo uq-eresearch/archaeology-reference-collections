@@ -1,0 +1,24 @@
+
+Remove - 'Vessel porosity/tracheid diameter'
+New - 'Vessel porosity'; 'Tracheid diameter'
+(The two new fields goes under the 'Transverse' section on the display in the position of the previous field)
+
+
+New - 'Ray type' 
+(This new fields goes under the 'Longitudinal' section on the display after 'Ray width')
+
+Remove - 'Australia' from public display
+New - 'Site name'; 'Geographical coordinates'; 'Altitude'; 'Location notes'
+(These new fields go under 'Location details')
+
+New - 'Source'; 'ID Level Flag'; 'Related Accession'
+(These new fields under 'Accession details').
+
+
+Notes:
+- Added tracheid diameter
+- Add 'Rays type', note different to 'Ray type', to stay consistent with the other fields
+ - Check which it should be
+- Removed 'Australia' from public display
+- site name, geographical coordinates, altitude and location notes already exist
+- source, id level flag, and related accession already exist
