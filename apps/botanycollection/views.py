@@ -4,6 +4,9 @@ from django.db.models import Q
 from django.views.generic import DetailView, ListView, TemplateView
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 class AccessionListJson(BaseDatatableView):
     order_columns = ['uq_accession', 'family', 'species',
