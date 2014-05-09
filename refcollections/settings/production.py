@@ -63,5 +63,9 @@ LOGGING = {
             'handlers': ['file'],
             'level': 'DEBUG',
         },
+        'apps': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
     }
 }
