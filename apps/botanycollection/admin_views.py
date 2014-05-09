@@ -1,9 +1,14 @@
 from apps.botanycollection.models import Accession, WoodFeatures
-from bulkimport import BulkDataImportHandler, BulkImportForm
+from bulkimport import (
+    BulkDataImportHandler, BulkImportForm,
+    BulkImporterException
+)
 from django.shortcuts import render
 from django import forms
 from django.contrib import messages
 
+import logging
+logger = logging.getLogger(__name__)
 
 def setup_accessions_importer():
     bi = BulkDataImportHandler()
@@ -166,9 +171,13 @@ def upload_accessions_spreadsheet(request):
             else:
                 raise Exception
 
-            imported_records = bi.process_spreadsheet(spreadsheet)
+            try:
+                imported_records = bi.process_spreadsheet(spreadsheet)
+                messages.add_message(request, messages.SUCCESS, "Imported %s records" % len(imported_records))
+            except BulkImporterException, e:
+                logger.error("Error processing spreadsheet", exc_info=True)
+                messages.add_message(request, messages.ERROR, str(e))
 
-            messages.add_message(request, messages.SUCCESS, "Imported %s records" % len(imported_records))
 
     else:
         form = ArcheobotanyImportForm()
