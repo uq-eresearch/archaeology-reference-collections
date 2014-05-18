@@ -50,11 +50,19 @@ LOGGING = {
            'handlers': ['console'],
            'level': 'DEBUG',
        },
+       'django.request': {
+           'handlers': ['console'],
+           'level': 'DEBUG',
+       },
        'refcollections': {
           'handlers': ['console'],
           'level': 'DEBUG'
        },
-       'apps': {
+       'bulkimport': {
+          'handlers': ['console'],
+          'level': 'DEBUG'
+       },
+       '': {
           'handlers': ['console'],
           'level': 'DEBUG'
        }
