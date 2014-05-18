@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'gunicorn',
     'django_extensions',
+    'south',
 
 
 ### Local Libs
