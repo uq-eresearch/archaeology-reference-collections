@@ -158,6 +158,7 @@ class ArcheobotanyImportForm(BulkImportForm):
 
 
 def upload_accessions_spreadsheet(request):
+    extra = {}
     if request.method == 'POST':
         form = ArcheobotanyImportForm(request.POST, request.FILES)
         if form.is_valid():
@@ -172,8 +173,9 @@ def upload_accessions_spreadsheet(request):
                 raise Exception
 
             try:
-                imported_records = bi.process_spreadsheet(spreadsheet)
+                imported_records, stats = bi.process_spreadsheet(spreadsheet)
                 messages.add_message(request, messages.SUCCESS, "Imported %s records" % len(imported_records))
+                extra['stats'] = stats
             except BulkImporterException, e:
                 logger.error("Error processing spreadsheet", exc_info=True)
                 messages.add_message(request, messages.ERROR, str(e))
@@ -183,5 +185,6 @@ def upload_accessions_spreadsheet(request):
         form = ArcheobotanyImportForm()
 
     return render(request, 'spreadsheet_upload.html', {
-        'form': form
+        'form': form,
+        'extra': extra
         })
