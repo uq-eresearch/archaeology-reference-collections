@@ -9,10 +9,8 @@ class Accession(models.Model):
     An accession, including source, taxonomic, and detailed
     descriptive information.
     """
-    uq_accession = models.CharField(max_length=14, blank=True, unique=True) # shouldn't be used
     uqm_accession = models.CharField(max_length=14, blank=True, unique=True)
     unique_identifier = models.CharField(max_length=24, blank=True, unique=True)
-
     material = models.CharField(max_length=50, blank=True)
     source = models.CharField(max_length=11, blank=True)
     preservation_state = models.CharField('preservation state',
