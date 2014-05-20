@@ -49,6 +49,11 @@
                   <dd>{{ object.family }}</dd>
 {% endif %}
 
+{% if object.genus %}
+                  <dt>Genus</dt>
+                  <dd>{{ object.genus }}</dd>
+{% endif %}
+
 {% if object.species %}
                   <dt>Species</dt>
                   <dd class="species_name">{{ object.species }}</dd>
@@ -66,6 +71,10 @@
 {% if object.woodfeatures.common_name %}
             <dt>Common name</dt>
             <dd>{{ object.woodfeatures.common_name }}</dd>
+{% endif %}
+{% if object.indigenous_name %}
+            <dt>Indigenous name</dt>
+            <dd>{{ object.indigenous_name }}</dd>
 {% endif %}
 
 {% if object.id_level_flag %}
