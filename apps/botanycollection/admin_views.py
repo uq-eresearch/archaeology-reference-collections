@@ -89,7 +89,7 @@ def setup_wood_importer():
         'helical thickenings': 'helical_thickenings',
         'included phloem': 'included_phloem',
         'Intervessel/tracheid pit arrangement': 'intervessel_pit_arrangement',
-        'intervessels pits size': 'intervessel_pit_size',
+        'intervessel pit size': 'intervessel_pit_size',
         'Intervessel/tracheid pit shapes': 'intervessel_tracheid_pit_shapes',
         'lactifer tanniferous tubes': 'lactifer_tanniferous_tubes',
         'parenchyma like fibres present': 'parenchyma_like_fibres_present',
