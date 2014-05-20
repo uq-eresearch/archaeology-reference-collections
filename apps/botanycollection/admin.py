@@ -119,6 +119,8 @@ class AccessionAdmin(admin.ModelAdmin):
         ('Specimen details', {
             'fields': (
                 'uqm_accession',
+                'sample_number',
+                'unique_identifier',
                 'material',
                 'source',
                 'preservation_state',
