@@ -71,7 +71,7 @@ class AccessionListView(ListView):
 
 class AccessionDetailView(DetailView):
     model = Accession
-    slug_field = 'uqm_accession'
+    slug_field = 'unique_identifier'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
