@@ -254,6 +254,58 @@
                       </dl>
                     </div>
                 </div><!-- /row -->
+                <div class="row">
+                    <div class="span4">
+                        <h4>Gymnosperm</h4>
+                        <dl>
+
+{% if object.woodfeatures.early_late_wood_transition %}
+            <dt>Early/late wood transition</dt>
+            <dd>{{ object.woodfeatures.early_late_wood_transition }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.axial_resin_canals %}
+            <dt>Axial resin canals</dt>
+            <dd>{{ object.woodfeatures.axial_resin_canals }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.epithelial_cells %}
+            <dt>Epithelial cells</dt>
+            <dd>{{ object.woodfeatures.epithelial_cells }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.axial_tracheid_pits %}
+            <dt>Axial tracheid pits</dt>
+            <dd>{{ object.woodfeatures.axial_tracheid_pits }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.spiral_thickenings %}
+            <dt>Spiral thickenings</dt>
+            <dd>{{ object.woodfeatures.spiral_thickenings }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.crassulae %}
+            <dt>Crassulae</dt>
+            <dd>{{ object.woodfeatures.crassulae }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.nodular_tangential_ray_walls %}
+            <dt>Nodular tangential ray walls</dt>
+            <dd>{{ object.woodfeatures.nodular_tangential_ray_walls }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.early_wood_ray_pits %}
+            <dt>Early wood ray pits</dt>
+            <dd>{{ object.woodfeatures.early_wood_ray_pits }}</dd>
+{% endif %}
+
+{% if object.woodfeatures.late_wood_ray_pits %}
+            <dt>Late wood ray pits</dt>
+            <dd>{{ object.woodfeatures.late_wood_ray_pits }}</dd>
+{% endif %}
+                        </dl>
+                    </div>
+                </div><!-- /row -->
 <!--
             <div class="row-fluid">
                 <div class="span6">

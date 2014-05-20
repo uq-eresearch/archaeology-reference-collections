@@ -182,7 +182,15 @@ class WoodFeatures(models.Model):
 
     # gymnosperm
     early_late_wood_transition = models.CharField("early/late wood transition", max_length=50, blank=True)
-    axiel_resin_canals = models.CharField("axial resin canals", max_length=50, blank=True)
+    axial_resin_canals = models.CharField("axial resin canals", max_length=50, blank=True)
+    epithelial_cells = models.CharField("epithelial cells", max_length=50, blank=True)
+    axial_tracheid_pits = models.CharField("axial tracheid pits", max_length=50, blank=True)
+    spiral_thickenings = models.CharField("spiral thickenings", max_length=50, blank=True)
+    crassulae = models.CharField("crassulae", max_length=50, blank=True)
+    nodular_tangential_ray_walls = models.CharField("nodules tangential ray walls", max_length=50, blank=True)
+    early_wood_ray_pits = models.CharField("early wood ray pits", max_length=50, blank=True)
+    late_wood_ray_pits = models.CharField("late wood ray pits", max_length=50, blank=True)
+
 
     class Meta:
         verbose_name_plural = "wood features"

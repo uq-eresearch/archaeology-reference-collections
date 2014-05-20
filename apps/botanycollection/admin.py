@@ -70,6 +70,18 @@ class WoodFeaturesInline(admin.StackedInline):
                 'silica',
                 'prismatic_crystals',
         )}),
+        ('Gymnosperm', {
+            'fields': (
+                'early_late_wood_transition',
+                'axial_resin_canals',
+                'epithelial_cells',
+                'axial_tracheid_pits',
+                'spiral_thickenings',
+                'crassulae',
+                'nodular_tangential_ray_walls',
+                'early_wood_ray_pits',
+                'late_wood_ray_pits',
+        )}),
         ('Extra fields', {
             'fields': (
                 'common_name',

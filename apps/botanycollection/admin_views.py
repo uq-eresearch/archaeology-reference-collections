@@ -121,6 +121,15 @@ def setup_wood_importer():
         'vessels rays pitting': 'vessels_rays_pitting',
         'vessels tyloses': 'vessels_tyloses',
         'walls': 'walls',
+        'early late wood transition': 'early_late_wood_transition',
+        'axiel resin canals': 'axiel_resin_canals',
+        'epithelial cells': 'epithelial_cells',
+        'axial tracheid pits': 'axial_tracheid_pits',
+        'spiral thickenings': 'spiral_thickenings',
+        'crassulae': 'crassulae',
+        'nodular tangential ray walls': 'nodular_tangential_ray_walls',
+        'early wood ray pits': 'early_wood_ray_pits',
+        'late wood ray pits': 'late_wood_ray_pits',
         })
 
     def link(accession, wood_details):
