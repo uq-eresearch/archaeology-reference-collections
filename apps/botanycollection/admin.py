@@ -109,16 +109,16 @@ class AccessionAdmin(admin.ModelAdmin):
         AccessionPhotoInline
     ]
 
-    list_display = ('uq_accession', 'family', 'species', 'common_name', 'material')
+    list_display = ('uqm_accession', 'family', 'species', 'common_name', 'material')
     list_filter = ('family', )
 
-    search_fields = ['family', 'species', 'uq_accession'
+    search_fields = ['family', 'species', 'uqm_accession'
                      'country', 'preservation_state']
 
     fieldsets = (
         ('Specimen details', {
             'fields': (
-                'uq_accession',
+                'uqm_accession',
                 'material',
                 'source',
                 'preservation_state',

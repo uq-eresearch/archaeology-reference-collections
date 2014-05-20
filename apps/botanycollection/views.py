@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class AccessionListJson(BaseDatatableView):
-    order_columns = ['uq_accession', 'family', 'species',
+    order_columns = ['uqm_accession', 'family', 'species',
                      'material', 'country']
 
     def get_initial_queryset(self):
@@ -21,7 +21,7 @@ class AccessionListJson(BaseDatatableView):
         # Quick search for all fields
         sSearch = self.request.GET.get('sSearch', None)
         if sSearch:
-            qs = qs.filter(Q(uq_accession__icontains=sSearch) |
+            qs = qs.filter(Q(uqm_accession__icontains=sSearch) |
                            Q(family__icontains=sSearch) |
                            Q(species__icontains=sSearch) |
                            Q(material__icontains=sSearch) |
@@ -30,7 +30,7 @@ class AccessionListJson(BaseDatatableView):
         # enable searching by individual fields
         accession = self.request.GET.get('sSearch_0', None)
         if accession:
-            qs = qs.filter(uq_accession__icontains=accession)
+            qs = qs.filter(uqm_accession__icontains=accession)
 
         family = self.request.GET.get('sSearch_1', None)
         if family:
@@ -56,7 +56,7 @@ class AccessionListJson(BaseDatatableView):
         json_data = []
         for accession in qs:
             json_data.append([
-                accession.uq_accession,
+                accession.uqm_accession,
                 accession.family,
                 accession.species,
                 accession.material,
@@ -71,7 +71,7 @@ class AccessionListView(ListView):
 
 class AccessionDetailView(DetailView):
     model = Accession
-    slug_field = 'uq_accession'
+    slug_field = 'uqm_accession'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

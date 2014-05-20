@@ -9,7 +9,10 @@ class Accession(models.Model):
     An accession, including source, taxonomic, and detailed
     descriptive information.
     """
-    uq_accession = models.CharField(max_length=14, blank=True, unique=True)
+    uq_accession = models.CharField(max_length=14, blank=True, unique=True) # shouldn't be used
+    uqm_accession = models.CharField(max_length=14, blank=True, unique=True)
+    unique_identifier = models.CharField(max_length=24, blank=True, unique=True)
+
     material = models.CharField(max_length=50, blank=True)
     source = models.CharField(max_length=11, blank=True)
     preservation_state = models.CharField('preservation state',
@@ -54,7 +57,7 @@ class Accession(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('accession_detail', [str(self.uq_accession)])
+        return ('accession_detail', [str(self.unique_identifier)])
 
     def __unicode__(self):
         components = (

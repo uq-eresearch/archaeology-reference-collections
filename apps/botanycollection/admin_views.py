@@ -61,14 +61,15 @@ def setup_wood_importer():
         'Species': 'species',
         'Common Name': 'common_name',
         'Indigenous name': 'indigenous_name',
-        'UQM Accession Number': 'uq_accession',
+        'UQM Accession Number': 'uqm_accession',
         'Specimen Collection Date': 'collection_date',
         'State': 'preservation_state',
         'Contributor': 'contributor',
         'DATE': 'date_contributed',
         'notes': 'accession_notes',
-        'sample number': 'sample_number'
-        }, 'UQM Accession Number', 'uq_accession')
+        'sample number': 'sample_number',
+        'unique identifier': 'unique_identifier'
+        }, 'unique identifier', 'unique_identifier')
     bi.add_mapping(WoodFeatures, {
         'aggregate rays': 'aggregate_rays',
         'axial canals': 'axial_canals',
