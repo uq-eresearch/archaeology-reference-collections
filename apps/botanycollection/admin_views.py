@@ -57,8 +57,10 @@ def setup_wood_importer():
     bi = BulkDataImportHandler()
     bi.add_mapping(Accession, {
         'family': 'family',
+        'genus': 'genus',
         'Species': 'species',
         'Common Name': 'common_name',
+        'Indigenous name': 'indigenous_name',
         'UQM Accession Number': 'uq_accession',
         'Specimen Collection Date': 'collection_date',
         'State': 'preservation_state',
@@ -70,27 +72,25 @@ def setup_wood_importer():
     bi.add_mapping(WoodFeatures, {
         'aggregate rays': 'aggregate_rays',
         'axial canals': 'axial_canals',
-        'axial parenchyma arrangment (1)': 'axial_parenchyma_arrangment1',
-        'axial parenchyma arrangment (2)': 'axial_parenchyma_arrangment2',
-        'axial parenchyma arrangment (3)': 'axial_parenchyma_arrangment3',
-        'axial parenchyma arrangment (4)': 'axial_parenchyma_arrangment4',
-        'axial parenchyma arrangment (5)': 'axial_parenchyma_arrangment5',
+        'axial parenchyma arrangement (1)': 'axial_parenchyma_arrangement1',
+        'axial parenchyma arrangement (2)': 'axial_parenchyma_arrangement2',
+        'axial parenchyma arrangement (3)': 'axial_parenchyma_arrangement3',
+        'axial parenchyma arrangement (4)': 'axial_parenchyma_arrangement4',
+        'axial parenchyma arrangement (5)': 'axial_parenchyma_arrangement5',
         'axial parenchyma bands': 'axial_parenchyma_bands',
         'axial parenchyma present': 'axial_parenchyma_present',
         'cambial variants': 'cambial_variants',
         'druses': 'druses',
         'Early/Late wood transition': 'early_late_wood_transition',
-        'family': 'family',
         'fibre helical thickenings': 'fibre_helical_thickenings',
         'fibre pits': 'fibre_pits',
-        'fibre wall thickeness': 'fibre_wall_thickeness',
+        'fibre wall thickness': 'fibre_wall_thickness',
         'fusiform parenchyma cells': 'fusiform_parenchyma_cells',
         'helical thickenings': 'helical_thickenings',
         'included phloem': 'included_phloem',
-        'Indigenous name': 'indigenous_name',
-        'Intervessel/tracheid pit arrangement': 'intervessel_pits_arrangment',
-        'intervessels pits size': 'intervessel_pits_size',
-        'intervessels pits specific shapes': 'intervessel_pits_specific_shapes',
+        'Intervessel/tracheid pit arrangement': 'intervessel_pit_arrangement',
+        'intervessels pits size': 'intervessel_pit_size',
+        'Intervessel/tracheid pit shapes': 'intervessel_tracheid_pit_shapes',
         'lactifer tanniferous tubes': 'lactifer_tanniferous_tubes',
         'parenchyma like fibres present': 'parenchyma_like_fibres_present',
         'perforation plates types': 'perforation_plates_types',
@@ -114,7 +114,7 @@ def setup_wood_importer():
         'tracheid diameter': 'tracheid_diameter',
         'vascular-vasicentric tracheids present': 'vascularvasicentric_tracheids_present',
         'vessels': 'vessels',
-        'vessel arrangment': 'vessel_arrangment',
+        'vessel arrangement': 'vessel_arrangement',
         'vessels deposits': 'vessels_deposits',
         'vessel grouping': 'vessel_grouping',
         'vessel porosity': 'vessel_porosity',
@@ -128,12 +128,6 @@ def setup_wood_importer():
             accession.woodfeatures.delete()
         wood_details.accession = accession
 
-        if wood_details.new_caledonia:
-            accession.country = u"New Caledonia"
-        elif wood_details.australia:
-            accession.country = u"Australia"
-        elif wood_details.turkey:
-            accession.country = u"Turkey"
         wood_details.save()
 
 
