@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class AccessionListJson(BaseDatatableView):
     order_columns = ['uqm_accession', 'family', 'species',
-                     'material', 'country']
+                     'genus', 'material']
 
     def get_initial_queryset(self):
         return Accession.objects.all()
@@ -23,9 +23,9 @@ class AccessionListJson(BaseDatatableView):
         if sSearch:
             qs = qs.filter(Q(uqm_accession__icontains=sSearch) |
                            Q(family__icontains=sSearch) |
+                           Q(genus__icontains=sSearch) |
                            Q(species__icontains=sSearch) |
-                           Q(material__icontains=sSearch) |
-                           Q(country__icontains=sSearch))
+                           Q(material__icontains=sSearch))
 
         # enable searching by individual fields
         accession = self.request.GET.get('sSearch_0', None)
@@ -36,17 +36,17 @@ class AccessionListJson(BaseDatatableView):
         if family:
             qs = qs.filter(family__icontains=family)
 
-        species = self.request.GET.get('sSearch_2', None)
+        genus = self.request.GET.get('sSearch_2', None)
+        if genus:
+            qs = qs.filter(genus__icontains=genus)
+
+        species = self.request.GET.get('sSearch_3', None)
         if species:
             qs = qs.filter(species__icontains=species)
 
-        material = self.request.GET.get('sSearch_3', None)
+        material = self.request.GET.get('sSearch_4', None)
         if material:
             qs = qs.filter(material__icontains=material)
-
-        country = self.request.GET.get('sSearch_4', None)
-        if country:
-            qs = qs.filter(country__icontains=country)
 
         return qs
 
@@ -58,9 +58,10 @@ class AccessionListJson(BaseDatatableView):
             json_data.append([
                 accession.uqm_accession,
                 accession.family,
+                accession.genus,
                 accession.species,
                 accession.material,
-                accession.country
+                accession.unique_identifier
             ])
         return json_data
 

@@ -46,8 +46,13 @@ table.table thead .sorting_desc_disabled { background: url('/static/datatables/i
 
 table.dataTable th:active { outline: none; }
 
+#species_table th {font-weight: normal; font-size: 16px; color: black;}
+
 #species_table tbody tr a {color: #333;}
 
+#species_table input { width: auto; }
+
+#species_table td.italicise { font-style: italic; }
 
 /*************************
  PHOTOS
@@ -82,10 +87,3 @@ dl > dd {
 }
 
 
-#species_table input {
-    width: auto;
-}
-
-.species_name {
-    font-style: italic;
-}

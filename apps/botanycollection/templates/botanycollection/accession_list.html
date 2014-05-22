@@ -11,7 +11,7 @@
         <form class="form-search" method="get" action="/search/">
           <input type="text" class="input-xlarge search-query" placeholder="Keyword Search" name="q">
           <button type="submit" class="btn">Search</button>
-         
+
           <input type="hidden" name="models" value="botanycollection.accession">
         </form>
     </div>
@@ -24,9 +24,9 @@
         <tr>
             <th>Accession</th>
             <th>Family</th>
-            <th>Species</th>
+            <th class="genus_column">Genus</th>
+            <th class="species_column">Species</th>
             <th>Material</th>
-            <th>Country</th>
         </tr>
     </thead>
     <tbody>
@@ -36,9 +36,9 @@
         <tr>
             <th><input type="text" name="search_accession" value="Search accession" class="search_init" /></th>
             <th><input type="text" name="search_family" value="Search family" class="search_init" /></th>
-            <th class="species_header"><input type="text" name="search_species" value="Search species" class="search_init" /></th>
+            <th><input type="text" name="search_genus" value="Search genus" class="search_init" /></th>
+            <th><input type="text" name="search_species" value="Search species" class="search_init" /></th>
             <th><input type="text" name="search_material" value="Search material" class="search_init" /></th>
-            <th><input type="text" name="search_country" value="Search country" class="search_init" /></th>
         </tr>
     </tfoot>
 </table>
@@ -85,13 +85,14 @@
             "sPaginationType": "bootstrap",
 // Italicise Species Name Column
             "aoColumnDefs": [
-              { "sClass": "species_name", "aTargets": [2]}
+              { "sClass": "italicise", "aTargets": ['species_column', 'genus_column']},
+              { "bVisible": false, "aTargets": [5]}
             ],
 
 // Links for each row
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                $(nRow).attr('href', '/archaeobotany/accession/' + aData[0]);
-                $(nRow).children().wrapInner("<a href='/archaeobotany/accession/" + aData[0] + "'/>")
+                $(nRow).attr('href', '/archaeobotany/accession/' + aData[5]);
+                $(nRow).children().wrapInner("<a href='/archaeobotany/accession/" + aData[5] + "'/>")
             },
 
             "oLanguage": {
@@ -101,14 +102,14 @@
         } );
 
         /*
-         * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
-         * the footer
+         * Support functions to provide a little bit of 'user friendlyness' to
+         * the textboxes in the footer
          */
         $("tfoot input").keyup( function () {
             /* Filter on the column (the index) of this element */
             oTable.fnFilter( this.value, $("tfoot input").index(this) );
         });
-         
+
         $("tfoot input").focus( function () {
             if ( this.className == "search_init" )
             {
@@ -116,7 +117,7 @@
                 this.value = "";
             }
         } );
-         
+
         $("tfoot input").blur( function (i) {
             if ( this.value == "" )
             {
@@ -138,10 +139,9 @@
 
             // Do query
             oTable.fnFilter( query[1] , $("tfoot input").index(field) );
-
         }
 
-// Make the entire row clickable, and indicate by changing the pointer
+        // Make the entire row clickable, and indicate by changing the pointer
         $(document).on("click", '#species_table tbody tr', function(event) {
             window.location = this.getAttribute('href');
         });
