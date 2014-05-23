@@ -64,6 +64,7 @@ class Accession(models.Model):
         return ' - '.join([c for c in components if c])
 
 
+
 class SeedFeatures(models.Model):
     """
     Detailed description of seed features
@@ -192,9 +193,32 @@ class WoodFeatures(models.Model):
     early_wood_ray_pits = models.CharField("early wood ray pits", max_length=50, blank=True)
     late_wood_ray_pits = models.CharField("late wood ray pits", max_length=50, blank=True)
 
-
     class Meta:
         verbose_name_plural = "wood features"
+
+    def has_secretory_elements_and_cambial_variants_fields(self):
+        fields = ('radial_tracheids_for_gymnosperms',
+                  'axial_canals',
+                  'lactifer_tanniferous_tubes',
+                  'radial_secretory_canals',
+                  'cambial_variants',
+                  'included_phloem',
+                  'druses',
+                  'silica',
+                  'prismatic_crystals')
+        return any([getattr(self, f) for f in fields])
+
+    def has_gymnosperm_fields(self):
+        fields = ('early_late_wood_transition',
+                  'axial_resin_canals',
+                  'epithelial_cells',
+                  'axial_tracheid_pits',
+                  'spiral_thickenings',
+                  'crassulae',
+                  'nodular_tangential_ray_walls',
+                  'early_wood_ray_pits',
+                  'late_wood_ray_pits')
+        return any([getattr(self, f) for f in fields])
 
 
 class AccessionPhoto(MediaFile):
