@@ -96,3 +96,23 @@ class HomepageView(TemplateView):
 
 class AccessionListServerSide(TemplateView):
     template_name = "botanycollection/accession_list.html"
+
+
+class InstructionsView(TemplateView):
+    template_name = "botanycollection/instructions.html"
+
+
+class ContributeView(TemplateView):
+    template_name = "botanycollection/contribute.html"
+
+
+class TermsView(TemplateView):
+    template_name = "botanycollection/terms.html"
+
+
+class AboutView(TemplateView):
+    template_name = "botanycollection/about.html"
+
+
+class ContactsView(TemplateView):
+    template_name = "botanycollection/contacts.html"

@@ -11,9 +11,10 @@
 {% block navbar_extra %}
 <ul class="nav">
 <li><a href="{% url "accession_list" %}">Search Collection</a></li>
-<li><a href="#">Instructions</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Contacts</a></li>
-<li><a href="#">Terms</a></li>
+<li><a href="{% url "instructions" %}">Using UQARC</a></li>
+<li><a href="{% url "contribute" %}">Contribute</a></li>
+<li><a href="{% url "about" %}">About</a></li>
+<li><a href="{% url "contacts" %}">Contacts</a></li>
+<li><a href="{% url "terms" %}">Terms of use</a></li>
 </ul>
 {% endblock %}

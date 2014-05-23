@@ -1,0 +1,95 @@
+{% extends "botanycollection/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+
+<div class="row">
+    <div class="span8 offset1">
+    <h2>Using UQARC</h2>
+<p>
+    UQARC is an internet database of archaeobotanical and reference specimens, including images and descriptive criteria. While it should be viewable on all
+    major browsers, we have found<em> Firefox</em> and <em>Google Chrome</em> to be most effective.
+</p>
+<p>
+    UQARC has been designed to allow users easily to search its content via the <a href="{% url "accession_list" %}">search page</a>, which summarises the electronic accessions relevant to your
+    specified search criteria. Electronic accessions record the details of individual fossil specimens, such as wood and seeds, from the specified physical
+    accession held at UQ's Archaeology Lab or in partner collections.
+</p>
+<p>
+    <strong><em>Step 1: Click on the "Search Collection" tab</em></strong>
+    <strong> <em>on our front page</em></strong>
+</p>
+<p>
+    <img src="{% static "botanyinstructions/click_to_search.png" %}" alt="">
+</p>
+<p>
+    <strong><em>Step 2: Search the collection for specimens of interest</em></strong>
+</p>
+<p>
+    The search page is arranged in 5 columns, arranged in default setting by accession number. The accessions or search results can be ordered in ascending or
+    descending order of any one of the columns by clicking the arrow to the right of each column heading. Note that the columns on this page may present
+    variably depending on your screen size.
+</p>
+<p>
+    <img src="{% static "botanyinstructions/types_of_search.png" %}" alt="">
+</p>
+<p>
+    There are three ways to search:
+</p>
+<p>
+    <em>a) Column search:</em>
+    at the bottom of each column is a search box which will search through that field using any term typed into the box. Use several column searches together
+    to narrow down the relevant accessions.
+</p>
+<p>
+    <em>b) Quick search: </em>
+    located at the top right of the display, this searches all visible columns in the database for the term typed into the box.
+</p>
+<p>
+    <em>c) Keyword search: </em>
+    This searches all fields in the database for the term typed into the box, including notes and fields not visible on the search page. You can use this box
+    to search for specific identification terms, such as wood anatomy features or even particular donors, if you know their name!
+</p>
+
+<p>
+    <img src="{% static "botanyinstructions/accessions_sorting.png" %}" alt="">
+</p>
+
+<p>
+    <strong><em>Step 3: Check your record</em></strong>
+</p>
+<p>
+    Once you have located the record or records in which you are interested using Steps 1-2 you can open each of them by clicking on the record in the search
+    window. You will see the following:
+</p>
+<p>
+    <img src="{% static "botanyinstructions/accession_details.png" %}" alt="">
+</p>
+<p>
+    The available information for each electronic accession is shown in the new window. Specimen details, including the material type, taxonomy etc. are shown
+    in the top left. Images are shown in the top right and can be scrolled through using the arrows. Click on the images to open a larger view. You may
+    download the images and use subject to our creative commons licence. The identification criteria are described towards the bottom of the screen. Scroll up
+    and down the page to look over the identification criteria and notes. At the left of the description section of the display are the tabs showing which
+    other specimens from this accession are described. Note that the database only displays available information, fields lacking records will be absent.
+</p>
+
+<p>
+    <img src="{% static "botanyinstructions/specimen_description.png" %}" alt="">
+</p>
+
+<p>
+    <strong><em>Returning to your search:</em></strong>
+    The easiest way to return to your search results after checking one specimen is to use your browser's back arrow.
+</p>
+<p>
+<strong><em>Future development</em></strong>
+    will include search pages by family and material (seed, wood etc.) as well as incorporating thumbnails into the search results. Please email
+    UQARC@uq.edu.au with any feedback relating to its functionality.
+</p>
+
+
+    </div><!-- /span8 -->
+</div>
+
+{% endblock content %}
