@@ -125,7 +125,8 @@ ROOT_URLCONF = 'refcollections.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'refcollections.wsgi.application'
 
-ALLOWED_HOSTS = ['archaeobotanyref-uat.qc.to', 'localhost']
+ALLOWED_HOSTS = ['uqarchaeologyreference.metadata.net',
+                 'archaeobotanyref-uat.qc.to', 'localhost']
 
 
 INSTALLED_APPS = (
