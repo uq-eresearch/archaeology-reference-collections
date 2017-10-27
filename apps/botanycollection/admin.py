@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.conf.urls import patterns, url
 from django.conf import settings
 from apps.botanycollection.models import Accession, SeedFeatures, WoodFeatures
-from apps.botanycollection.models import AccessionPhoto
+from apps.botanycollection.models import AccessionPhoto, AccessionMetadata
 from admin_views import upload_accessions_spreadsheet
 
 
@@ -93,6 +93,8 @@ class WoodFeaturesInline(admin.StackedInline):
 class AccessionPhotoInline(admin.StackedInline):
     model = AccessionPhoto
 
+class AccessionMetadataInline(admin.StackedInline):
+    model = AccessionMetadata
 
 class AccessionAdmin(admin.ModelAdmin):
     def get_urls(self):
@@ -106,7 +108,7 @@ class AccessionAdmin(admin.ModelAdmin):
     model = Accession
     inlines = [
         SeedFeaturesInline, WoodFeaturesInline,
-        AccessionPhotoInline
+        AccessionPhotoInline#, AccessionMetadata
     ]
 
     list_display = ('uqm_accession', 'family', 'species', 'common_name', 'material')

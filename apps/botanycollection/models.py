@@ -2,252 +2,279 @@ from django.db import models
 from easy_thumbnails.fields import ThumbnailerImageField
 from django.db.models.signals import post_delete
 from mediaman.models import MediaFile
-
+import os
+from PIL import Image
 
 class Accession(models.Model):
-    """
-    An accession, including source, taxonomic, and detailed
-    descriptive information.
-    """
-    uqm_accession = models.CharField(max_length=14, blank=True)
-    unique_identifier = models.CharField(max_length=24, blank=True, unique=True)
-    material = models.CharField(max_length=50, blank=True)
-    source = models.CharField(max_length=11, blank=True)
-    preservation_state = models.CharField('preservation state',
-                                          max_length=32, blank=True)
-    family = models.CharField(max_length=50, blank=True)
-    subfam = models.CharField('sub-family', max_length=50, blank=True)
-    tribe = models.CharField(max_length=50, blank=True)
-    genus = models.CharField(max_length=50, blank=True)
-    species = models.CharField(max_length=50, blank=True)
-    species_author = models.CharField('species author',
-                                      max_length=50, blank=True)
-    sspna = models.CharField('sub-species name', max_length=50, blank=True)
-    sspau = models.CharField('sub-species author', max_length=50, blank=True)
-    varna = models.CharField('variety name', max_length=50, blank=True)
-    varau = models.CharField('variety author', max_length=50, blank=True)
-    cultivar = models.CharField(max_length=50, blank=True)
-    common_name = models.CharField(max_length=50, blank=True)
-    indigenous_name = models.CharField("indigenous name", max_length=80, blank=True)
-    biological_synonym = models.CharField(max_length=50, blank=True)
-    detna = models.CharField('determination by', max_length=50, blank=True)
-    detdate = models.CharField('determination date', max_length=9, blank=True)
-    collector = models.CharField(max_length=50, blank=True)
-    collector_serial_no = models.CharField(max_length=22, blank=True)
-    collection_date = models.CharField(max_length=20, blank=True)
-    sample_number = models.CharField(max_length=26, blank=True)
-    source = models.CharField(max_length=67, blank=True)
-    source_number = models.CharField(max_length=26, blank=True)
-    id_level_flag = models.CharField(max_length=15, blank=True)
-    country = models.CharField(max_length=27, blank=True)
-    site_name = models.CharField(max_length=214, blank=True)
-    lat_long = models.CharField('geographical coordinates',
-                                max_length=15, blank=True)
-    altitude = models.CharField(max_length=14, blank=True)
-    location_notes = models.CharField('location notes',
-                                      max_length=162, blank=True)
-    accession_notes = models.TextField(blank=True)
-    related_accession = models.CharField(max_length=19, blank=True)
-    weblinks = models.TextField(blank=True)
+	"""
+	An accession, including source, taxonomic, and detailed
+	descriptive information.
+	"""
+	uqm_accession = models.CharField(max_length=14, blank=True)
+	unique_identifier = models.CharField(max_length=24, blank=True, unique=True)
+	material = models.CharField(max_length=50, blank=True)
+	source = models.CharField(max_length=11, blank=True)
+	preservation_state = models.CharField('preservation state',
+										  max_length=32, blank=True)
+	family = models.CharField(max_length=50, blank=True)
+	subfam = models.CharField('sub-family', max_length=50, blank=True)
+	tribe = models.CharField(max_length=50, blank=True)
+	genus = models.CharField(max_length=50, blank=True)
+	species = models.CharField(max_length=50, blank=True)
+	species_author = models.CharField('species author',
+									  max_length=50, blank=True)
+	sspna = models.CharField('sub-species name', max_length=50, blank=True)
+	sspau = models.CharField('sub-species author', max_length=50, blank=True)
+	varna = models.CharField('variety name', max_length=50, blank=True)
+	varau = models.CharField('variety author', max_length=50, blank=True)
+	cultivar = models.CharField(max_length=50, blank=True)
+	common_name = models.CharField(max_length=50, blank=True)
+	indigenous_name = models.CharField("indigenous name", max_length=80, blank=True)
+	biological_synonym = models.CharField(max_length=50, blank=True)
+	detna = models.CharField('determination by', max_length=50, blank=True)
+	detdate = models.CharField('determination date', max_length=9, blank=True)
+	collector = models.CharField(max_length=50, blank=True)
+	collector_serial_no = models.CharField(max_length=22, blank=True)
+	collection_date = models.CharField(max_length=20, blank=True)
+	sample_number = models.CharField(max_length=26, blank=True)
+	source = models.CharField(max_length=67, blank=True)
+	source_number = models.CharField(max_length=26, blank=True)
+	id_level_flag = models.CharField(max_length=15, blank=True)
+	country = models.CharField(max_length=27, blank=True)
+	site_name = models.CharField(max_length=214, blank=True)
+	lat_long = models.CharField('geographical coordinates',
+								max_length=15, blank=True)
+	altitude = models.CharField(max_length=14, blank=True)
+	location_notes = models.CharField('location notes',
+									  max_length=162, blank=True)
+	herbarium_specimens = models.TextField(blank=True)
+	accession_notes = models.TextField(blank=True)
+	related_accession = models.CharField(max_length=19, blank=True)
+	weblinks = models.TextField(blank=True)
 
-    contributor = models.CharField(max_length=50, blank=True)
-    date_contributed = models.CharField(max_length=10, blank=True)
+	contributor = models.CharField(max_length=50, blank=True)
+	date_contributed = models.CharField(max_length=10, blank=True)
 
-    @models.permalink
-    def get_absolute_url(self):
-        return ('accession_detail', [str(self.unique_identifier)])
+	@models.permalink
+	def get_absolute_url(self):
+		return ('accession_detail', [str(self.unique_identifier)])
 
-    def __unicode__(self):
-        components = (
-            self.family,
-            self.species)
-        return ' - '.join([c for c in components if c])
+	def __unicode__(self):
+		components = (
+			self.family,
+			self.species)
+		return ' - '.join([c for c in components if c])
 
 
 
 class SeedFeatures(models.Model):
-    """
-    Detailed description of seed features
+	"""
+	Detailed description of seed features
 
-    Based on the following from Andrew Fairbairn:
+	Based on the following from Andrew Fairbairn:
 
-    Seed/fruit type: e.g. [Caryopsis]
-    Shape 3D: [small field with up to 30 characters]
-    Shape 2D: [small field with up to 30 characters]
-    Shape detail:  [a large field with lots of latitude
-          for descriptions in dorsal, ventral, lateral and cross-section view]
-    Size: [a range in mm typically expressed as L; B; T]
-    Testa/endocarp thickness: [mm, usually a range]
-    Surface outer texture/markings:
-    Surface inner texture/markings:
-    Hilum details: [position, shape]
-    Special features (pappus, wings etc):
-    Anatomy Transverse Section: [again plenty of space required]
-    Anatomy Longitudinal Sections: [plenty of space required]
-    Embryo and endosperm details: [as per Martin]
-    Other identification information: [A large field]
-    References and links:
-    Notes: [a large field]
-    Contributor: [Name of describer and date]
-    """
-    accession = models.OneToOneField(Accession)
+	Seed/fruit type: e.g. [Caryopsis]
+	Shape 3D: [small field with up to 30 characters]
+	Shape 2D: [small field with up to 30 characters]
+	Shape detail:  [a large field with lots of latitude
+		  for descriptions in dorsal, ventral, lateral and cross-section view]
+	Size: [a range in mm typically expressed as L; B; T]
+	Testa/endocarp thickness: [mm, usually a range]
+	Surface outer texture/markings:
+	Surface inner texture/markings:
+	Hilum details: [position, shape]
+	Special features (pappus, wings etc):
+	Anatomy Transverse Section: [again plenty of space required]
+	Anatomy Longitudinal Sections: [plenty of space required]
+	Embryo and endosperm details: [as per Martin]
+	Other identification information: [A large field]
+	References and links:
+	Notes: [a large field]
+	Contributor: [Name of describer and date]
+	"""
+	accession = models.OneToOneField(Accession)
 
-    seed_type = models.CharField("seed/fruit type", max_length=50,
-                                 help_text="e.g. 'Caryopsis'")
-    shape_3d = models.CharField(max_length=30, blank=True)
-    shape_2d = models.CharField(max_length=30, blank=True)
-    shape_detail = models.TextField(blank=True, help_text="descriptions in dorsal, ventral, lateral and cross-section view")
-    size = models.CharField(max_length=30, blank=True,
-                            help_text="a range in mm, typically expressed as L; B; T")
-    testa_endocarp_thickness = models.CharField('testa/endocarp thickness',
-                                                max_length=30,
-                                                blank=True,
-                                                help_text="mm, usually a range")
-    surface_outer_texture = models.TextField("surface outer texture/markings",
-                                             blank=True)
-    surface_inner_texture = models.TextField("surface inner texture/markings",
-                                             blank=True)
-    hilum_details = models.CharField(max_length=30, blank=True,
-                                     help_text="position, shape")
-    special_features = models.TextField(blank=True,
-                                        help_text="pappus, wings etc")
-    anatomy_transverse_section = models.TextField(blank=True)
-    anatomy_longitudinal_sections = models.TextField(blank=True)
-    embryo_endosperm = models.TextField("embryo and endosperm details",
-                                        blank=True, help_text="as per Martin")
-    other_identification_information = models.TextField(blank=True)
-    references_and_links = models.TextField(blank=True)
-    notes = models.TextField(blank=True)
-
-    class Meta:
-        verbose_name_plural = "seed features"
+	seed_type = models.CharField("seed/fruit type", max_length=50,
+								 help_text="e.g. 'Caryopsis'")
+	shape_3d = models.CharField(max_length=30, blank=True)
+	shape_2d = models.CharField(max_length=30, blank=True)
+	shape_detail = models.TextField(blank=True, help_text="descriptions in dorsal, ventral, lateral and cross-section view")
+	length = models.CharField(max_length=30, blank=True, help_text="mm")
+	breath = models.CharField(max_length=30, blank=True, help_text="mm")
+	thickness = models.CharField(max_length=30, blank=True, help_text="mm")
+	colour = models.CharField(max_length=30, blank=True)
+	reflection = models.CharField(max_length=30, blank=True)
+	testa_endocarp_thickness = models.CharField('testa/endocarp thickness',
+												max_length=30,
+												blank=True,
+												help_text="mm, usually a range")
+	surface_outer_texture = models.TextField("surface outer texture/markings",
+											 blank=True)
+	surface_inner_texture = models.TextField("surface inner texture/markings",
+											 blank=True)
+	hilum_details = models.CharField(max_length=30, blank=True,
+									 help_text="position, shape")
+	special_features = models.TextField(blank=True,
+										help_text="pappus, wings etc")
+	anatomy_transverse_section = models.TextField(blank=True)
+	anatomy_longitudinal_sections = models.TextField(blank=True)
+	embryo_endosperm = models.TextField("embryo and endosperm details",
+										blank=True, help_text="as per Martin")
+	other_identification_information = models.TextField(blank=True)
+	references_and_links = models.TextField(blank=True)
+	notes = models.TextField(blank=True)
+	contributor = models.CharField(max_length=50, blank=True)
+	
+	class Meta:
+		verbose_name_plural = "seed features"
 
 
 class WoodFeatures(models.Model):
-    """
-    Detailed description of the features of the wood portion of the accession
-    """
+	"""
+	Detailed description of the features of the wood portion of the accession
+	"""
 
-    accession = models.OneToOneField(Accession)
+	accession = models.OneToOneField(Accession)
 
-    aggregate_rays = models.CharField("aggregate rays", max_length=50, blank=True)
-    axial_canals = models.CharField("axial canals", max_length=50, blank=True)
-    axial_parenchyma_arrangement1 = models.CharField("axial parenchyma arrangement (1)", max_length=50, blank=True)
-    axial_parenchyma_arrangement2 = models.CharField("axial parenchyma arrangement (2)", max_length=50, blank=True)
-    axial_parenchyma_arrangement3 = models.CharField("axial parenchyma arrangement (3)", max_length=50, blank=True)
-    axial_parenchyma_arrangement4 = models.CharField("axial parenchyma arrangement (4)", max_length=50, blank=True)
-    axial_parenchyma_arrangement5 = models.CharField("axial parenchyma arrangement (5)", max_length=50, blank=True)
-    axial_parenchyma_bands = models.CharField("axial parenchyma bands", max_length=50, blank=True)
-    axial_parenchyma_present = models.CharField("axial parenchyma present", max_length=50, blank=True)
-    cambial_variants = models.CharField("cambial variants", max_length=50, blank=True)
-    common_name = models.CharField("common name", max_length=50, blank=True)
-    druses = models.CharField("druses", max_length=50, blank=True)
-    fibre_helical_thickenings = models.CharField("fibre helical thickenings", max_length=50, blank=True)
-    fibre_pits = models.CharField("fibre pits", max_length=50, blank=True)
-    fibre_wall_thickness = models.CharField("fibre wall thickness", max_length=50, blank=True)
-    fusiform_parenchyma_cells = models.CharField("fusiform parenchyma cells", max_length=50, blank=True)
-    helical_thickenings = models.CharField("helical thickenings", max_length=50, blank=True)
-    included_phloem = models.CharField("included phloem", max_length=80, blank=True)
-    intervessel_pit_arrangement = models.CharField("intervessel/tracheid pit arrangement", max_length=100, blank=True)
-    intervessel_pit_size = models.CharField("intervessels pits size", max_length=100, blank=True)
-    intervessel_tracheid_pit_shapes = models.CharField("Intervessel/tracheid pit shapes", max_length=100, blank=True)
-    lactifer_tanniferous_tubes = models.CharField("lactifers tanniferous tubes", max_length=100, blank=True)
-    parenchyma_like_fibres_present = models.CharField("parenchyma like fibres present", max_length=100, blank=True)
-    perforation_plates_types = models.CharField("perforation plates types", max_length=100, blank=True)
-    prismatic_crystals = models.CharField("prismatic crystals", max_length=100, blank=True)
-    radial_secretory_canals = models.CharField("radial secretory canals", max_length=50, blank=True)
-    radial_tracheids_for_gymnosperms = models.CharField("radial tracheids for gymnosperms", max_length=100, blank=True)
-    rays = models.CharField("rays", max_length=50, blank=True)
-    rays_cellular_composition = models.CharField("rays cellular composition", max_length=150, blank=True)
-    ray_height = models.CharField("rays height", max_length=50, blank=True)
-    rays_sheath_cells = models.CharField("rays sheath cells", max_length=50, blank=True)
-    rays_structure = models.CharField("rays structure", max_length=100, blank=True)
-    ray_type = models.CharField("ray type", max_length=50, blank=True)
-    ray_width = models.CharField("rays width", max_length=50, blank=True)
-    reference_specimens = models.CharField("reference specimens", max_length=50, blank=True)
-    silica = models.CharField("silica", max_length=50, blank=True)
-    solitary_vessels_with_angular_outline = models.CharField("solitary vessels with angular outline", max_length=50, blank=True)
-    species = models.CharField("species", max_length=50, blank=True)
-    spetate_fibres_present = models.CharField("spetate fibres present", max_length=50, blank=True)
-    storied_structure = models.CharField("storied structure", max_length=50, blank=True)
-    tile_cells = models.CharField("tile cells", max_length=50, blank=True)
-    tracheid_diameter = models.CharField("tracheid diameter", max_length=50, blank=True)
-    vascularvasicentric_tracheids_present = models.CharField("vascular-vasicentric tracheids present", max_length=100, blank=True)
-    vessels = models.CharField("vessels", max_length=50, blank=True)
-    vessel_arrangement = models.CharField("vessel arrangement", max_length=50, blank=True)
-    vessels_deposits = models.CharField("vessels deposits", max_length=50, blank=True)
-    vessel_grouping = models.CharField("vessel grouping", max_length=50, blank=True)
-    vessel_porosity = models.CharField("vessel porosity", max_length=50, blank=True)
-    vessels_rays_pitting = models.CharField("vessels rays pitting", max_length=50, blank=True)
-    vessels_tyloses = models.CharField("vessels tyloses", max_length=50, blank=True)
-    walls = models.CharField("walls", max_length=50, blank=True)
+	aggregate_rays = models.CharField("aggregate rays", max_length=50, blank=True)
+	axial_canals = models.CharField("axial canals", max_length=50, blank=True)
+	axial_parenchyma_arrangement1 = models.CharField("axial parenchyma arrangement (1)", max_length=50, blank=True)
+	axial_parenchyma_arrangement2 = models.CharField("axial parenchyma arrangement (2)", max_length=50, blank=True)
+	axial_parenchyma_arrangement3 = models.CharField("axial parenchyma arrangement (3)", max_length=50, blank=True)
+	axial_parenchyma_arrangement4 = models.CharField("axial parenchyma arrangement (4)", max_length=50, blank=True)
+	axial_parenchyma_arrangement5 = models.CharField("axial parenchyma arrangement (5)", max_length=50, blank=True)
+	axial_parenchyma_bands = models.CharField("axial parenchyma bands", max_length=50, blank=True)
+	axial_parenchyma_present = models.CharField("axial parenchyma present", max_length=50, blank=True)
+	cambial_variants = models.CharField("cambial variants", max_length=50, blank=True)
+	common_name = models.CharField("common name", max_length=50, blank=True)
+	druses = models.CharField("druses", max_length=50, blank=True)
+	fibre_helical_thickenings = models.CharField("fibre helical thickenings", max_length=50, blank=True)
+	fibre_pits = models.CharField("fibre pits", max_length=50, blank=True)
+	fibre_wall_thickness = models.CharField("fibre wall thickness", max_length=50, blank=True)
+	fusiform_parenchyma_cells = models.CharField("fusiform parenchyma cells", max_length=50, blank=True)
+	helical_thickenings = models.CharField("helical thickenings", max_length=50, blank=True)
+	included_phloem = models.CharField("included phloem", max_length=80, blank=True)
+	intervessel_pit_arrangement = models.CharField("intervessel/tracheid pit arrangement", max_length=100, blank=True)
+	intervessel_pit_size = models.CharField("intervessels pits size", max_length=100, blank=True)
+	intervessel_tracheid_pit_shapes = models.CharField("Intervessel/tracheid pit shapes", max_length=100, blank=True)
+	lactifer_tanniferous_tubes = models.CharField("lactifers tanniferous tubes", max_length=100, blank=True)
+	parenchyma_like_fibres_present = models.CharField("parenchyma like fibres present", max_length=100, blank=True)
+	perforation_plates_types = models.CharField("perforation plates types", max_length=100, blank=True)
+	prismatic_crystals = models.CharField("prismatic crystals", max_length=100, blank=True)
+	radial_secretory_canals = models.CharField("radial secretory canals", max_length=50, blank=True)
+	radial_tracheids_for_gymnosperms = models.CharField("radial tracheids for gymnosperms", max_length=100, blank=True)
+	rays = models.CharField("rays", max_length=50, blank=True)
+	rays_cellular_composition = models.CharField("rays cellular composition", max_length=150, blank=True)
+	ray_height = models.CharField("rays height", max_length=50, blank=True)
+	rays_sheath_cells = models.CharField("rays sheath cells", max_length=50, blank=True)
+	rays_structure = models.CharField("rays structure", max_length=100, blank=True)
+	ray_type = models.CharField("ray type", max_length=50, blank=True)
+	ray_width = models.CharField("rays width", max_length=50, blank=True)
+	reference_specimens = models.CharField("reference specimens", max_length=50, blank=True)
+	silica = models.CharField("silica", max_length=50, blank=True)
+	solitary_vessels_with_angular_outline = models.CharField("solitary vessels with angular outline", max_length=50, blank=True)
+	species = models.CharField("species", max_length=50, blank=True)
+	spetate_fibres_present = models.CharField("spetate fibres present", max_length=50, blank=True)
+	storied_structure = models.CharField("storied structure", max_length=50, blank=True)
+	tile_cells = models.CharField("tile cells", max_length=50, blank=True)
+	tracheid_diameter = models.CharField("tracheid diameter", max_length=50, blank=True)
+	vascularvasicentric_tracheids_present = models.CharField("vascular-vasicentric tracheids present", max_length=100, blank=True)
+	vessels = models.CharField("vessels", max_length=50, blank=True)
+	vessel_arrangement = models.CharField("vessel arrangement", max_length=50, blank=True)
+	vessels_deposits = models.CharField("vessels deposits", max_length=50, blank=True)
+	vessel_grouping = models.CharField("vessel grouping", max_length=50, blank=True)
+	vessel_porosity = models.CharField("vessel porosity", max_length=50, blank=True)
+	vessels_rays_pitting = models.CharField("vessels rays pitting", max_length=50, blank=True)
+	vessels_tyloses = models.CharField("vessels tyloses", max_length=50, blank=True)
+	walls = models.CharField("walls", max_length=50, blank=True)
 
-    # gymnosperm
-    early_late_wood_transition = models.CharField("early/late wood transition", max_length=50, blank=True)
-    axial_resin_canals = models.CharField("axial resin canals", max_length=50, blank=True)
-    epithelial_cells = models.CharField("epithelial cells", max_length=50, blank=True)
-    axial_tracheid_pits = models.CharField("axial tracheid pits", max_length=50, blank=True)
-    spiral_thickenings = models.CharField("spiral thickenings", max_length=50, blank=True)
-    crassulae = models.CharField("crassulae", max_length=50, blank=True)
-    nodular_tangential_ray_walls = models.CharField("nodules tangential ray walls", max_length=50, blank=True)
-    early_wood_ray_pits = models.CharField("early wood ray pits", max_length=50, blank=True)
-    late_wood_ray_pits = models.CharField("late wood ray pits", max_length=50, blank=True)
+	# gymnosperm
+	early_late_wood_transition = models.CharField("early/late wood transition", max_length=50, blank=True)
+	axial_resin_canals = models.CharField("axial resin canals", max_length=50, blank=True)
+	epithelial_cells = models.CharField("epithelial cells", max_length=50, blank=True)
+	axial_tracheid_pits = models.CharField("axial tracheid pits", max_length=50, blank=True)
+	spiral_thickenings = models.CharField("spiral thickenings", max_length=50, blank=True)
+	crassulae = models.CharField("crassulae", max_length=50, blank=True)
+	nodular_tangential_ray_walls = models.CharField("nodules tangential ray walls", max_length=50, blank=True)
+	early_wood_ray_pits = models.CharField("early wood ray pits", max_length=50, blank=True)
+	late_wood_ray_pits = models.CharField("late wood ray pits", max_length=50, blank=True)
 
-    class Meta:
-        verbose_name_plural = "wood features"
+	class Meta:
+		verbose_name_plural = "wood features"
 
-    def has_secretory_elements_and_cambial_variants_fields(self):
-        fields = ('radial_tracheids_for_gymnosperms',
-                  'axial_canals',
-                  'lactifer_tanniferous_tubes',
-                  'radial_secretory_canals',
-                  'cambial_variants',
-                  'included_phloem',
-                  'druses',
-                  'silica',
-                  'prismatic_crystals')
-        return any([getattr(self, f) for f in fields])
+	def has_secretory_elements_and_cambial_variants_fields(self):
+		fields = ('radial_tracheids_for_gymnosperms',
+				  'axial_canals',
+				  'lactifer_tanniferous_tubes',
+				  'radial_secretory_canals',
+				  'cambial_variants',
+				  'included_phloem',
+				  'druses',
+				  'silica',
+				  'prismatic_crystals')
+		return any([getattr(self, f) for f in fields])
 
-    def has_gymnosperm_fields(self):
-        fields = ('early_late_wood_transition',
-                  'axial_resin_canals',
-                  'epithelial_cells',
-                  'axial_tracheid_pits',
-                  'spiral_thickenings',
-                  'crassulae',
-                  'nodular_tangential_ray_walls',
-                  'early_wood_ray_pits',
-                  'late_wood_ray_pits')
-        return any([getattr(self, f) for f in fields])
+	def has_gymnosperm_fields(self):
+		fields = ('early_late_wood_transition',
+				  'axial_resin_canals',
+				  'epithelial_cells',
+				  'axial_tracheid_pits',
+				  'spiral_thickenings',
+				  'crassulae',
+				  'nodular_tangential_ray_walls',
+				  'early_wood_ray_pits',
+				  'late_wood_ray_pits')
+		return any([getattr(self, f) for f in fields])
 
 
 class AccessionPhoto(MediaFile):
-    """
-    A single photo of an accession
+	"""
+	A single photo of an accession
 
-    Should include a description
-    """
-    image = ThumbnailerImageField(max_length=255, upload_to='.',
-        height_field='height', width_field='width')
+	Should include a description
+	"""
+	image = ThumbnailerImageField(max_length=255, upload_to='.',
+		height_field='height', width_field='width')
 
-    accession = models.ForeignKey(Accession)
+	accession = models.ForeignKey(Accession)
 
-    height = models.PositiveIntegerField(blank=True, null=True)
-    width = models.PositiveIntegerField(blank=True, null=True)
+	height = models.PositiveIntegerField(blank=True, null=True)
+	width = models.PositiveIntegerField(blank=True, null=True)
 
-    title = models.CharField(max_length=120, blank=True)
-    description = models.TextField(max_length=100, blank=True, help_text="")
+	title = models.CharField(max_length=120, blank=True)
+	description = models.TextField(max_length=100, blank=True, help_text="")
+	
+	class Meta(MediaFile.Meta):
+#		unique_together = ('specimen', 'md5sum')
+		pass
 
-    class Meta(MediaFile.Meta):
-#        unique_together = ('specimen', 'md5sum')
-        pass
-
-    def __unicode__(self):
-        return self.name
-
+	def tif_to_jpg(self):
+		img_uploaded = self.image;
+		f_name, f_ext = os.path.splitext(infile)
+		Image.open(img_uploaded).save('jpg/{}.jpg'.format(f_name))
+		
+	def __unicode__(self):
+		return self.name
 
 def remove_delete_image_file(sender, instance, **kwargs):
-    if instance.image:
-        instance.image.delete(save=False)
+	if instance.image:
+		instance.image.delete(save=False)
 
 post_delete.connect(remove_delete_image_file, sender=AccessionPhoto)
+
+
+class AccessionMetadata(models.Model):
+	access_choices = (
+		('public', 'public viewing'),
+		('private', 'private viewing'),
+	)
+	file = models.FileField(upload_to='metadata', null=True)
+	access = models.CharField(max_length=10, choices=access_choices, default='private')
+	title = models.CharField(max_length=120, blank=True)
+	description = models.TextField(blank=True, help_text="")
+
+	def __unicode__(self):
+		return self.name
+	
+	def has_add_permission(self, request):
+		return True

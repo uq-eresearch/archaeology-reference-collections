@@ -1,315 +1,429 @@
 
-                 <div class="row-fluid">
-                    <div class="span4">
-                        <h4>Transverse</h4>
-                        <dl>
+<div class="row-fluid">
+	<div class="span4">
+		<h4>Transverse</h4>
+		<dl>
+			{% if object.woodfeatures.vessels %}
+			<div class="wood-details-item">
+				<dt>Vessels</dt>
+				<dd>{{ object.woodfeatures.vessels }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessels %}
-            <dt>Vessels</dt>
-            <dd>{{ object.woodfeatures.vessels }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessel_porosity %}
+			<div class="wood-details-item">
+				<dt>Vessel porosity</dt>
+				<dd>{{ object.woodfeatures.vessel_porosity }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessel_porosity %}
-            <dt>Vessel porosity</dt>
-            <dd>{{ object.woodfeatures.vessel_porosity }}</dd>
-{% endif %}
+			{% if object.woodfeatures.tracheid_diameter %}
+			<div class="wood-details-item">
+				<dt>Tracheid diameter</dt>
+				<dd>{{ object.woodfeatures.tracheid_diameter }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.tracheid_diameter %}
-            <dt>Tracheid diameter</dt>
-            <dd>{{ object.woodfeatures.tracheid_diameter }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessel_grouping %}
+			<div class="wood-details-item">
+				<dt>Vessel grouping</dt>
+				<dd>{{ object.woodfeatures.vessel_grouping }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessel_grouping %}
-            <dt>Vessel grouping</dt>
-            <dd>{{ object.woodfeatures.vessel_grouping }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessel_arrangement %}
+			<div class="wood-details-item">
+				<dt>Vessel arrangement</dt>
+				<dd>{{ object.woodfeatures.vessel_arrangement }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessel_arrangement %}
-            <dt>Vessel arrangement</dt>
-            <dd>{{ object.woodfeatures.vessel_arrangement }}</dd>
-{% endif %}
+			{% if object.woodfeatures.solitary_vessels_with_angular_outline %}
+			<div class="wood-details-item">
+				<dt>Solitary vessels with angular outline</dt>
+				<dd>{{ object.woodfeatures.solitary_vessels_with_angular_outline }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.solitary_vessels_with_angular_outline %}
-            <dt>Solitary vessels with angular outline</dt>
-            <dd>{{ object.woodfeatures.solitary_vessels_with_angular_outline }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessels_tyloses %}
+			<div class="wood-details-item">
+				<dt>Vessels tyloses</dt>
+				<dd>{{ object.woodfeatures.vessels_tyloses }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessels_tyloses %}
-            <dt>Vessels tyloses</dt>
-            <dd>{{ object.woodfeatures.vessels_tyloses }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessels_deposits %}
+			<div class="wood-details-item">
+				<dt>Vessels deposits</dt>
+				<dd>{{ object.woodfeatures.vessels_deposits }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessels_deposits %}
-            <dt>Vessels deposits</dt>
-            <dd>{{ object.woodfeatures.vessels_deposits }}</dd>
-{% endif %}
+			{% if object.woodfeatures.fibre_wall_thickness %}
+			<div class="wood-details-item">
+				<dt>Fibre wall thickness</dt>
+				<dd>{{ object.woodfeatures.fibre_wall_thickness }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.fibre_wall_thickness %}
-            <dt>Fibre wall thickness</dt>
-            <dd>{{ object.woodfeatures.fibre_wall_thickness }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_present %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma present</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_present }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_present %}
-            <dt>Axial parenchyma present</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_present }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_arrangement1 %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma arrangement (1)</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_arrangement1 }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_arrangement1 %}
-            <dt>Axial parenchyma arrangement (1)</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_arrangement1 }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_arrangement2 %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma arrangement (2)</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_arrangement2 }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_arrangement2 %}
-            <dt>Axial parenchyma arrangement (2)</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_arrangement2 }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_arrangement3 %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma arrangement (3)</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_arrangement3 }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_arrangement3 %}
-            <dt>Axial parenchyma arrangement (3)</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_arrangement3 }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_arrangement4 %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma arrangement (4)</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_arrangement4 }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_arrangement4 %}
-            <dt>Axial parenchyma arrangement (4)</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_arrangement4 }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_arrangement5 %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma arrangement (5)</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_arrangement5 }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_arrangement5 %}
-            <dt>Axial parenchyma arrangement (5)</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_arrangement5 }}</dd>
-{% endif %}
+			{% if object.woodfeatures.rays %}
+			<div class="wood-details-item">
+				<dt>Rays</dt>
+				<dd>{{ object.woodfeatures.rays }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.rays %}
-            <dt>Rays</dt>
-            <dd>{{ object.woodfeatures.rays }}</dd>
-{% endif %}
+			{% if object.woodfeatures.aggregate_rays %}
+			<div class="wood-details-item">
+				<dt>Aggregate rays</dt>
+				<dd>{{ object.woodfeatures.aggregate_rays }}</dd>
+			</div>
+			{% endif %}
+		</dl>
+	</div>
+	<div class="span4">
+		<h4>Longitudinal</h4>
+		<dl>
+			{% if object.woodfeatures.intervessel_pits_arrangement %}
+			<div class="wood-details-item">
+				<dt>Intervessel/tracheid pit arrangement</dt>
+				<dd>{{ object.woodfeatures.intervessel_pits_arrangement }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.aggregate_rays %}
-            <dt>Aggregate rays</dt>
-            <dd>{{ object.woodfeatures.aggregate_rays }}</dd>
-{% endif %}
-                    </dl>
-                    </div>
-                    <div class="span4">
-                      <h4>Longitudinal</h4>
-                        <dl>
-{% if object.woodfeatures.intervessel_pits_arrangement %}
-            <dt>Intervessel/tracheid pit arrangement</dt>
-            <dd>{{ object.woodfeatures.intervessel_pits_arrangement }}</dd>
-{% endif %}
+			{% if object.woodfeatures.intervessel_tracheid_pit_shapes %}
+			<div class="wood-details-item">
+				<dt>Intervessel/tracheid pit shapes</dt>
+				<dd>{{ object.woodfeatures.intervessel_tracheid_pit_shapes }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.intervessel_tracheid_pit_shapes %}
-            <dt>Intervessel/tracheid pit shapes</dt>
-            <dd>{{ object.woodfeatures.intervessel_tracheid_pit_shapes }}</dd>
-{% endif %}
+			{% if object.woodfeatures.intervessel_pits_size %}
+			<div class="wood-details-item">
+				<dt>Intervessel pit size</dt>
+				<dd>{{ object.woodfeatures.intervessel_pits_size }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.intervessel_pits_size %}
-            <dt>Intervessel pit size</dt>
-            <dd>{{ object.woodfeatures.intervessel_pits_size }}</dd>
-{% endif %}
+			{% if object.woodfeatures.perforation_plates_types %}
+			<div class="wood-details-item">
+				<dt>Perforation plates types</dt>
+				<dd>{{ object.woodfeatures.perforation_plates_types }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.perforation_plates_types %}
-            <dt>Perforation plates types</dt>
-            <dd>{{ object.woodfeatures.perforation_plates_types }}</dd>
-{% endif %}
+			{% if object.woodfeatures.helical_thickenings %}
+			<div class="wood-details-item">
+				<dt>Helical thickenings</dt>
+				<dd>{{ object.woodfeatures.helical_thickenings }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.helical_thickenings %}
-            <dt>Helical thickenings</dt>
-            <dd>{{ object.woodfeatures.helical_thickenings }}</dd>
-{% endif %}
+			{% if object.woodfeatures.fibre_helical_thickenings %}
+			<div class="wood-details-item">
+				<dt>Fibre helical thickenings</dt>
+				<dd>{{ object.woodfeatures.fibre_helical_thickenings }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.fibre_helical_thickenings %}
-            <dt>Fibre helical thickenings</dt>
-            <dd>{{ object.woodfeatures.fibre_helical_thickenings }}</dd>
-{% endif %}
+			{% if object.woodfeatures.fibre_pits %}
+			<div class="wood-details-item">
+				<dt>Fibre pits</dt>
+				<dd>{{ object.woodfeatures.fibre_pits }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.fibre_pits %}
-            <dt>Fibre pits</dt>
-            <dd>{{ object.woodfeatures.fibre_pits }}</dd>
-{% endif %}
+			{% if object.woodfeatures.spetate_fibres_present %}
+			<div class="wood-details-item">
+				<dt>Spetate fibres present</dt>
+				<dd>{{ object.woodfeatures.spetate_fibres_present }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.spetate_fibres_present %}
-            <dt>Spetate fibres present</dt>
-            <dd>{{ object.woodfeatures.spetate_fibres_present }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vascularvasicentric_tracheids_present %}
+			<div class="wood-details-item">
+				<dt>Vascular-vasicentric tracheids present</dt>
+				<dd>{{ object.woodfeatures.vascularvasicentric_tracheids_present }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vascularvasicentric_tracheids_present %}
-            <dt>Vascular-vasicentric tracheids present</dt>
-            <dd>{{ object.woodfeatures.vascularvasicentric_tracheids_present }}</dd>
-{% endif %}
+			{% if object.woodfeatures.parenchyma_like_fibres_present %}
+			<div class="wood-details-item">
+				<dt>Parenchyma like fibres present</dt>
+				<dd>{{ object.woodfeatures.parenchyma_like_fibres_present }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.parenchyma_like_fibres_present %}
-            <dt>Parenchyma like fibres present</dt>
-            <dd>{{ object.woodfeatures.parenchyma_like_fibres_present }}</dd>
-{% endif %}
+			{% if object.woodfeatures.fusiform_parenchyma_cells %}
+			<div class="wood-details-item">
+				<dt>Fusiform parenchyma cells</dt>
+				<dd>{{ object.woodfeatures.fusiform_parenchyma_cells }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.fusiform_parenchyma_cells %}
-            <dt>Fusiform parenchyma cells</dt>
-            <dd>{{ object.woodfeatures.fusiform_parenchyma_cells }}</dd>
-{% endif %}
+			{% if object.woodfeatures.axial_parenchyma_bands %}
+			<div class="wood-details-item">
+				<dt>Axial parenchyma bands</dt>
+				<dd>{{ object.woodfeatures.axial_parenchyma_bands }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.axial_parenchyma_bands %}
-            <dt>Axial parenchyma bands</dt>
-            <dd>{{ object.woodfeatures.axial_parenchyma_bands }}</dd>
-{% endif %}
+			{% if object.woodfeatures.ray_height %}
+			<div class="wood-details-item">
+				<dt>Ray height</dt>
+				<dd>{{ object.woodfeatures.ray_height }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.ray_height %}
-            <dt>Ray height</dt>
-            <dd>{{ object.woodfeatures.ray_height }}</dd>
-{% endif %}
+			{% if object.woodfeatures.ray_width %}
+			<div class="wood-details-item">
+				<dt>Ray width</dt>
+				<dd>{{ object.woodfeatures.ray_width }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.ray_width %}
-            <dt>Ray width</dt>
-            <dd>{{ object.woodfeatures.ray_width }}</dd>
-{% endif %}
+			{% if object.woodfeatures.ray_type %}
+			<div class="wood-details-item">
+				<dt>Ray type</dt>
+				<dd>{{ object.woodfeatures.ray_type }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.ray_type %}
-            <dt>Ray type</dt>
-            <dd>{{ object.woodfeatures.ray_type }}</dd>
-{% endif %}
+			{% if object.woodfeatures.rays_cellular_composition %}
+			<div class="wood-details-item">
+				<dt>Rays cellular composition</dt>
+				<dd>{{ object.woodfeatures.rays_cellular_composition }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.rays_cellular_composition %}
-            <dt>Rays cellular composition</dt>
-            <dd>{{ object.woodfeatures.rays_cellular_composition }}</dd>
-{% endif %}
+			{% if object.woodfeatures.rays_structure %}
+			<div class="wood-details-item">
+				<dt>Rays structure</dt>
+				<dd>{{ object.woodfeatures.rays_structure }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.rays_structure %}
-            <dt>Rays structure</dt>
-            <dd>{{ object.woodfeatures.rays_structure }}</dd>
-{% endif %}
+			{% if object.woodfeatures.rays_sheath_cells %}
+			<div class="wood-details-item">
+				<dt>Rays sheath cells</dt>
+				<dd>{{ object.woodfeatures.rays_sheath_cells }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.rays_sheath_cells %}
-            <dt>Rays sheath cells</dt>
-            <dd>{{ object.woodfeatures.rays_sheath_cells }}</dd>
-{% endif %}
+			{% if object.woodfeatures.tile_cells %}
+			<div class="wood-details-item">
+				<dt>Tile cells</dt>
+				<dd>{{ object.woodfeatures.tile_cells }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.tile_cells %}
-            <dt>Tile cells</dt>
-            <dd>{{ object.woodfeatures.tile_cells }}</dd>
-{% endif %}
+			{% if object.woodfeatures.storied_structure %}
+			<div class="wood-details-item">
+				<dt>Storied structure</dt>
+				<dd>{{ object.woodfeatures.storied_structure }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.storied_structure %}
-            <dt>Storied structure</dt>
-            <dd>{{ object.woodfeatures.storied_structure }}</dd>
-{% endif %}
+			{% if object.woodfeatures.vessels_rays_pitting %}
+			<div class="wood-details-item">
+				<dt>Vessels rays pitting</dt>
+				<dd>{{ object.woodfeatures.vessels_rays_pitting }}</dd>
+			</div>
+			{% endif %}
 
-{% if object.woodfeatures.vessels_rays_pitting %}
-            <dt>Vessels rays pitting</dt>
-            <dd>{{ object.woodfeatures.vessels_rays_pitting }}</dd>
-{% endif %}
+			{% if object.woodfeatures.walls %}
+			<div class="wood-details-item">
+				<dt>Walls</dt>
+				<dd>{{ object.woodfeatures.walls }}</dd>
+			</div>
+			{% endif %}
+		</dl>
+	</div>
+	<div class="span4">
+		{% if object.woodfeatures.has_secretory_elements_and_cambial_variants_fields %}
+			<h4>Secretory elements and cambial variants</h4>
+			<dl>
+				{% if object.woodfeatures.radial_tracheids_for_gymnosperms %}
+				<div class="wood-details-item">
+					<dt>Radial tracheids for gymnosperms</dt>
+					<dd>{{ object.woodfeatures.radial_tracheids_for_gymnosperms }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.walls %}
-            <dt>Walls</dt>
-            <dd>{{ object.woodfeatures.walls }}</dd>
-{% endif %}
-                      </dl>
-                    </div>
-                    <div class="span4">
-{% if object.woodfeatures.has_secretory_elements_and_cambial_variants_fields %}
-                      <h4>Secretory elements and cambial variants</h4>
-                        <dl>
-{% if object.woodfeatures.radial_tracheids_for_gymnosperms %}
-            <dt>Radial tracheids for gymnosperms</dt>
-            <dd>{{ object.woodfeatures.radial_tracheids_for_gymnosperms }}</dd>
-{% endif %}
+				{% if object.woodfeatures.axial_canals %}
+				<div class="wood-details-item">
+					<dt>Axial canals</dt>
+					<dd>{{ object.woodfeatures.axial_canals }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.axial_canals %}
-            <dt>Axial canals</dt>
-            <dd>{{ object.woodfeatures.axial_canals }}</dd>
-{% endif %}
+				{% if object.woodfeatures.lactifer_tanniferous_tubes %}
+				<div class="wood-details-item">
+					<dt>Lactifer tanniferous tubes</dt>
+					<dd>{{ object.woodfeatures.lactifer_tanniferous_tubes }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.lactifer_tanniferous_tubes %}
-            <dt>Lactifer tanniferous tubes</dt>
-            <dd>{{ object.woodfeatures.lactifer_tanniferous_tubes }}</dd>
-{% endif %}
+				{% if object.woodfeatures.radial_secretory_canals %}
+				<div class="wood-details-item">
+					<dt>Radial secretory canals</dt>
+					<dd>{{ object.woodfeatures.radial_secretory_canals }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.radial_secretory_canals %}
-            <dt>Radial secretory canals</dt>
-            <dd>{{ object.woodfeatures.radial_secretory_canals }}</dd>
-{% endif %}
+				{% if object.woodfeatures.cambial_variants %}
+				<div class="wood-details-item">
+					<dt>Cambial variants</dt>
+					<dd>{{ object.woodfeatures.cambial_variants }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.cambial_variants %}
-            <dt>Cambial variants</dt>
-            <dd>{{ object.woodfeatures.cambial_variants }}</dd>
-{% endif %}
+				{% if object.woodfeatures.included_phloem %}
+				<div class="wood-details-item">
+					<dt>Included phloem</dt>
+					<dd>{{ object.woodfeatures.included_phloem }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.included_phloem %}
-            <dt>Included phloem</dt>
-            <dd>{{ object.woodfeatures.included_phloem }}</dd>
-{% endif %}
+				{% if object.woodfeatures.druses %}
+				<div class="wood-details-item">
+					<dt>Druses</dt>
+					<dd>{{ object.woodfeatures.druses }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.druses %}
-            <dt>Druses</dt>
-            <dd>{{ object.woodfeatures.druses }}</dd>
-{% endif %}
+				{% if object.woodfeatures.silica %}
+				<div class="wood-details-item">
+					<dt>Silica</dt>
+					<dd>{{ object.woodfeatures.silica }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.silica %}
-            <dt>Silica</dt>
-            <dd>{{ object.woodfeatures.silica }}</dd>
-{% endif %}
+				{% if object.woodfeatures.prismatic_crystals %}
+				<div class="wood-details-item">
+					<dt>Prismatic crystals</dt>
+					<dd>{{ object.woodfeatures.prismatic_crystals }}</dd>
+				</div>
+				{% endif %}
+			</dl>
+		{% endif %}
+	</div>
+</div><!-- /row-fluid -->
 
-{% if object.woodfeatures.prismatic_crystals %}
-            <dt>Prismatic crystals</dt>
-            <dd>{{ object.woodfeatures.prismatic_crystals }}</dd>
-{% endif %}
-                      </dl>
-{% endif %}
-                    </div>
-                </div><!-- /row-fluid -->
-                <div class="row-fluid">
-                    <div class="span4">
-{% if object.woodfeatures.has_gymnosperm_fields %}
-                        <h4>Gymnosperm</h4>
-                        <dl>
+<div class="row-fluid">
+	<div class="span4">
+		{% if object.woodfeatures.has_gymnosperm_fields %}
+			<h4>Gymnosperm</h4>
+			<dl>
 
-{% if object.woodfeatures.early_late_wood_transition %}
-            <dt>Early/late wood transition</dt>
-            <dd>{{ object.woodfeatures.early_late_wood_transition }}</dd>
-{% endif %}
+				{% if object.woodfeatures.early_late_wood_transition %}
+				<div class="wood-details-item">
+					<dt>Early/late wood transition</dt>
+					<dd>{{ object.woodfeatures.early_late_wood_transition }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.axial_resin_canals %}
-            <dt>Axial resin canals</dt>
-            <dd>{{ object.woodfeatures.axial_resin_canals }}</dd>
-{% endif %}
+				{% if object.woodfeatures.axial_resin_canals %}
+				<div class="wood-details-item">
+					<dt>Axial resin canals</dt>
+					<dd>{{ object.woodfeatures.axial_resin_canals }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.epithelial_cells %}
-            <dt>Epithelial cells</dt>
-            <dd>{{ object.woodfeatures.epithelial_cells }}</dd>
-{% endif %}
+				{% if object.woodfeatures.epithelial_cells %}
+				<div class="wood-details-item">
+					<dt>Epithelial cells</dt>
+					<dd>{{ object.woodfeatures.epithelial_cells }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.axial_tracheid_pits %}
-            <dt>Axial tracheid pits</dt>
-            <dd>{{ object.woodfeatures.axial_tracheid_pits }}</dd>
-{% endif %}
+				{% if object.woodfeatures.axial_tracheid_pits %}
+				<div class="wood-details-item">
+					<dt>Axial tracheid pits</dt>
+					<dd>{{ object.woodfeatures.axial_tracheid_pits }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.spiral_thickenings %}
-            <dt>Spiral thickenings</dt>
-            <dd>{{ object.woodfeatures.spiral_thickenings }}</dd>
-{% endif %}
+				{% if object.woodfeatures.spiral_thickenings %}
+				<div class="wood-details-item">
+					<dt>Spiral thickenings</dt>
+					<dd>{{ object.woodfeatures.spiral_thickenings }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.crassulae %}
-            <dt>Crassulae</dt>
-            <dd>{{ object.woodfeatures.crassulae }}</dd>
-{% endif %}
+				{% if object.woodfeatures.crassulae %}
+				<div class="wood-details-item">
+					<dt>Crassulae</dt>
+					<dd>{{ object.woodfeatures.crassulae }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.nodular_tangential_ray_walls %}
-            <dt>Nodular tangential ray walls</dt>
-            <dd>{{ object.woodfeatures.nodular_tangential_ray_walls }}</dd>
-{% endif %}
+				{% if object.woodfeatures.nodular_tangential_ray_walls %}
+				<div class="wood-details-item">
+					<dt>Nodular tangential ray walls</dt>
+					<dd>{{ object.woodfeatures.nodular_tangential_ray_walls }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.early_wood_ray_pits %}
-            <dt>Early wood ray pits</dt>
-            <dd>{{ object.woodfeatures.early_wood_ray_pits }}</dd>
-{% endif %}
+				{% if object.woodfeatures.early_wood_ray_pits %}
+				<div class="wood-details-item">
+					<dt>Early wood ray pits</dt>
+					<dd>{{ object.woodfeatures.early_wood_ray_pits }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.woodfeatures.late_wood_ray_pits %}
-            <dt>Late wood ray pits</dt>
-            <dd>{{ object.woodfeatures.late_wood_ray_pits }}</dd>
-{% endif %}
-                        </dl>
-{% endif %}
-                    </div>
-                </div><!-- /row -->
+				{% if object.woodfeatures.late_wood_ray_pits %}
+				<div class="wood-details-item">
+					<dt>Late wood ray pits</dt>
+					<dd>{{ object.woodfeatures.late_wood_ray_pits }}</dd>
+				</div>
+				{% endif %}
+			</dl>
+		{% endif %}
+	</div>
+</div><!-- /row -->
 <!--
             <div class="row-fluid">
                 <div class="span6">
@@ -325,11 +439,13 @@
 {% if object.woodfeatures.notes %}
             <dt>NOTES</dt>
             <dd>{{ object.woodfeatures.notes }}</dd>
+				</div>
 {% endif %}
 
 {% comment %}
             <dt>Reference Specimens</dt>
             <dd>{{ object.woodfeatures.reference_specimens }}</dd>
+				</div>
 {% endcomment %}
 
 

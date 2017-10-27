@@ -2,30 +2,69 @@
     background-color: yellow;
 }
 
+.navbar-fixed-top {
+	position: relative;
+	margin: 0px !important;
+}
 
-body {
-    padding-top: 58px;
+h2 {
+	margin: 25px 0;
+}
+
+.navbar {
+	margin-top: 50px;
+}
+
+.container-fluid {
+	padding: 25px;
+}
+
+.navbar-inner .container-fluid {
+	padding: 0 25px;
 }
 
 
+/************************
+ Index/ Homepage
+************************/
+.index-container {
+	padding-top: 20px;
+	/*text-align: justify;*/
+}
 
-/***********************************
-  DATATABLES
- ***********************************/
 
-div.dataTables_length label { float: left; text-align: left; }
+/*********************************** 
+  Datatables
+***********************************/
+#species_table_wrapper, #cbn_search_table_wrapper {
+	padding: 0 25px;
+}
 
-div.dataTables_length select { width: 75px; }
+div.dataTables_length label {
+	float: left;
+	text-align: left;
+}
 
-div.dataTables_filter label { float: right; }
+div.dataTables_length select {
+	width: 75px;
+}
 
-div.dataTables_info { padding-top: 8px; }
+div.dataTables_filter label {
+	float: right;
+}
 
-div.dataTables_paginate { float: right; margin: 0; }
+div.dataTables_info {
+	padding-top: 8px;
+}
+
+div.dataTables_paginate {
+	float: right;
+	margin: 0;
+}
 
 table.table {
-    clear: both;
-    margin-bottom: 6px !important;
+	clear: both;
+	margin-bottom: 6px !important;
 }
 
 table.table thead .sorting,
@@ -33,30 +72,92 @@ table.table thead .sorting_asc,
 table.table thead .sorting_desc,
 table.table thead .sorting_asc_disabled,
 table.table thead .sorting_desc_disabled {
-    cursor: pointer;
-    *cursor: hand;
+	cursor: pointer;
+	*cursor: hand;
 }
 
-table.table thead .sorting { background: url('/static/datatables/images/sort_both.png') no-repeat center right; }
-table.table thead .sorting_asc { background: url('/static/datatables/images/sort_asc.png') no-repeat center right; }
-table.table thead .sorting_desc { background: url('/static/datatables/images/sort_desc.png') no-repeat center right; }
+table.table thead .sorting {
+	background: url('/static/datatables/images/sort_both.png') no-repeat center right;
+}
 
-table.table thead .sorting_asc_disabled { background: url('/static/datatables/images/sort_asc_disabled.png') no-repeat center right; }
-table.table thead .sorting_desc_disabled { background: url('/static/datatables/images/sort_desc_disabled.png') no-repeat center right; }
+table.table thead .sorting_asc {
+	background: url('/static/datatables/images/sort_asc.png') no-repeat center right;
+}
 
-table.dataTable th:active { outline: none; }
+table.table thead .sorting_desc {
+	background: url('/static/datatables/images/sort_desc.png') no-repeat center right; 
+}
 
-#species_table th {font-weight: normal; font-size: 16px; color: black;}
+table.table thead .sorting_asc_disabled {
+	background: url('/static/datatables/images/sort_asc_disabled.png') no-repeat center right;
+}
 
-#species_table tbody tr a {color: #333;}
+table.table thead .sorting_desc_disabled {
+	background: url('/static/datatables/images/sort_desc_disabled.png') no-repeat center right;
+}
 
-#species_table input { width: auto; }
+table.dataTable th:active {
+	outline: none;
+}
 
-#species_table td.italicise { font-style: italic; }
+#species_table, 
+#cbn_search_table {
+	width: 100% !important;
+	margin-top: 25px;
+}
+
+#species_table th, 
+#cbn_search_table th {
+	font-weight: normal;
+	font-size: 16px;
+	color: black;
+}
+
+#species_table th:first-child, 
+#cbn_search_table th:first-child{
+	min-width: 75px;
+	max-width: 75px;
+}
+
+#species_table tbody tr a,
+#cbn_search_table tbody tr a {
+	color: #333;
+}
+
+#species_table input {
+	width: auto;
+}
+
+#species_table td.italicise,
+#cbn_search_table td.italicise {
+	font-style: italic;
+}
+
+#species_table_filter label,
+#cbn_search_table label {
+	float: none;
+	font-size: 1.1em;
+}
+
+#species_table_filter label input {
+	margin-left: 15px;
+	width: 350px;
+}
+
+#cbn-btn {
+	float: right;
+	font-size: 1.1em;
+}
+
+#back-btn {
+	font-size: 1.1em;
+	width: 100px;
+}
+
 
 /*************************
  PHOTOS
- *************************/
+*************************/
 #photos .item > img {
     display: block;
     margin-left: auto;
@@ -66,24 +167,183 @@ table.dataTable th:active { outline: none; }
 
 /*************************
  Ad-gallery
- *************************/
-.ad-image {overflow: visible;}
-.ad-image .ad-image-description {position: static;}
-.ad-gallery { width: 384px; }
-.ad-gallery .ad-image-wrapper { height: 256px; }
+*************************/
+.ad-image {
+	overflow: visible;
+}
 
+.ad-image .ad-image-description {
+	position: static;
+	text-align: center !important;
+}
+
+.ad-gallery {
+	width: 384px;
+}
+
+.ad-gallery .ad-image-wrapper {
+	height: 256px;
+}
 
 
 /************************
  Detail pages
- ************************/
+************************/
 dl > dd {
     color: #555;
 }
-
 
 .text-center {
     text-align: center;
 }
 
-h2 .species_name { font-style: italic; font-size: 90%;}
+h2 .species_name {
+	font-style: italic;
+	font-size: 90%;
+}
+
+
+/************************
+ Combined Search page
+************************/
+#cbn-search-form {
+	margin: 25px;
+}
+
+#cbn-search-form .form-group {
+	margin: 10px 0;
+	margin-right: 50px;
+    display: inline-block;
+	width: 375px;
+}
+
+#cbn-search-form label {
+	font-size: 1.1em;
+	width: 200px;
+}
+
+#cbn-search-form input {
+	width: 350px;
+}
+
+#cbn-search-form select {
+	width: 365px;
+}
+
+#cbn-search-form .btn-container {
+	margin: 25px 0;
+	margin-bottom: 0;
+    text-align: right;
+}
+
+#cbn-search-form button {
+	width: 100px;
+	margin-right: 10px;
+}
+
+#cbn-search-form .section-header {
+	margin: 0;
+}
+
+#cbn-search-form .form-section {
+	margin-bottom: 25px;
+}
+
+
+/************************
+ Instructions page
+************************/
+.instruction-container {
+	text-align: justify;
+}
+ 
+.instruction-steps {
+	padding: 15px 0;
+}
+ 
+.instruction-steps img {
+	margin: 10px 0;
+}
+
+
+/************************
+ Contribute page
+************************/
+.contribute-container {
+	/*text-align: justify;*/
+}
+ 
+.contribute-steps {
+	padding: 15px 0;
+}
+ 
+.contribute-table {
+	text-align: left;
+	margin: 20px 0px;
+}
+
+.contribute-table tr td {
+	vertical-align: top;
+	padding: 5px;
+}
+
+#accession-table tr td {
+	width: 308px;
+}
+
+#record-table .num-col {
+	 width: 45px;
+}
+
+#record-table .field-col {
+	 width: 113px;
+}
+
+#record-table .notes-col {
+	 width: 255px;
+}
+
+#record-table .criteria-terms-col {
+	 width: 215px;
+}
+
+.file-link {
+	white-space: nowrap;
+}
+
+
+/************************
+ Contribute page
+************************/
+.about-container {
+	/*text-align: justify;*/
+}
+ 
+ 
+/************************
+ Contacts page
+************************/
+.contacts-container {
+	/*text-align: justify;*/
+}
+ 
+ 
+/************************
+ Terms page
+************************/
+.terms-container {
+	/*text-align: justify;*/
+}
+
+
+/************************
+ Details page
+************************/
+.acc-details-item {
+	margin-bottom: 5px;
+}
+
+.seed-details-item,
+.wood-details-item {
+	margin-bottom: 10px;
+}

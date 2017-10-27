@@ -658,8 +658,9 @@
         var context = this;
         var image = this.images[index];
         var img_container = $(document.createElement('div')).addClass('ad-image');
-        var img = $(new Image()).attr('src', image.image);
-        if(image.link) {
+        //var img = $(new Image()).attr('src', image.image);
+		var img = $('<a href="'+ image.link +'" target="_blank"><img src="'	+ image.image + '"/></a>');
+		if(image.link) {
           var link = $('<a href="'+ image.link +'" target="_blank"></a>');
           link.append(img);
           img_container.append(link);

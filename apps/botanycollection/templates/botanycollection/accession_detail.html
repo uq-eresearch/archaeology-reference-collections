@@ -1,184 +1,219 @@
 {% extends "botanycollection/base.html" %}
 {% load static %}
 {% block headextra %}
-<link rel="stylesheet" type="text/css" href="{% static 'adgallery/lib/jquery.ad-gallery.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'adgallery/lib/jquery.ad-gallery.css' %}"/>
 <style>
-
-.ad-gallery .ad-image-wrapper .ad-image {overflow: visible;}
-.ad-gallery .ad-image-wrapper .ad-image .ad-image-description {position: static;}
-.ad-gallery .ad-image-wrapper { height: 312px; }
+	.ad-gallery .ad-image-wrapper .ad-image {overflow: visible;}
+	.ad-gallery .ad-image-wrapper .ad-image .ad-image-description {position: static;}
+	.ad-gallery .ad-image-wrapper { height: 312px; }
 </style>
+
 {% endblock headextra %}
 {% load thumbnail %}
 
 {% block content %}
-  <div class="row-fluid">
-    <div class="span12">
-{% if user.is_staff %}
-        <div style="float:right;font-size: 80%;">
-          <a href="{% url "admin:botanycollection_accession_change" object.id %}">Admin</a>
-        </div>
-{% endif %}
-        <h2>{{ object.family }}<br>
-        <span class="species_name">{{object.genus}} {{object.species}}</span></h2>
-    </div><!-- /span12 -->
+<div class="row-fluid">
+	<div class="span12">
+		{% if user.is_staff %}
+		<div style="float:right;font-size: 80%;">
+			<a href="{% url 'admin:botanycollection_accession_change' object.id %}">Admin</a>
+		</div>
+		{% endif %}
 
-      <div class="row-fluid">
-          <div class="span4">
-              <h3>Accession details</h3>
-              <dl class="dl-horizontal">
-                  <dt>UQM Accession No.</dt>
-                  <dd>{{object.uqm_accession }}</dd>
+		<h2>{{ object.family }}<br>
+			<span class="species_name">{{object.genus}} {{object.species}}</span>
+		</h2>
+	</div><!-- /span12 -->
 
-{% if object.material %}
-                  <dt>Material</dt>
-                  <dd>{{ object.material }}</dd>
-{% endif %}
+	<div class="row-fluid">
+		<div class="span4">
+			<h3>Accession details</h3>
+			<dl class="dl-horizontal">
+				<div class="acc-details-item">
+					<dt>UQM Accession No.</dt>
+					<dd>{{object.uqm_accession }}</dd>
+				</div>
 
-{% if object.source %}
-                  <dt>Source</dt>
-                  <dd>{{ object.source }}</dd>
-{% endif %}
+				{% if object.material %}
+				<div class="acc-details-item">
+					<dt>Material</dt>
+					<dd>{{ object.material }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.preservation_state %}
-                  <dt>State</dt>
-                  <dd>{{object.preservation_state}}</dd>
-{% endif %}
+				{% if object.source %}
+				<div class="acc-details-item">
+					<dt>Source</dt>
+					<dd>{{ object.source }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.family %}
-                  <dt>Family</dt>
-                  <dd>{{ object.family }}</dd>
-{% endif %}
+				{% if object.preservation_state %}
+				<div class="acc-details-item">
+					<dt>State</dt>
+					<dd>{{object.preservation_state}}</dd>
+				</div>
+				{% endif %}
 
-{% if object.genus %}
-                  <dt>Genus</dt>
-                  <dd>{{ object.genus }}</dd>
-{% endif %}
+				{% if object.family %}
+				<div class="acc-details-item">
+					<dt>Family</dt>
+					<dd>{{ object.family }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.species %}
-                  <dt>Species</dt>
-                  <dd class="species_name">{{ object.species }}</dd>
-{% endif %}
+				{% if object.genus %}
+				<div class="acc-details-item">
+					<dt>Genus</dt>
+					<dd>{{ object.genus }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.contributor %}
-                  <dt>Contributor</dt>
-                  <dd>{{object.contributor}}</dd>
-{% endif %}
+				{% if object.species %}
+				<div class="acc-details-item">
+					<dt>Species</dt>
+					<dd class="species_name">{{ object.species }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.common_name %}
-                  <dt>Common name</dt>
-                  <dd>{{object.common_name}}</dd>
-{% endif %}
-{% if object.woodfeatures.common_name %}
-            <dt>Common name</dt>
-            <dd>{{ object.woodfeatures.common_name }}</dd>
-{% endif %}
-{% if object.indigenous_name %}
-            <dt>Indigenous name</dt>
-            <dd>{{ object.indigenous_name }}</dd>
-{% endif %}
+				{% if object.contributor %}
+				<div class="acc-details-item">
+					<dt>Contributor</dt>
+					<dd>{{object.contributor}}</dd>
+				</div>
+				{% endif %}
 
-{% if object.id_level_flag %}
-                  <dt>ID level flag</dt>
-                  <dd>{{ object.id_level_flag }}</dd>
-{% endif %}
+				{% if object.common_name %}
+				<div class="acc-details-item">
+					<dt>Common name</dt>
+					<dd>{{object.common_name}}</dd>
+				</div>
+				{% endif %}
 
-{% if object.related_accession %}
-                  <dt>Related accession</dt>
-                  <dd>{{object.related_accession}}</dd>
-{% endif %}
-              </dl>
+				{% if object.woodfeatures.common_name %}
+				<div class="acc-details-item">
+					<dt>Common name</dt>
+					<dd>{{ object.woodfeatures.common_name }}</dd>
+				</div>
+				{% endif %}
 
-              <h3>Location details</h3>
-              <dl class="dl-horizontal">
-{% if object.country %}
-                  <dt>Country</dt>
-                  <dd>{{ object.country }}</dd>
-{% endif %}
+				{% if object.indigenous_name %}
+				<div class="acc-details-item">
+					<dt>Indigenous name</dt>
+					<dd>{{ object.indigenous_name }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.site_name %}
-                  <dt>Site name</dt>
-                  <dd>{{object.site_name}}</dd>
-{% endif %}
+				{% if object.id_level_flag %}
+				<div class="acc-details-item">
+					<dt>ID level flag</dt>
+					<dd>{{ object.id_level_flag }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.lat_long %}
-                  <dt>Geographical coordinates</dt>
-                  <dd>{{object.lat_long}}</dd>
-{% endif %}
+				{% if object.related_accession %}
+				<div class="acc-details-item">
+					<dt>Related accession</dt>
+					<dd>{{object.related_accession}}</dd>
+				</div>
+				{% endif %}
+			</dl>
 
-{% if object.altitude %}
-                  <dt>Altitude</dt>
-                  <dd>{{ object.altitude }}</dd>
-{% endif %}
+			<h3>Location details</h3>
+			<dl class="dl-horizontal">
+				{% if object.country %}
+				<div class="acc-details-item">
+					<dt>Country</dt>
+					<dd>{{ object.country }}</dd>
+				</div>
+				{% endif %}
 
-{% if object.location_notes %}
-                  <dt>Location notes</dt>
-                  <dd>{{object.location_notes}}</dd>
-{% endif %}
-              </dl>
+				{% if object.site_name %}
+				<div class="acc-details-item">
+					<dt>Site name</dt>
+					<dd>{{object.site_name}}</dd>
+				</div>
+				{% endif %}
 
-          </div>
-          <div class="span7 offset1">
-              <div class="well">
-            {% if object.accessionphoto_set.all %}
-              <div class="ad-gallery">
-                <div class="ad-image-wrapper">
-                </div>
-                <div class="ad-controls">
-                </div>
-                <div class="ad-nav">
-                  <div class="ad-thumbs">
-                    <ul class="ad-thumb-list">
+				{% if object.lat_long %}
+				<div class="acc-details-item">
+					<dt>Geographical coordinates</dt>
+					<dd>{{object.lat_long}}</dd>
+				</div>
+				{% endif %}
 
-                      {% for photo in object.accessionphoto_set.all %}
-                      <li>
-                        <a href="{{ photo.image|thumbnail_url:'item_display'}}">
-                          <img src="{{ photo.image|thumbnail_url:'small_thumb'}}" title="{{ photo.title }}" alt="{{ photo.description }}">
-                        </a>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            {% else %}
-                <p>No images available.</p>
-            {% endif %}
-              </div>
-          </div><!-- /span7 -->
-      </div><!-- /row-fluid -->
+				{% if object.altitude %}
+				<div class="acc-details-item">
+					<dt>Altitude</dt>
+					<dd>{{ object.altitude }}</dd>
+				</div>
+				{% endif %}
 
-      <div class="row-fluid">
-          <div class="span10">
-              <h3>Specimen Description</h3>
-          </div>
-      </div>
-      <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs">
-          {% if woodfeatures %}
-          <li class="{{woodactive}}"><a href="#wood" data-toggle="tab">Wood</a></li>
-          {% else %}
-          <li class="disabled"><a>Wood</a></li>
-          {% endif %}
-          {% if seedfeatures %}
-          <li class="{{seedactive}}"><a href="#seed" data-toggle="tab">Seed/Fruit</a></li>
-          {% else %}
-          <li class="disabled"><a>Seed/Fruit</a></li>
-          {% endif %}
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane {{woodactive}}" id="wood">
-              {% include 'botanycollection/details_wood.html' %}
-          </div>
-          <div class="tab-pane {{seedactive}}" id="seed">
-              {% include 'botanycollection/details_seed.html' %}
-          </div>
-        </div>
-      </div>
+				{% if object.location_notes %}
+				<div class="acc-details-item">
+					<dt>Location notes</dt>
+					<dd>{{object.location_notes}}</dd>
+					{% endif %}
+				</dl>
 
+			</div>
+			<div class="span7 offset1">
+				<div class="well">
+					{% if object.accessionphoto_set.all %}
+					<div class="ad-gallery">
+						<div class="ad-image-wrapper"></div>
+						<div class="ad-controls"></div>
+						<div class="ad-nav">
+							<div class="ad-thumbs">
+								<ul class="ad-thumb-list">
+									{% for photo in object.accessionphoto_set.all %}
+									<li>
+										<a href="{{ photo.image|thumbnail_url:'item_display'}}">
+											<img src="{{ photo.image|thumbnail_url:'small_thumb'}}" 
+													title="{{ photo.title }}" alt="{{ photo.description }}"/>
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					{% else %}
+					<p>No images available.</p>
+					{% endif %}
+				</div>
+			</div><!-- /span7 -->
+		</div><!-- /row-fluid -->
 
-    </div>
-  </div>
+		<div class="row-fluid">
+			<div class="span10">
+				<h3>Specimen Description</h3>
+			</div>
+		</div>
+		<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+			<ul class="nav nav-tabs">
+				{% if woodfeatures %}
+				<li class="{{woodactive}}"><a href="#wood" data-toggle="tab">Wood</a></li>
+				{% else %}
+				<!--<li class="disabled"><a>Wood</a></li>-->
+				{% endif %}
+				{% if seedfeatures %}
+				<li class="{{seedactive}}"><a href="#seed" data-toggle="tab">Seed/Fruit</a></li>
+				{% else %}
+				<!--<li class="disabled"><a>Seed/Fruit</a></li>-->
+				{% endif %}
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane {{woodactive}}" id="wood">
+					{% include 'botanycollection/details_wood.html' %}
+				</div>
+				<div class="tab-pane {{seedactive}}" id="seed">
+					{% include 'botanycollection/details_seed.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
@@ -192,30 +227,30 @@
 <script type="text/javascript" src="{% static 'adgallery/lib/jquery.ad-gallery.js' %}"></script>
 <script type="text/javascript" charset="utf-8">
 
-$(document).ready(function () {
+	$(document).ready(function () {
 
-  // A bit of a hack to stop the carousel switching to auto-advance
-  $.fn.carousel.defaults = {
-    interval: false
-  , pause: 'hover'
-  }
+	// A bit of a hack to stop the carousel switching to auto-advance
+	$.fn.carousel.defaults = {
+	interval: false
+	, pause: 'hover'
+	}
 
-//  $('#photos').carousel({
-//    interval: false
-//  });
-  
-  var galleries = $('.ad-gallery').adGallery({
-    slideshow: {
-      enable: false
-    },
-    update_window_hash: false
-  });
+	//	$('#photos').carousel({
+	//	interval: false
+	//	});
 
-});
+	var galleries = $('.ad-gallery').adGallery({
+	slideshow: {
+	enable: false
+	},
+	update_window_hash: false
+	});
 
-  $("#ad-image img").click(function() {
+	});
+
+	$("#ad-image img").click(function() {
 	window.open($("#ad-image img").attr('src'), '_blank');
-  })
+	})
 </script>
 
 

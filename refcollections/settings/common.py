@@ -126,7 +126,7 @@ ROOT_URLCONF = 'refcollections.urls'
 WSGI_APPLICATION = 'refcollections.wsgi.application'
 
 ALLOWED_HOSTS = ['uqarchaeologyreference.metadata.net',
-                 'archaeobotanyref-uat.qc.to', 'localhost']
+                 'archaeobotanyref-uat.qc.to', 'localhost', '203.101.224.181']
 
 
 INSTALLED_APPS = (

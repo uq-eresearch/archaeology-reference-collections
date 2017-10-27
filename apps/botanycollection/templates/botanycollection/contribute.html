@@ -3,749 +3,803 @@
 {% block content %}
 
 
-
 <div class="row">
-    <div class="span8 offset1">
-    <h2>Instructions</h2>
-<p>
-    Contributions to this database - e-accessions and plant specimens - are welcomed. UQARC is an ongoing research project at 
-	the University of Queensland. Interested researchers should <a href='{% url "contacts" %}'>contact the project team</a> to 
-	discuss their accessions before preparing their material following the standards outlined here. Contributors acknowledge 
-	that, once included in the database, all contributions will be made publicly available in accordance with the site’s Creative 
-	Commons license (see <a href='{% url "terms" %}'>Terms of use</a>).
-</p>
-<p>
-    At present e-accessions are being prepared for wood/wood charcoal and seeds/fruits. Other fossil categories may be added in 
-	the future. We are developing a web-based accession portal for UQARC contributors, but currently are using spreadsheets to 
-	collect data. Please follow the following steps.
-</p>
-<p>
-    <strong><em>Step 1: Complete UQARC Accession sheet</em></strong>
-</p>
-<p>
-    Enter the taxonomic, collection and origin information for your specimens on the attached UQARC Accession Sheet 
-	(<a href='../file/UQARC_Accession_sheet.xlsx')>Excel</a>). 
-	The sheet has details about the conventions we follow, including use of the GRIN taxonomy for naming, though names assigned 
-	using local floras should also be recorded. Details are on the READ ME worksheet. Some fields (hashed) are to be filled out by 
-	the UQARC team. Please note, all contributors will need to specify a verification level flag (as defined by Herbarium Information 
-	Standards and Protocols for Interchange of Data - Version 3 [HISPID3]) for each accession donated to the database. They are as follows:
-</p>
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    <em>Values in Field</em>
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    <em>Meaning</em>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    0 (zero)
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    The name of the record has not been checked by any authority
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    1
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    The name of the record determined by comparison with other name plants
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    2
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    The name of the record determined by a taxonomist or by other competent persons using herbarium and/or library 
-					and/or documented living material
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    3
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    The name of the plant determined by taxonomist engaged in systematic revision of group
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="308" valign="top">
-                <p>
-                    4
-                </p>
-            </td>
-            <td width="308" valign="top">
-                <p>
-                    The record is part of type gathering or propagated from type material by asexual methods
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<p>
-    <strong><em>Step 2: Complete the record sheet for your material</em></strong>
-</p>
-<p>
-    Download and enter the details for your accessions, using the specified criteria, in one of the following material categories: 
-	wood/wood charcoal or seeds and fruits. Please contact UQARC for further details about the descriptive criteria on the 
-	<a href='{% url "contacts" %}'>contacts</a> page.
-</p>
-<p>
-    <strong><em>Wood and wood charcoal</em></strong>
-</p>
-<p>
-All contributors of wood and wood charcoal reference materials will need to present their data in the attached pro forma (
-<a><u>FileMaker</u>, <u>Excel File</u></a>). Descriptions of anatomical features should follow those outlined by the International 
-Association of Wood Anatomists, in particular:
-</p>
-<p>
-    For Hardwoods: E.A. Wheeler, P. Baas, P.E. Gasson (eds.) (1989) IAWA list of microscopic features for hardwood identification 
-	with an Appendix for non-anatomical information. <em>IAWA Bulletin</em> 10(3):219-332.
-</p>
-<p>
-For softwoods: Richter, H.G., D. Grosser, I. Heinz, and P.E. Gasson (eds.) (2004) IAWA list of microscopic features for softwood 
-identification.    <em>IAWA Journal </em>25(1):1-70.
-</p>
-<p>
-    Contributors should also include images (preferably SEM images or high quality light microscope images) of each of the three 
-	anatomical planes (transverse, tangential, and radial) which contain the distinguishing anatomical features of the taxon. These 
-	images should be accompanied by an annotation of the anatomical features present in the image. Images should not exceed 1.25MB 
-	in size and are acceptable in JPEG or TIF format.
-</p>
-<p>
-    <strong><em>Seeds and fruits</em></strong>
-</p>
-<p>
-    All contributors of seed, nut and fruit reference materials will need to present their data in the attached pro forma 
-	(<a href='../file/UQARC_Seed_data_upload_template.xlsx')>Excel File</a>). The 
-	fields should be filled out, where relevant as follows:
-</p>
+	<div class="span8 offset1">
+		<div class="contribute-container">
+			<h2>Instructions</h2>
+			<p>
+				Contributions to this database - e-accessions and plant specimens - are welcomed. 
+				UQARC is an ongoing research project at the University of Queensland. Interested 
+				researchers should <a href='{% url "contacts" %}'>contact the project team</a> to 
+				discuss their accessions before preparing their material following the standards 
+				outlined here. Contributors acknowledge that, once included in the database, all 
+				contributions will be made publicly available in accordance with the site’s Creative 
+				Commons license <span class="file-link">(see <a href='{% url "terms" %}'>Terms of use</a>)
+				</span>.
+			</p>
+			<p>
+				At present e-accessions are being prepared for wood/wood charcoal and seeds/fruits. 
+				Other fossil categories may be added in the future. We are developing a web-based 
+				accession portal for UQARC contributors, but currently are using spreadsheets to 
+				collect data. Please follow the following steps.
+			</p>
+			<div class="contribute-steps">
+				<p>
+					<strong><em>Step 1: Complete UQARC Accession sheet</em></strong>
+				</p>
+				<p>
+					Enter the taxonomic, collection and origin information for your specimens on the 
+					attached UQARC Accession Sheet <span class="file-link">
+					(<a href='{{ MEDIA_URL }}template/UQARC_Accession_sheet.xlsx')>Excel</a>)</span>. 
+					The sheet has details about the conventions we follow, including use of the GRIN 
+					taxonomy for naming, though names assigned using local floras should also be 
+					recorded. Details are on the READ ME worksheet. Some fields (hashed) are to be 
+					filled out by the UQARC team. Please note, all contributors will need to specify 
+					a verification level flag (as defined by Herbarium Information Standards and 
+					Protocols for Interchange of Data - Version 3 [HISPID3]) for each accession donated 
+					to the database. They are as follows:
+				</p>
+				<table class="contribute-table" id="accession-table" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td >
+								<p>
+									<em>Values in Field</em>
+								</p>
+							</td>
+							<td >
+								<p>
+									<em>Meaning</em>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<p>
+									0 (zero)
+								</p>
+							</td>
+							<td >
+								<p>
+									The name of the record has not been checked by any authority
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<p>
+									1
+								</p>
+							</td>
+							<td >
+								<p>
+									The name of the record determined by comparison with other name plants
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<p>
+									2
+								</p>
+							</td>
+							<td >
+								<p>
+									The name of the record determined by a taxonomist or by other competent 
+									persons using herbarium and/or library and/or documented living material
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<p>
+									3
+								</p>
+							</td>
+							<td >
+								<p>
+									The name of the plant determined by taxonomist engaged in systematic revision 
+									of group
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<p>
+									4
+								</p>
+							</td>
+							<td >
+								<p>
+									The record is part of type gathering or propagated from type material by 
+									asexual methods
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="contribute-steps">
+				<p>
+					<strong><em>Step 2: Complete the record sheet for your material</em></strong>
+				</p>
+				<p>
+					Download and enter the details for your accessions, using the specified criteria, in one of 
+					the following material categories: wood/wood charcoal or seeds and fruits. Please contact 
+					UQARC for further details about the descriptive criteria on the 
+					<a href='{% url "contacts" %}'>contacts</a> page.
+				</p>
+				<p>
+					<strong><em>Wood and wood charcoal</em></strong>
+				</p>
+				<p>
+					All contributors of wood and wood charcoal reference materials will need to present their data 
+					in the attached pro forma <span class="file-link">(<a><u>FileMaker</u>, <u>Excel File</u></a>)
+					</span>. Descriptions of anatomical features should follow those outlined by the International 
+					Association of Wood Anatomists, in particular:
+				</p>
+				<p>
+					For Hardwoods: E.A. Wheeler, P. Baas, P.E. Gasson (eds.) (1989) IAWA list of microscopic features 
+					for hardwood identification with an Appendix for non-anatomical information. <em>IAWA Bulletin</em> 
+					10(3):219-332.
+				</p>
+				<p>
+					For softwoods: Richter, H.G., D. Grosser, I. Heinz, and P.E. Gasson (eds.) (2004) IAWA list of 
+					microscopic features for softwood identification. <em>IAWA Journal </em>25(1):1-70.
+				</p>
+				<p>
+					Contributors should also include images (preferably SEM images or high quality light microscope 
+					images) of each of the three anatomical planes (transverse, tangential, and radial) which contain 
+					the distinguishing anatomical features of the taxon. These images should be accompanied by an 
+					annotation of the anatomical features present in the image. Images should not exceed 1.25MB in 
+					size and are acceptable in JPEG or TIF format.
+				</p>
+				<p>
+					<strong><em>Seeds and fruits</em></strong>
+				</p>
+				<p>
+					All contributors of seed, nut and fruit reference materials will need to present their data in 
+					the attached pro forma 
+					<span class="file-link">(<a href='{{ MEDIA_URL }}template/UQARC_Seed_data_upload_template.xlsx')>
+					Excel File</a>)<span>. The fields should be filled out, where relevant as follows:
+				</p>
 
-<table border="1" cellspacing="0" cellpadding="0" width="629">
-    <tbody>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    <strong># </strong>
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    <strong>Field </strong>
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    <strong>Notes </strong>
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    <strong>Criteria /terms</strong>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    A
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Accession
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Assigned by UQARC
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    NA
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    B
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Seed/fruit type
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe the seed fruit type with reference to standard terms
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Plant Part Field"                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Plantpart.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-Plantpart.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    C
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Shape 3D
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe overall shape
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Diaspore shape 3D""                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-3Dshape.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-3Dshape.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    D
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Shape 2D
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe shape as in plan view
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Diaspore shape 2D""                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-2Dshape.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-2Dshape.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    E
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Shape detail
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Add here details of the overall shape and structure that may not be covered in 2 and 3, including apex (proximal) and base (distal) shape,
-                    variability, margins etc
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    e.g. Bojnansky 2007, pp. xxxiv-xxxv
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    F
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Length (mm)
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Longest dimension of the seed, typically from proximal to distal poles; typically a range given for population
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">http://ipna.unibas.ch/archbot/pdf/</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    G
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Breadth (mm)
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Dimension running between the lateral margins of the seed, typically perpendicular to the length; typically a range given for population
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">http://ipna.unibas.ch/archbot/pdf/</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    H
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Thickness (mm) – also known as height
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Dimension running between the dorsal and ventral surfaces of the seed, typically perpendicular to the breadth; typically a range given for
-                    population
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">http://ipna.unibas.ch/archbot/pdf/</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    I
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Colour
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Colour of the fresh seed/fruit
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Colour""                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Colour.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-Colour.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    J
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Reflection
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Whether the surface in fresh seeds is glossy or matt
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Reflection""                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-reflection.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-reflection.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    K
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Testa/endocarp thickness (mm)
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Maximum dimension across the testa/endocarp; typically a range given for population
-                </p>
-            </td>
-            <td width="215" valign="top">
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    L
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Surface description (Outer)
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe surface appearance, sculpting, hairs etc
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Diaspore shape 2D""                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at:
-                    <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Diasporesurface.pdf">
-                        http://seeds.eldoc.ub.rug.nl/help4-met-pics-Diasporesurface.pdf
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    M
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Surface description (Inner)
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe any sculpting on inner surface of endocarps etc
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    Bojnansky 2007, pp. xxxiii-xxxv
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    N
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Hilum shape
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    ONLY for Asteraceae, Boraginaceae, Fabaceae, Geraniaceae and Poaceae
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Hilum shape"                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-Hillumshape.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-Hillumshape.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    O
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Hilum length
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    ONLY for Asteraceae, Boraginaceae, Fabaceae, Geraniaceae and Poaceae
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Hilum length"                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-Hilumlength.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-Hilumlength.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    P
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Pappus
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe the form of the pappus on the seed if present
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Pappus"                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-pappus.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-pappus.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    Q
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Appendages
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe the form of any appendages
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-Digital Seed Atlas of the Netherlands = "Appendages"                    <a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
-                </p>
-                <p>
-                    Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Appendages.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-Appendages.pdf</a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    R
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Anatomy Transverse Section
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe variance in anatomical details
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    Hather 2000 and Fairbairn lab notes (available from UQARC@uq.edu.au)
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    S
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Anatomy Longitudinal Sections
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe variance in anatomical details
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    Hather 2000 and Fairbairn lab notes (available from UQARC@uq.edu.au)
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    T
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Embryo and endosperm details
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Describe any features of the embryo and endosperm, including the arrangement as described in Martin
-                </p>
-            </td>
-            <td width="215" valign="top">
-                <p>
-                    As per Martin 1946 and Baskin 2007
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    U
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Other identification information
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Other information including, for example, variability in features and other information not included elsewhere
-                </p>
-            </td>
-            <td width="215" valign="top">
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    V
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    References and links
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Add references and URL information
-                </p>
-            </td>
-            <td width="215" valign="top">
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    W
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Notes
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Add any other information not covered elsewhere
-                </p>
-            </td>
-            <td width="215" valign="top">
-            </td>
-        </tr>
-        <tr>
-            <td width="45" valign="top">
-                <p>
-                    X
-                </p>
-            </td>
-            <td width="113" valign="top">
-                <p>
-                    Contributor
-                </p>
-            </td>
-            <td width="255" valign="top">
-                <p>
-                    Full name of person adding information and date of accession
-                </p>
-            </td>
-            <td width="215" valign="top">
-            </td>
-        </tr>
-    </tbody>
-</table>
-<p>
-    <em><u>References</u></em>
-</p>
-<p>
-    Baskin CC, Baskin JM (2007) A revision of Martin's seed classification system, with particular reference to his dwarf-seed type. Seed Science Research 17
-    (1):11-20. doi:10.1017/S0960258507383189
-</p>
-<p>
-    Bojnanský V, Fargašová A (2007) Taxonomy and Morphology of Seeds. In. Springer Netherlands, Dordrecht, pp 1-954. doi:10.1007/978-1-4020-5362-7_1
-</p>
-<p>
-Cappers R, Bekker R, Jans J (2006) Digital seed atlas of the Netherlands, vol 4. Groningen Archaeological Series. Barkhuis Publishing, Groningen (    <a href="http://seeds.eldoc.ub.rug.nl/">http://seeds.eldoc.ub.rug.nl</a>/)
-</p>
-<p>
-Jacomet S (2008) Identification of cereal remains from archaeological sites. IPNA, Basel (    <a href="http://ipna.unibas.ch/archbot/pdf/">http://ipna.unibas.ch/archbot/pdf/</a>)
-</p>
-<p>
-    Martin AC (1946) The Comparative Internal Morphology of Seeds. American Midland Naturalist 36 (3):513-660. doi:10.2307/2421457
-</p>
-<p>
-    Contributors should also include images (preferably SEM images or high quality light microscope images) which contain the distinguishing features of the
-    taxon. These images should be accompanied by an annotation for the image. Images should not exceed 1.25MB in size and are acceptable in JPEG or TIF format.
-</p>
+				<table class="contribute-table" id="record-table" border="1" cellspacing="0" cellpadding="0" width="629">
+					<tbody>
+						<tr>
+							<td class="num-col">
+								<p>
+									<strong># </strong>
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									<strong>Field </strong>
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									<strong>Notes </strong>
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									<strong>Criteria /terms</strong>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									A
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Accession
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Assigned by UQARC
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									NA
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									B
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Seed/fruit type
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe the seed fruit type with reference to standard terms
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Plant Part Field" 
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">
+										http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Plantpart.pdf">
+										http://seeds.eldoc.ub.rug.nl/help4-met-pics-Plantpart.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									C
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Shape 3D
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe overall shape
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Diaspore shape 3D"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">
+											http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-3Dshape.pdf">
+										http://seeds.eldoc.ub.rug.nl/help4-met-pics-3Dshape.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									D
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Shape 2D
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe shape as in plan view
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Diaspore shape 2D"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">
+										http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-2Dshape.pdf">
+										http://seeds.eldoc.ub.rug.nl/help4-met-pics-2Dshape.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									E
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Shape detail
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Add here details of the overall shape and structure that may not be covered in 2 
+									and 3, including apex (proximal) and base (distal) shape, variability, margins etc
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									e.g. Bojnansky 2007, pp. xxxiv-xxxv
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									F
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Length (mm)
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Longest dimension of the seed, typically from proximal to distal poles; typically a 
+									range given for population
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">
+										http://ipna.unibas.ch/archbot/pdf/</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									G
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Breadth (mm)
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Dimension running between the lateral margins of the seed, typically perpendicular 
+									to the length; typically a range given for population
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">
+										http://ipna.unibas.ch/archbot/pdf/</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									H
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Thickness (mm) – also known as height
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Dimension running between the dorsal and ventral surfaces of the seed, typically 
+									perpendicular to the breadth; typically a range given for population
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									See Jacomet 2006 pp 9-10. Pdf at: <a href="http://ipna.unibas.ch/archbot/pdf/">
+										http://ipna.unibas.ch/archbot/pdf/</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									I
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Colour
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Colour of the fresh seed/fruit
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Colour"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">
+										http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: <a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Colour.pdf">
+										http://seeds.eldoc.ub.rug.nl/help4-met-pics-Colour.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									J
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Reflection
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Whether the surface in fresh seeds is glossy or matt
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Reflection"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: 
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-reflection.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-reflection.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									K
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Testa/endocarp thickness (mm)
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Maximum dimension across the testa/endocarp; typically a range given for population
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									L
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Surface description (Outer)
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe surface appearance, sculpting, hairs etc
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Diaspore shape 2D"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at:
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Diasporesurface.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-Diasporesurface.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									M
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Surface description (Inner)
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe any sculpting on inner surface of endocarps etc
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Bojnansky 2007, pp. xxxiii-xxxv
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									N
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Hilum shape
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									ONLY for Asteraceae, Boraginaceae, Fabaceae, Geraniaceae and Poaceae
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Hilum shape"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: 
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-Hillumshape.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-Hillumshape.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									O
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Hilum length
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									ONLY for Asteraceae, Boraginaceae, Fabaceae, Geraniaceae and Poaceae
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Hilum length"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: 
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-Hilumlength.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-Hilumlength.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									P
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Pappus
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe the form of the pappus on the seed if present
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Pappus"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: 
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-pappus.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-pappus.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									Q
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Appendages
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe the form of any appendages
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Digital Seed Atlas of the Netherlands = "Appendages"
+									<a href="http://seeds.eldoc.ub.rug.nl/?pDeterm=ON%20">http://seeds.eldoc.ub.rug.nl/?pDeterm=ON</a>
+								</p>
+								<p>
+									Pdf at: 
+									<a href="http://seeds.eldoc.ub.rug.nl/help4-met-pics-Appendages.pdf">http://seeds.eldoc.ub.rug.nl/help4-met-pics-Appendages.pdf</a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									R
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Anatomy Transverse Section
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe variance in anatomical details
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Hather 2000 and Fairbairn lab notes (available from UQARC@uq.edu.au)
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									S
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Anatomy Longitudinal Sections
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe variance in anatomical details
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									Hather 2000 and Fairbairn lab notes (available from UQARC@uq.edu.au)
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									T
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Embryo and endosperm details
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Describe any features of the embryo and endosperm, including the arrangement as 
+									described in Martin
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+								<p>
+									As per Martin 1946 and Baskin 2007
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									U
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Other identification information
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Other information including, for example, variability in features and other 
+									information not included elsewhere
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									V
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									References and links
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Add references and URL information
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									W
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Notes
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Add any other information not covered elsewhere
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+							</td>
+						</tr>
+						<tr>
+							<td class="num-col">
+								<p>
+									X
+								</p>
+							</td>
+							<td class="field-col">
+								<p>
+									Contributor
+								</p>
+							</td>
+							<td class="notes-col">
+								<p>
+									Full name of person adding information and date of accession
+								</p>
+							</td>
+							<td class="criteria-terms-col">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p>
+				<em><u>References</u></em>
+			</p>
+			<p>
+				Baskin CC, Baskin JM (2007) A revision of Martin's seed classification system, with particular 
+				reference to his dwarf-seed type. Seed Science Research 17 (1):11-20. doi:10.1017/S0960258507383189
+			</p>
+			<p>
+				Bojnanský V, Fargašová A (2007) Taxonomy and Morphology of Seeds. In. Springer Netherlands, Dordrecht, 
+				pp 1-954. doi:10.1007/978-1-4020-5362-7_1
+			</p>
+			<p>
+				Cappers R, Bekker R, Jans J (2006) Digital seed atlas of the Netherlands, vol 4. Groningen 
+				Archaeological Series. Barkhuis Publishing, Groningen 
+				(<a href="http://seeds.eldoc.ub.rug.nl/">http://seeds.eldoc.ub.rug.nl</a>)
+			</p>
+			<p>
+				Jacomet S (2008) Identification of cereal remains from archaeological sites. IPNA, Basel 
+				(<a href="http://ipna.unibas.ch/archbot/pdf/">http://ipna.unibas.ch/archbot/pdf/</a>)
+			</p>
+			<p>
+				Martin AC (1946) The Comparative Internal Morphology of Seeds. American Midland Naturalist 36 (3)
+				:513-660. doi:10.2307/2421457
+			</p>
+			<p>
+				Contributors should also include images (preferably SEM images or high quality light microscope images) 
+				which contain the distinguishing features of the taxon. These images should be accompanied by an 
+				annotation for the image. Images should not exceed 1.25MB in size and are acceptable in JPEG or TIF 
+				format.
+			</p>
 
-
-    </div><!-- /span8 -->
+		</div>
+	</div><!-- /span8 -->
 </div>
 
 {% endblock content %}

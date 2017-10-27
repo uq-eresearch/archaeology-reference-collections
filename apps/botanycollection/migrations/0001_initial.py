@@ -212,6 +212,7 @@ class Migration(SchemaMigration):
             'detna': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'family': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'herbarium_specimens': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id_level_flag': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'lat_long': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'location_notes': ('django.db.models.fields.CharField', [], {'max_length': '162', 'blank': 'True'}),

@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 
 import views
 
@@ -15,6 +15,15 @@ urlpatterns = patterns(
 
     url(r'^/list/data/$', views.AccessionListJson.as_view(),
         name="accession_list_json"),
+
+    url(r'^/search$',
+	views.SearchView.as_view(), name='accession_search'),
+
+    url(r'^/result$',
+        views.ResultView.as_view(), name='search_result'),
+
+    url(r'^/search/data/$', views.SearchListJson.as_view(),
+        name="search_json"),
 
     #
     # Static pages

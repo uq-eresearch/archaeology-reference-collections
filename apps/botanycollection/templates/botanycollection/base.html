@@ -4,17 +4,17 @@
 {% block navbar_search %}
 {% endblock %}
 {% block search_extra %}
-<input type="hidden" name="models" value="botanycollection.accession">
+<input type="hidden" name="models" value="botanycollection.accession"/>
 {% endblock %}
 
 
 {% block navbar_extra %}
 <ul class="nav">
-<li><a href="{% url "accession_list" %}">Search Collection</a></li>
-<li><a href="{% url "instructions" %}">Using UQARC</a></li>
-<li><a href="{% url "contribute" %}">Contribute</a></li>
-<li><a href="{% url "about" %}">About</a></li>
-<li><a href="{% url "contacts" %}">Contacts</a></li>
-<li><a href="{% url "terms" %}">Terms of use</a></li>
+	<li><a href="{% url 'accession_list' %}">Search Collection</a></li>
+	<li><a href="{% url 'instructions' %}">Using UQARC</a></li>
+	<li><a href="{% url 'contribute' %}">Contribute</a></li>
+	<li><a href="{% url 'about' %}">About</a></li>
+	<li><a href="{% url 'contacts' %}">Contacts</a></li>
+	<li><a href="{% url 'terms' %}">Terms of use</a></li>
 </ul>
 {% endblock %}
