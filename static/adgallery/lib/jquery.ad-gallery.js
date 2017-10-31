@@ -658,10 +658,16 @@
         var context = this;
         var image = this.images[index];
         var img_container = $(document.createElement('div')).addClass('ad-image');
-        //var img = $(new Image()).attr('src', image.image);
-		var img = $('<a href="'+ image.link +'" target="_blank"><img src="'	+ image.image + '"/></a>');
+        var imgURL = image.image.split(".");
+		if (imgURL[1] == "tif") {
+			imgURL = image.image.split(".")[0] + "0.jpg";
+		} else {
+			imgURL = image.image.split(".")[0] + ".jpg";
+		}
+		imgURL = imgURL.replace("media", "media/jpg");
+		var img = $('<a href="'+ imgURL +'" target="_blank"><img src="' + image.image + '"/></a>');
 		if(image.link) {
-          var link = $('<a href="'+ image.link +'" target="_blank"></a>');
+          var link = $('<a href="'+ imgURL +'" target="_blank"></a>');
           link.append(img);
           img_container.append(link);
         } else {

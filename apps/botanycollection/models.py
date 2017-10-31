@@ -100,7 +100,7 @@ class SeedFeatures(models.Model):
 	shape_2d = models.CharField(max_length=30, blank=True)
 	shape_detail = models.TextField(blank=True, help_text="descriptions in dorsal, ventral, lateral and cross-section view")
 	length = models.CharField(max_length=30, blank=True, help_text="mm")
-	breath = models.CharField(max_length=30, blank=True, help_text="mm")
+	breadth = models.CharField(max_length=30, blank=True, help_text="mm")
 	thickness = models.CharField(max_length=30, blank=True, help_text="mm")
 	colour = models.CharField(max_length=30, blank=True)
 	reflection = models.CharField(max_length=30, blank=True)
