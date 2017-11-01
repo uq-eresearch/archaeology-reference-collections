@@ -224,8 +224,8 @@ class ContactsView(TemplateView):
     template_name = "botanycollection/contacts.html"
 
 	
-class SearchView(TemplateView):
-    template_name = "botanycollection/accession_search.html"
+class CombinedSearchView(TemplateView):
+    template_name = "botanycollection/combined_search.html"
 
 
 class ResultView(TemplateView):

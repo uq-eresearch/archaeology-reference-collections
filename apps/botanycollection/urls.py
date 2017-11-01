@@ -17,7 +17,7 @@ urlpatterns = patterns(
         name="accession_list_json"),
 
     url(r'^/search$',
-	views.SearchView.as_view(), name='accession_search'),
+	views.CombinedSearchView.as_view(), name='combined_search'),
 
     url(r'^/result$',
         views.ResultView.as_view(), name='search_result'),
