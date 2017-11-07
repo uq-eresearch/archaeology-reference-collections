@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+/usr/local/bin/gunicorn --chdir /opt/refcollections/archaeology-reference-collections --bind=127.0.0.1:8000 refcollections.wsgi:application
