@@ -1,3 +1,4 @@
+import os
 
 from common import *
 
@@ -7,7 +8,7 @@ DATABASES = {
         'NAME': 'refcollections',                      # Or path to database file if using sqlite3.
         'USER': 'refcollections',                      # Not used with sqlite3.
         'PASSWORD': 'refcollections',                  # Not used with sqlite3.
-        'HOST': 'oarc-db',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': os.getenv('OARC_DB', 'localhost'),     # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
