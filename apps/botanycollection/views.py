@@ -53,7 +53,7 @@ class AccessionListJson(BaseDatatableView):
 							Q(seedfeatures__shape_2d__icontains=sSearch) |
 							Q(seedfeatures__shape_detail__icontains=sSearch) |
 							Q(seedfeatures__length__icontains=sSearch) |
-							Q(seedfeatures__breath__icontains=sSearch) |
+							Q(seedfeatures__breadth__icontains=sSearch) |
 							Q(seedfeatures__thickness__icontains=sSearch) |
 							Q(seedfeatures__colour__icontains=sSearch) |
 							Q(seedfeatures__reflection__icontains=sSearch) |
