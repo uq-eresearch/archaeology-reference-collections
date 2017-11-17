@@ -1,3 +1,5 @@
 #!/usr/bin/execlineb -P
 with-contenv
+s6-envuidgid refcollections
+s6-applyuidgid -U
 /usr/local/bin/gunicorn --chdir /opt/refcollections/archaeology-reference-collections --bind=127.0.0.1:8000 refcollections.wsgi:application

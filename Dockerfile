@@ -27,11 +27,18 @@ ADD etc/nginx/refcollections /etc/nginx/sites-enabled/default
 
 ADD etc/services.d/ /etc/services.d/
 
-RUN mkdir -p /var/log/django
-
 WORKDIR /opt/refcollections/archaeology-reference-collections
 
 RUN pip install -r /opt/refcollections/archaeology-reference-collections/requirements.txt
+
+RUN groupadd -g 1001 refcollections && \
+  useradd -d /opt/refcollections/archaeology-reference-collections -s /usr/sbin/nologin -u 1001 -g refcollections refcollections
+
+RUN chown -R refcollections:refcollections /opt/refcollections/archaeology-reference-collections
+
+RUN mkdir -p /var/log/django && \
+  chown root:refcollections /var/log/django && \
+  chmod g+w /var/log/django
 
 RUN DEBIAN_FRONTEND=noninteractive && \
   echo "en_AU.UTF-8 UTF-8" > /etc/locale.gen && \
